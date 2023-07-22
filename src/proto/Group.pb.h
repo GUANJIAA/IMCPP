@@ -54,7 +54,7 @@ struct TableStruct_Group_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Group_2eproto;
-namespace Group {
+namespace GroupProto {
 class AddGroupRequest;
 struct AddGroupRequestDefaultTypeInternal;
 extern AddGroupRequestDefaultTypeInternal _AddGroupRequest_default_instance_;
@@ -88,26 +88,26 @@ extern QueryGroupUsersResponseDefaultTypeInternal _QueryGroupUsersResponse_defau
 class ResultCode;
 struct ResultCodeDefaultTypeInternal;
 extern ResultCodeDefaultTypeInternal _ResultCode_default_instance_;
-}  // namespace Group
+}  // namespace GroupProto
 PROTOBUF_NAMESPACE_OPEN
-template<> ::Group::AddGroupRequest* Arena::CreateMaybeMessage<::Group::AddGroupRequest>(Arena*);
-template<> ::Group::AddGroupResponse* Arena::CreateMaybeMessage<::Group::AddGroupResponse>(Arena*);
-template<> ::Group::CreateGroupRequest* Arena::CreateMaybeMessage<::Group::CreateGroupRequest>(Arena*);
-template<> ::Group::CreateGroupResponse* Arena::CreateMaybeMessage<::Group::CreateGroupResponse>(Arena*);
-template<> ::Group::GroupInfo* Arena::CreateMaybeMessage<::Group::GroupInfo>(Arena*);
-template<> ::Group::GroupUser* Arena::CreateMaybeMessage<::Group::GroupUser>(Arena*);
-template<> ::Group::QueryGroupRequest* Arena::CreateMaybeMessage<::Group::QueryGroupRequest>(Arena*);
-template<> ::Group::QueryGroupResponse* Arena::CreateMaybeMessage<::Group::QueryGroupResponse>(Arena*);
-template<> ::Group::QueryGroupUsersRequest* Arena::CreateMaybeMessage<::Group::QueryGroupUsersRequest>(Arena*);
-template<> ::Group::QueryGroupUsersResponse* Arena::CreateMaybeMessage<::Group::QueryGroupUsersResponse>(Arena*);
-template<> ::Group::ResultCode* Arena::CreateMaybeMessage<::Group::ResultCode>(Arena*);
+template<> ::GroupProto::AddGroupRequest* Arena::CreateMaybeMessage<::GroupProto::AddGroupRequest>(Arena*);
+template<> ::GroupProto::AddGroupResponse* Arena::CreateMaybeMessage<::GroupProto::AddGroupResponse>(Arena*);
+template<> ::GroupProto::CreateGroupRequest* Arena::CreateMaybeMessage<::GroupProto::CreateGroupRequest>(Arena*);
+template<> ::GroupProto::CreateGroupResponse* Arena::CreateMaybeMessage<::GroupProto::CreateGroupResponse>(Arena*);
+template<> ::GroupProto::GroupInfo* Arena::CreateMaybeMessage<::GroupProto::GroupInfo>(Arena*);
+template<> ::GroupProto::GroupUser* Arena::CreateMaybeMessage<::GroupProto::GroupUser>(Arena*);
+template<> ::GroupProto::QueryGroupRequest* Arena::CreateMaybeMessage<::GroupProto::QueryGroupRequest>(Arena*);
+template<> ::GroupProto::QueryGroupResponse* Arena::CreateMaybeMessage<::GroupProto::QueryGroupResponse>(Arena*);
+template<> ::GroupProto::QueryGroupUsersRequest* Arena::CreateMaybeMessage<::GroupProto::QueryGroupUsersRequest>(Arena*);
+template<> ::GroupProto::QueryGroupUsersResponse* Arena::CreateMaybeMessage<::GroupProto::QueryGroupUsersResponse>(Arena*);
+template<> ::GroupProto::ResultCode* Arena::CreateMaybeMessage<::GroupProto::ResultCode>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace Group {
+namespace GroupProto {
 
 // ===================================================================
 
 class GroupUser final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.GroupUser) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.GroupUser) */ {
  public:
   inline GroupUser() : GroupUser(nullptr) {}
   ~GroupUser() override;
@@ -208,7 +208,7 @@ class GroupUser final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.GroupUser";
+    return "GroupProto.GroupUser";
   }
   protected:
   explicit GroupUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -228,85 +228,85 @@ class GroupUser final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNameFieldNumber = 1,
-    kEmailFieldNumber = 2,
-    kPhoneFieldNumber = 3,
-    kRoleFieldNumber = 4,
+    kUserNameFieldNumber = 1,
+    kUserEmailFieldNumber = 2,
+    kUserPhoneFieldNumber = 3,
+    kUserRoleFieldNumber = 4,
   };
-  // bytes name = 1;
-  void clear_name();
-  const std::string& name() const;
+  // bytes userName = 1;
+  void clear_username();
+  const std::string& username() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
+  void set_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* username);
   private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(const std::string& value);
+  std::string* _internal_mutable_username();
   public:
 
-  // bytes email = 2;
-  void clear_email();
-  const std::string& email() const;
+  // bytes userEmail = 2;
+  void clear_useremail();
+  const std::string& useremail() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_email(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_email();
-  PROTOBUF_NODISCARD std::string* release_email();
-  void set_allocated_email(std::string* email);
+  void set_useremail(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_useremail();
+  PROTOBUF_NODISCARD std::string* release_useremail();
+  void set_allocated_useremail(std::string* useremail);
   private:
-  const std::string& _internal_email() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_email(const std::string& value);
-  std::string* _internal_mutable_email();
+  const std::string& _internal_useremail() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_useremail(const std::string& value);
+  std::string* _internal_mutable_useremail();
   public:
 
-  // bytes phone = 3;
-  void clear_phone();
-  const std::string& phone() const;
+  // bytes userPhone = 3;
+  void clear_userphone();
+  const std::string& userphone() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_phone(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_phone();
-  PROTOBUF_NODISCARD std::string* release_phone();
-  void set_allocated_phone(std::string* phone);
+  void set_userphone(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_userphone();
+  PROTOBUF_NODISCARD std::string* release_userphone();
+  void set_allocated_userphone(std::string* userphone);
   private:
-  const std::string& _internal_phone() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_phone(const std::string& value);
-  std::string* _internal_mutable_phone();
+  const std::string& _internal_userphone() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_userphone(const std::string& value);
+  std::string* _internal_mutable_userphone();
   public:
 
-  // bytes role = 4;
-  void clear_role();
-  const std::string& role() const;
+  // bytes userRole = 4;
+  void clear_userrole();
+  const std::string& userrole() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_role(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_role();
-  PROTOBUF_NODISCARD std::string* release_role();
-  void set_allocated_role(std::string* role);
+  void set_userrole(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_userrole();
+  PROTOBUF_NODISCARD std::string* release_userrole();
+  void set_allocated_userrole(std::string* userrole);
   private:
-  const std::string& _internal_role() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_role(const std::string& value);
-  std::string* _internal_mutable_role();
+  const std::string& _internal_userrole() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_userrole(const std::string& value);
+  std::string* _internal_mutable_userrole();
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.GroupUser)
+  // @@protoc_insertion_point(class_scope:GroupProto.GroupUser)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr role_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr useremail_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr userphone_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr userrole_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
 };
 // -------------------------------------------------------------------
 
 class GroupInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.GroupInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.GroupInfo) */ {
  public:
   inline GroupInfo() : GroupInfo(nullptr) {}
   ~GroupInfo() override;
@@ -407,7 +407,7 @@ class GroupInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.GroupInfo";
+    return "GroupProto.GroupInfo";
   }
   protected:
   explicit GroupInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -427,84 +427,84 @@ class GroupInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUsersFieldNumber = 4,
-    kNameFieldNumber = 2,
-    kDescFieldNumber = 3,
-    kIdFieldNumber = 1,
+    kGroupUsersFieldNumber = 4,
+    kGroupNameFieldNumber = 2,
+    kGroupDescFieldNumber = 3,
+    kGroupIdFieldNumber = 1,
   };
-  // repeated .Group.GroupUser users = 4;
-  int users_size() const;
+  // repeated .GroupProto.GroupUser groupUsers = 4;
+  int groupusers_size() const;
   private:
-  int _internal_users_size() const;
+  int _internal_groupusers_size() const;
   public:
-  void clear_users();
-  ::Group::GroupUser* mutable_users(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupUser >*
-      mutable_users();
+  void clear_groupusers();
+  ::GroupProto::GroupUser* mutable_groupusers(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >*
+      mutable_groupusers();
   private:
-  const ::Group::GroupUser& _internal_users(int index) const;
-  ::Group::GroupUser* _internal_add_users();
+  const ::GroupProto::GroupUser& _internal_groupusers(int index) const;
+  ::GroupProto::GroupUser* _internal_add_groupusers();
   public:
-  const ::Group::GroupUser& users(int index) const;
-  ::Group::GroupUser* add_users();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupUser >&
-      users() const;
+  const ::GroupProto::GroupUser& groupusers(int index) const;
+  ::GroupProto::GroupUser* add_groupusers();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >&
+      groupusers() const;
 
-  // bytes name = 2;
-  void clear_name();
-  const std::string& name() const;
+  // bytes groupName = 2;
+  void clear_groupname();
+  const std::string& groupname() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
+  void set_groupname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_groupname();
+  PROTOBUF_NODISCARD std::string* release_groupname();
+  void set_allocated_groupname(std::string* groupname);
   private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
+  const std::string& _internal_groupname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_groupname(const std::string& value);
+  std::string* _internal_mutable_groupname();
   public:
 
-  // bytes desc = 3;
-  void clear_desc();
-  const std::string& desc() const;
+  // bytes groupDesc = 3;
+  void clear_groupdesc();
+  const std::string& groupdesc() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_desc(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_desc();
-  PROTOBUF_NODISCARD std::string* release_desc();
-  void set_allocated_desc(std::string* desc);
+  void set_groupdesc(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_groupdesc();
+  PROTOBUF_NODISCARD std::string* release_groupdesc();
+  void set_allocated_groupdesc(std::string* groupdesc);
   private:
-  const std::string& _internal_desc() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_desc(const std::string& value);
-  std::string* _internal_mutable_desc();
+  const std::string& _internal_groupdesc() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_groupdesc(const std::string& value);
+  std::string* _internal_mutable_groupdesc();
   public:
 
-  // int32 id = 1;
-  void clear_id();
-  int32_t id() const;
-  void set_id(int32_t value);
+  // int32 groupId = 1;
+  void clear_groupid();
+  int32_t groupid() const;
+  void set_groupid(int32_t value);
   private:
-  int32_t _internal_id() const;
-  void _internal_set_id(int32_t value);
+  int32_t _internal_groupid() const;
+  void _internal_set_groupid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.GroupInfo)
+  // @@protoc_insertion_point(class_scope:GroupProto.GroupInfo)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupUser > users_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desc_;
-  int32_t id_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser > groupusers_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr groupname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr groupdesc_;
+  int32_t groupid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
 };
 // -------------------------------------------------------------------
 
 class ResultCode final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.ResultCode) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.ResultCode) */ {
  public:
   inline ResultCode() : ResultCode(nullptr) {}
   ~ResultCode() override;
@@ -605,7 +605,7 @@ class ResultCode final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.ResultCode";
+    return "GroupProto.ResultCode";
   }
   protected:
   explicit ResultCode(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -651,7 +651,7 @@ class ResultCode final :
   void _internal_set_errcode(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.ResultCode)
+  // @@protoc_insertion_point(class_scope:GroupProto.ResultCode)
  private:
   class _Internal;
 
@@ -666,7 +666,7 @@ class ResultCode final :
 // -------------------------------------------------------------------
 
 class CreateGroupRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.CreateGroupRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.CreateGroupRequest) */ {
  public:
   inline CreateGroupRequest() : CreateGroupRequest(nullptr) {}
   ~CreateGroupRequest() override;
@@ -767,7 +767,7 @@ class CreateGroupRequest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.CreateGroupRequest";
+    return "GroupProto.CreateGroupRequest";
   }
   protected:
   explicit CreateGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -789,39 +789,39 @@ class CreateGroupRequest final :
   enum : int {
     kGroupFieldNumber = 1,
   };
-  // .Group.GroupInfo Group = 1;
+  // .GroupProto.GroupInfo group = 1;
   bool has_group() const;
   private:
   bool _internal_has_group() const;
   public:
   void clear_group();
-  const ::Group::GroupInfo& group() const;
-  PROTOBUF_NODISCARD ::Group::GroupInfo* release_group();
-  ::Group::GroupInfo* mutable_group();
-  void set_allocated_group(::Group::GroupInfo* group);
+  const ::GroupProto::GroupInfo& group() const;
+  PROTOBUF_NODISCARD ::GroupProto::GroupInfo* release_group();
+  ::GroupProto::GroupInfo* mutable_group();
+  void set_allocated_group(::GroupProto::GroupInfo* group);
   private:
-  const ::Group::GroupInfo& _internal_group() const;
-  ::Group::GroupInfo* _internal_mutable_group();
+  const ::GroupProto::GroupInfo& _internal_group() const;
+  ::GroupProto::GroupInfo* _internal_mutable_group();
   public:
   void unsafe_arena_set_allocated_group(
-      ::Group::GroupInfo* group);
-  ::Group::GroupInfo* unsafe_arena_release_group();
+      ::GroupProto::GroupInfo* group);
+  ::GroupProto::GroupInfo* unsafe_arena_release_group();
 
-  // @@protoc_insertion_point(class_scope:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(class_scope:GroupProto.CreateGroupRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::Group::GroupInfo* group_;
+  ::GroupProto::GroupInfo* group_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
 };
 // -------------------------------------------------------------------
 
 class CreateGroupResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.CreateGroupResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.CreateGroupResponse) */ {
  public:
   inline CreateGroupResponse() : CreateGroupResponse(nullptr) {}
   ~CreateGroupResponse() override;
@@ -922,7 +922,7 @@ class CreateGroupResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.CreateGroupResponse";
+    return "GroupProto.CreateGroupResponse";
   }
   protected:
   explicit CreateGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -945,23 +945,23 @@ class CreateGroupResponse final :
     kResultFieldNumber = 1,
     kSuccessFieldNumber = 2,
   };
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   bool has_result() const;
   private:
   bool _internal_has_result() const;
   public:
   void clear_result();
-  const ::Group::ResultCode& result() const;
-  PROTOBUF_NODISCARD ::Group::ResultCode* release_result();
-  ::Group::ResultCode* mutable_result();
-  void set_allocated_result(::Group::ResultCode* result);
+  const ::GroupProto::ResultCode& result() const;
+  PROTOBUF_NODISCARD ::GroupProto::ResultCode* release_result();
+  ::GroupProto::ResultCode* mutable_result();
+  void set_allocated_result(::GroupProto::ResultCode* result);
   private:
-  const ::Group::ResultCode& _internal_result() const;
-  ::Group::ResultCode* _internal_mutable_result();
+  const ::GroupProto::ResultCode& _internal_result() const;
+  ::GroupProto::ResultCode* _internal_mutable_result();
   public:
   void unsafe_arena_set_allocated_result(
-      ::Group::ResultCode* result);
-  ::Group::ResultCode* unsafe_arena_release_result();
+      ::GroupProto::ResultCode* result);
+  ::GroupProto::ResultCode* unsafe_arena_release_result();
 
   // bool success = 2;
   void clear_success();
@@ -972,14 +972,14 @@ class CreateGroupResponse final :
   void _internal_set_success(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(class_scope:GroupProto.CreateGroupResponse)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::Group::ResultCode* result_;
+  ::GroupProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
@@ -987,7 +987,7 @@ class CreateGroupResponse final :
 // -------------------------------------------------------------------
 
 class AddGroupRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.AddGroupRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.AddGroupRequest) */ {
  public:
   inline AddGroupRequest() : AddGroupRequest(nullptr) {}
   ~AddGroupRequest() override;
@@ -1088,7 +1088,7 @@ class AddGroupRequest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.AddGroupRequest";
+    return "GroupProto.AddGroupRequest";
   }
   protected:
   explicit AddGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1108,22 +1108,22 @@ class AddGroupRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAdminNameFieldNumber = 1,
+    kUserNameFieldNumber = 1,
     kGroupNameFieldNumber = 2,
-    kRoleFieldNumber = 3,
+    kUserRoleFieldNumber = 3,
   };
-  // bytes adminName = 1;
-  void clear_adminname();
-  const std::string& adminname() const;
+  // bytes userName = 1;
+  void clear_username();
+  const std::string& username() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_adminname(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_adminname();
-  PROTOBUF_NODISCARD std::string* release_adminname();
-  void set_allocated_adminname(std::string* adminname);
+  void set_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* username);
   private:
-  const std::string& _internal_adminname() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_adminname(const std::string& value);
-  std::string* _internal_mutable_adminname();
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(const std::string& value);
+  std::string* _internal_mutable_username();
   public:
 
   // bytes groupName = 2;
@@ -1140,37 +1140,37 @@ class AddGroupRequest final :
   std::string* _internal_mutable_groupname();
   public:
 
-  // bytes role = 3;
-  void clear_role();
-  const std::string& role() const;
+  // bytes userRole = 3;
+  void clear_userrole();
+  const std::string& userrole() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_role(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_role();
-  PROTOBUF_NODISCARD std::string* release_role();
-  void set_allocated_role(std::string* role);
+  void set_userrole(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_userrole();
+  PROTOBUF_NODISCARD std::string* release_userrole();
+  void set_allocated_userrole(std::string* userrole);
   private:
-  const std::string& _internal_role() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_role(const std::string& value);
-  std::string* _internal_mutable_role();
+  const std::string& _internal_userrole() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_userrole(const std::string& value);
+  std::string* _internal_mutable_userrole();
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.AddGroupRequest)
+  // @@protoc_insertion_point(class_scope:GroupProto.AddGroupRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr adminname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr groupname_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr role_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr userrole_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
 };
 // -------------------------------------------------------------------
 
 class AddGroupResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.AddGroupResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.AddGroupResponse) */ {
  public:
   inline AddGroupResponse() : AddGroupResponse(nullptr) {}
   ~AddGroupResponse() override;
@@ -1271,7 +1271,7 @@ class AddGroupResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.AddGroupResponse";
+    return "GroupProto.AddGroupResponse";
   }
   protected:
   explicit AddGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1294,23 +1294,23 @@ class AddGroupResponse final :
     kResultFieldNumber = 1,
     kSuccessFieldNumber = 2,
   };
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   bool has_result() const;
   private:
   bool _internal_has_result() const;
   public:
   void clear_result();
-  const ::Group::ResultCode& result() const;
-  PROTOBUF_NODISCARD ::Group::ResultCode* release_result();
-  ::Group::ResultCode* mutable_result();
-  void set_allocated_result(::Group::ResultCode* result);
+  const ::GroupProto::ResultCode& result() const;
+  PROTOBUF_NODISCARD ::GroupProto::ResultCode* release_result();
+  ::GroupProto::ResultCode* mutable_result();
+  void set_allocated_result(::GroupProto::ResultCode* result);
   private:
-  const ::Group::ResultCode& _internal_result() const;
-  ::Group::ResultCode* _internal_mutable_result();
+  const ::GroupProto::ResultCode& _internal_result() const;
+  ::GroupProto::ResultCode* _internal_mutable_result();
   public:
   void unsafe_arena_set_allocated_result(
-      ::Group::ResultCode* result);
-  ::Group::ResultCode* unsafe_arena_release_result();
+      ::GroupProto::ResultCode* result);
+  ::GroupProto::ResultCode* unsafe_arena_release_result();
 
   // bool success = 2;
   void clear_success();
@@ -1321,14 +1321,14 @@ class AddGroupResponse final :
   void _internal_set_success(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.AddGroupResponse)
+  // @@protoc_insertion_point(class_scope:GroupProto.AddGroupResponse)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::Group::ResultCode* result_;
+  ::GroupProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
@@ -1336,7 +1336,7 @@ class AddGroupResponse final :
 // -------------------------------------------------------------------
 
 class QueryGroupRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.QueryGroupRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.QueryGroupRequest) */ {
  public:
   inline QueryGroupRequest() : QueryGroupRequest(nullptr) {}
   ~QueryGroupRequest() override;
@@ -1437,7 +1437,7 @@ class QueryGroupRequest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.QueryGroupRequest";
+    return "GroupProto.QueryGroupRequest";
   }
   protected:
   explicit QueryGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1457,37 +1457,37 @@ class QueryGroupRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAdminNameFieldNumber = 1,
+    kUserNameFieldNumber = 1,
   };
-  // bytes adminName = 1;
-  void clear_adminname();
-  const std::string& adminname() const;
+  // bytes userName = 1;
+  void clear_username();
+  const std::string& username() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_adminname(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_adminname();
-  PROTOBUF_NODISCARD std::string* release_adminname();
-  void set_allocated_adminname(std::string* adminname);
+  void set_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* username);
   private:
-  const std::string& _internal_adminname() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_adminname(const std::string& value);
-  std::string* _internal_mutable_adminname();
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(const std::string& value);
+  std::string* _internal_mutable_username();
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(class_scope:GroupProto.QueryGroupRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr adminname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
 };
 // -------------------------------------------------------------------
 
 class QueryGroupResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.QueryGroupResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.QueryGroupResponse) */ {
  public:
   inline QueryGroupResponse() : QueryGroupResponse(nullptr) {}
   ~QueryGroupResponse() override;
@@ -1588,7 +1588,7 @@ class QueryGroupResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.QueryGroupResponse";
+    return "GroupProto.QueryGroupResponse";
   }
   protected:
   explicit QueryGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1608,45 +1608,45 @@ class QueryGroupResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kGroupInfoFieldNumber = 3,
+    kGroupsFieldNumber = 3,
     kResultFieldNumber = 1,
     kSuccessFieldNumber = 2,
   };
-  // repeated .Group.GroupInfo groupInfo = 3;
-  int groupinfo_size() const;
+  // repeated .GroupProto.GroupInfo groups = 3;
+  int groups_size() const;
   private:
-  int _internal_groupinfo_size() const;
+  int _internal_groups_size() const;
   public:
-  void clear_groupinfo();
-  ::Group::GroupInfo* mutable_groupinfo(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupInfo >*
-      mutable_groupinfo();
+  void clear_groups();
+  ::GroupProto::GroupInfo* mutable_groups(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupInfo >*
+      mutable_groups();
   private:
-  const ::Group::GroupInfo& _internal_groupinfo(int index) const;
-  ::Group::GroupInfo* _internal_add_groupinfo();
+  const ::GroupProto::GroupInfo& _internal_groups(int index) const;
+  ::GroupProto::GroupInfo* _internal_add_groups();
   public:
-  const ::Group::GroupInfo& groupinfo(int index) const;
-  ::Group::GroupInfo* add_groupinfo();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupInfo >&
-      groupinfo() const;
+  const ::GroupProto::GroupInfo& groups(int index) const;
+  ::GroupProto::GroupInfo* add_groups();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupInfo >&
+      groups() const;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   bool has_result() const;
   private:
   bool _internal_has_result() const;
   public:
   void clear_result();
-  const ::Group::ResultCode& result() const;
-  PROTOBUF_NODISCARD ::Group::ResultCode* release_result();
-  ::Group::ResultCode* mutable_result();
-  void set_allocated_result(::Group::ResultCode* result);
+  const ::GroupProto::ResultCode& result() const;
+  PROTOBUF_NODISCARD ::GroupProto::ResultCode* release_result();
+  ::GroupProto::ResultCode* mutable_result();
+  void set_allocated_result(::GroupProto::ResultCode* result);
   private:
-  const ::Group::ResultCode& _internal_result() const;
-  ::Group::ResultCode* _internal_mutable_result();
+  const ::GroupProto::ResultCode& _internal_result() const;
+  ::GroupProto::ResultCode* _internal_mutable_result();
   public:
   void unsafe_arena_set_allocated_result(
-      ::Group::ResultCode* result);
-  ::Group::ResultCode* unsafe_arena_release_result();
+      ::GroupProto::ResultCode* result);
+  ::GroupProto::ResultCode* unsafe_arena_release_result();
 
   // bool success = 2;
   void clear_success();
@@ -1657,15 +1657,15 @@ class QueryGroupResponse final :
   void _internal_set_success(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(class_scope:GroupProto.QueryGroupResponse)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupInfo > groupinfo_;
-  ::Group::ResultCode* result_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupInfo > groups_;
+  ::GroupProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
@@ -1673,7 +1673,7 @@ class QueryGroupResponse final :
 // -------------------------------------------------------------------
 
 class QueryGroupUsersRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.QueryGroupUsersRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.QueryGroupUsersRequest) */ {
  public:
   inline QueryGroupUsersRequest() : QueryGroupUsersRequest(nullptr) {}
   ~QueryGroupUsersRequest() override;
@@ -1774,7 +1774,7 @@ class QueryGroupUsersRequest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.QueryGroupUsersRequest";
+    return "GroupProto.QueryGroupUsersRequest";
   }
   protected:
   explicit QueryGroupUsersRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1794,21 +1794,21 @@ class QueryGroupUsersRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kAdminNameFieldNumber = 1,
+    kUserNameFieldNumber = 1,
     kGroupNameFieldNumber = 2,
   };
-  // bytes adminName = 1;
-  void clear_adminname();
-  const std::string& adminname() const;
+  // bytes userName = 1;
+  void clear_username();
+  const std::string& username() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_adminname(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_adminname();
-  PROTOBUF_NODISCARD std::string* release_adminname();
-  void set_allocated_adminname(std::string* adminname);
+  void set_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* username);
   private:
-  const std::string& _internal_adminname() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_adminname(const std::string& value);
-  std::string* _internal_mutable_adminname();
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(const std::string& value);
+  std::string* _internal_mutable_username();
   public:
 
   // bytes groupName = 2;
@@ -1825,14 +1825,14 @@ class QueryGroupUsersRequest final :
   std::string* _internal_mutable_groupname();
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(class_scope:GroupProto.QueryGroupUsersRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr adminname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr groupname_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
@@ -1840,7 +1840,7 @@ class QueryGroupUsersRequest final :
 // -------------------------------------------------------------------
 
 class QueryGroupUsersResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Group.QueryGroupUsersResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GroupProto.QueryGroupUsersResponse) */ {
  public:
   inline QueryGroupUsersResponse() : QueryGroupUsersResponse(nullptr) {}
   ~QueryGroupUsersResponse() override;
@@ -1941,7 +1941,7 @@ class QueryGroupUsersResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Group.QueryGroupUsersResponse";
+    return "GroupProto.QueryGroupUsersResponse";
   }
   protected:
   explicit QueryGroupUsersResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1989,23 +1989,23 @@ class QueryGroupUsersResponse final :
   std::string* _internal_add_groupusername();
   public:
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   bool has_result() const;
   private:
   bool _internal_has_result() const;
   public:
   void clear_result();
-  const ::Group::ResultCode& result() const;
-  PROTOBUF_NODISCARD ::Group::ResultCode* release_result();
-  ::Group::ResultCode* mutable_result();
-  void set_allocated_result(::Group::ResultCode* result);
+  const ::GroupProto::ResultCode& result() const;
+  PROTOBUF_NODISCARD ::GroupProto::ResultCode* release_result();
+  ::GroupProto::ResultCode* mutable_result();
+  void set_allocated_result(::GroupProto::ResultCode* result);
   private:
-  const ::Group::ResultCode& _internal_result() const;
-  ::Group::ResultCode* _internal_mutable_result();
+  const ::GroupProto::ResultCode& _internal_result() const;
+  ::GroupProto::ResultCode* _internal_mutable_result();
   public:
   void unsafe_arena_set_allocated_result(
-      ::Group::ResultCode* result);
-  ::Group::ResultCode* unsafe_arena_release_result();
+      ::GroupProto::ResultCode* result);
+  ::GroupProto::ResultCode* unsafe_arena_release_result();
 
   // bool success = 2;
   void clear_success();
@@ -2016,7 +2016,7 @@ class QueryGroupUsersResponse final :
   void _internal_set_success(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(class_scope:GroupProto.QueryGroupUsersResponse)
  private:
   class _Internal;
 
@@ -2024,7 +2024,7 @@ class QueryGroupUsersResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> groupusername_;
-  ::Group::ResultCode* result_;
+  ::GroupProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Group_2eproto;
@@ -2045,20 +2045,20 @@ class GroupServiceRpc : public ::PROTOBUF_NAMESPACE_ID::Service {
   static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* descriptor();
 
   virtual void CreateGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::CreateGroupRequest* request,
-                       ::Group::CreateGroupResponse* response,
+                       const ::GroupProto::CreateGroupRequest* request,
+                       ::GroupProto::CreateGroupResponse* response,
                        ::google::protobuf::Closure* done);
   virtual void AddGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::AddGroupRequest* request,
-                       ::Group::AddGroupResponse* response,
+                       const ::GroupProto::AddGroupRequest* request,
+                       ::GroupProto::AddGroupResponse* response,
                        ::google::protobuf::Closure* done);
   virtual void QueryGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::QueryGroupRequest* request,
-                       ::Group::QueryGroupResponse* response,
+                       const ::GroupProto::QueryGroupRequest* request,
+                       ::GroupProto::QueryGroupResponse* response,
                        ::google::protobuf::Closure* done);
   virtual void QueryGroupUsers(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::QueryGroupUsersRequest* request,
-                       ::Group::QueryGroupUsersResponse* response,
+                       const ::GroupProto::QueryGroupUsersRequest* request,
+                       ::GroupProto::QueryGroupUsersResponse* response,
                        ::google::protobuf::Closure* done);
 
   // implements Service ----------------------------------------------
@@ -2090,20 +2090,20 @@ class GroupServiceRpc_Stub : public GroupServiceRpc {
   // implements GroupServiceRpc ------------------------------------------
 
   void CreateGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::CreateGroupRequest* request,
-                       ::Group::CreateGroupResponse* response,
+                       const ::GroupProto::CreateGroupRequest* request,
+                       ::GroupProto::CreateGroupResponse* response,
                        ::google::protobuf::Closure* done);
   void AddGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::AddGroupRequest* request,
-                       ::Group::AddGroupResponse* response,
+                       const ::GroupProto::AddGroupRequest* request,
+                       ::GroupProto::AddGroupResponse* response,
                        ::google::protobuf::Closure* done);
   void QueryGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::QueryGroupRequest* request,
-                       ::Group::QueryGroupResponse* response,
+                       const ::GroupProto::QueryGroupRequest* request,
+                       ::GroupProto::QueryGroupResponse* response,
                        ::google::protobuf::Closure* done);
   void QueryGroupUsers(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::Group::QueryGroupUsersRequest* request,
-                       ::Group::QueryGroupUsersResponse* response,
+                       const ::GroupProto::QueryGroupUsersRequest* request,
+                       ::GroupProto::QueryGroupUsersResponse* response,
                        ::google::protobuf::Closure* done);
  private:
   ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
@@ -2123,374 +2123,374 @@ class GroupServiceRpc_Stub : public GroupServiceRpc {
 #endif  // __GNUC__
 // GroupUser
 
-// bytes name = 1;
-inline void GroupUser::clear_name() {
-  name_.ClearToEmpty();
+// bytes userName = 1;
+inline void GroupUser::clear_username() {
+  username_.ClearToEmpty();
 }
-inline const std::string& GroupUser::name() const {
-  // @@protoc_insertion_point(field_get:Group.GroupUser.name)
-  return _internal_name();
+inline const std::string& GroupUser::username() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupUser.userName)
+  return _internal_username();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupUser::set_name(ArgT0&& arg0, ArgT... args) {
+void GroupUser::set_username(ArgT0&& arg0, ArgT... args) {
  
- name_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupUser.name)
+ username_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupUser.userName)
 }
-inline std::string* GroupUser::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:Group.GroupUser.name)
+inline std::string* GroupUser::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupUser.userName)
   return _s;
 }
-inline const std::string& GroupUser::_internal_name() const {
-  return name_.Get();
+inline const std::string& GroupUser::_internal_username() const {
+  return username_.Get();
 }
-inline void GroupUser::_internal_set_name(const std::string& value) {
+inline void GroupUser::_internal_set_username(const std::string& value) {
   
-  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupUser::_internal_mutable_name() {
+inline std::string* GroupUser::_internal_mutable_username() {
   
-  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return username_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupUser::release_name() {
-  // @@protoc_insertion_point(field_release:Group.GroupUser.name)
-  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupUser::release_username() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupUser.userName)
+  return username_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupUser::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
+inline void GroupUser::set_allocated_username(std::string* username) {
+  if (username != nullptr) {
     
   } else {
     
   }
-  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+  username_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), username,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (name_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (username_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupUser.name)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupUser.userName)
 }
 
-// bytes email = 2;
-inline void GroupUser::clear_email() {
-  email_.ClearToEmpty();
+// bytes userEmail = 2;
+inline void GroupUser::clear_useremail() {
+  useremail_.ClearToEmpty();
 }
-inline const std::string& GroupUser::email() const {
-  // @@protoc_insertion_point(field_get:Group.GroupUser.email)
-  return _internal_email();
+inline const std::string& GroupUser::useremail() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupUser.userEmail)
+  return _internal_useremail();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupUser::set_email(ArgT0&& arg0, ArgT... args) {
+void GroupUser::set_useremail(ArgT0&& arg0, ArgT... args) {
  
- email_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupUser.email)
+ useremail_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupUser.userEmail)
 }
-inline std::string* GroupUser::mutable_email() {
-  std::string* _s = _internal_mutable_email();
-  // @@protoc_insertion_point(field_mutable:Group.GroupUser.email)
+inline std::string* GroupUser::mutable_useremail() {
+  std::string* _s = _internal_mutable_useremail();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupUser.userEmail)
   return _s;
 }
-inline const std::string& GroupUser::_internal_email() const {
-  return email_.Get();
+inline const std::string& GroupUser::_internal_useremail() const {
+  return useremail_.Get();
 }
-inline void GroupUser::_internal_set_email(const std::string& value) {
+inline void GroupUser::_internal_set_useremail(const std::string& value) {
   
-  email_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  useremail_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupUser::_internal_mutable_email() {
+inline std::string* GroupUser::_internal_mutable_useremail() {
   
-  return email_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return useremail_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupUser::release_email() {
-  // @@protoc_insertion_point(field_release:Group.GroupUser.email)
-  return email_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupUser::release_useremail() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupUser.userEmail)
+  return useremail_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupUser::set_allocated_email(std::string* email) {
-  if (email != nullptr) {
+inline void GroupUser::set_allocated_useremail(std::string* useremail) {
+  if (useremail != nullptr) {
     
   } else {
     
   }
-  email_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), email,
+  useremail_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), useremail,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (email_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (useremail_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    useremail_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupUser.email)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupUser.userEmail)
 }
 
-// bytes phone = 3;
-inline void GroupUser::clear_phone() {
-  phone_.ClearToEmpty();
+// bytes userPhone = 3;
+inline void GroupUser::clear_userphone() {
+  userphone_.ClearToEmpty();
 }
-inline const std::string& GroupUser::phone() const {
-  // @@protoc_insertion_point(field_get:Group.GroupUser.phone)
-  return _internal_phone();
+inline const std::string& GroupUser::userphone() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupUser.userPhone)
+  return _internal_userphone();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupUser::set_phone(ArgT0&& arg0, ArgT... args) {
+void GroupUser::set_userphone(ArgT0&& arg0, ArgT... args) {
  
- phone_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupUser.phone)
+ userphone_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupUser.userPhone)
 }
-inline std::string* GroupUser::mutable_phone() {
-  std::string* _s = _internal_mutable_phone();
-  // @@protoc_insertion_point(field_mutable:Group.GroupUser.phone)
+inline std::string* GroupUser::mutable_userphone() {
+  std::string* _s = _internal_mutable_userphone();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupUser.userPhone)
   return _s;
 }
-inline const std::string& GroupUser::_internal_phone() const {
-  return phone_.Get();
+inline const std::string& GroupUser::_internal_userphone() const {
+  return userphone_.Get();
 }
-inline void GroupUser::_internal_set_phone(const std::string& value) {
+inline void GroupUser::_internal_set_userphone(const std::string& value) {
   
-  phone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  userphone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupUser::_internal_mutable_phone() {
+inline std::string* GroupUser::_internal_mutable_userphone() {
   
-  return phone_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return userphone_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupUser::release_phone() {
-  // @@protoc_insertion_point(field_release:Group.GroupUser.phone)
-  return phone_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupUser::release_userphone() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupUser.userPhone)
+  return userphone_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupUser::set_allocated_phone(std::string* phone) {
-  if (phone != nullptr) {
+inline void GroupUser::set_allocated_userphone(std::string* userphone) {
+  if (userphone != nullptr) {
     
   } else {
     
   }
-  phone_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), phone,
+  userphone_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), userphone,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (phone_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (userphone_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    userphone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupUser.phone)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupUser.userPhone)
 }
 
-// bytes role = 4;
-inline void GroupUser::clear_role() {
-  role_.ClearToEmpty();
+// bytes userRole = 4;
+inline void GroupUser::clear_userrole() {
+  userrole_.ClearToEmpty();
 }
-inline const std::string& GroupUser::role() const {
-  // @@protoc_insertion_point(field_get:Group.GroupUser.role)
-  return _internal_role();
+inline const std::string& GroupUser::userrole() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupUser.userRole)
+  return _internal_userrole();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupUser::set_role(ArgT0&& arg0, ArgT... args) {
+void GroupUser::set_userrole(ArgT0&& arg0, ArgT... args) {
  
- role_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupUser.role)
+ userrole_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupUser.userRole)
 }
-inline std::string* GroupUser::mutable_role() {
-  std::string* _s = _internal_mutable_role();
-  // @@protoc_insertion_point(field_mutable:Group.GroupUser.role)
+inline std::string* GroupUser::mutable_userrole() {
+  std::string* _s = _internal_mutable_userrole();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupUser.userRole)
   return _s;
 }
-inline const std::string& GroupUser::_internal_role() const {
-  return role_.Get();
+inline const std::string& GroupUser::_internal_userrole() const {
+  return userrole_.Get();
 }
-inline void GroupUser::_internal_set_role(const std::string& value) {
+inline void GroupUser::_internal_set_userrole(const std::string& value) {
   
-  role_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  userrole_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupUser::_internal_mutable_role() {
+inline std::string* GroupUser::_internal_mutable_userrole() {
   
-  return role_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return userrole_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupUser::release_role() {
-  // @@protoc_insertion_point(field_release:Group.GroupUser.role)
-  return role_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupUser::release_userrole() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupUser.userRole)
+  return userrole_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupUser::set_allocated_role(std::string* role) {
-  if (role != nullptr) {
+inline void GroupUser::set_allocated_userrole(std::string* userrole) {
+  if (userrole != nullptr) {
     
   } else {
     
   }
-  role_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), role,
+  userrole_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), userrole,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (role_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (userrole_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupUser.role)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupUser.userRole)
 }
 
 // -------------------------------------------------------------------
 
 // GroupInfo
 
-// int32 id = 1;
-inline void GroupInfo::clear_id() {
-  id_ = 0;
+// int32 groupId = 1;
+inline void GroupInfo::clear_groupid() {
+  groupid_ = 0;
 }
-inline int32_t GroupInfo::_internal_id() const {
-  return id_;
+inline int32_t GroupInfo::_internal_groupid() const {
+  return groupid_;
 }
-inline int32_t GroupInfo::id() const {
-  // @@protoc_insertion_point(field_get:Group.GroupInfo.id)
-  return _internal_id();
+inline int32_t GroupInfo::groupid() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupInfo.groupId)
+  return _internal_groupid();
 }
-inline void GroupInfo::_internal_set_id(int32_t value) {
+inline void GroupInfo::_internal_set_groupid(int32_t value) {
   
-  id_ = value;
+  groupid_ = value;
 }
-inline void GroupInfo::set_id(int32_t value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:Group.GroupInfo.id)
+inline void GroupInfo::set_groupid(int32_t value) {
+  _internal_set_groupid(value);
+  // @@protoc_insertion_point(field_set:GroupProto.GroupInfo.groupId)
 }
 
-// bytes name = 2;
-inline void GroupInfo::clear_name() {
-  name_.ClearToEmpty();
+// bytes groupName = 2;
+inline void GroupInfo::clear_groupname() {
+  groupname_.ClearToEmpty();
 }
-inline const std::string& GroupInfo::name() const {
-  // @@protoc_insertion_point(field_get:Group.GroupInfo.name)
-  return _internal_name();
+inline const std::string& GroupInfo::groupname() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupInfo.groupName)
+  return _internal_groupname();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupInfo::set_name(ArgT0&& arg0, ArgT... args) {
+void GroupInfo::set_groupname(ArgT0&& arg0, ArgT... args) {
  
- name_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupInfo.name)
+ groupname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupInfo.groupName)
 }
-inline std::string* GroupInfo::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:Group.GroupInfo.name)
+inline std::string* GroupInfo::mutable_groupname() {
+  std::string* _s = _internal_mutable_groupname();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupInfo.groupName)
   return _s;
 }
-inline const std::string& GroupInfo::_internal_name() const {
-  return name_.Get();
+inline const std::string& GroupInfo::_internal_groupname() const {
+  return groupname_.Get();
 }
-inline void GroupInfo::_internal_set_name(const std::string& value) {
+inline void GroupInfo::_internal_set_groupname(const std::string& value) {
   
-  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  groupname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupInfo::_internal_mutable_name() {
+inline std::string* GroupInfo::_internal_mutable_groupname() {
   
-  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return groupname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupInfo::release_name() {
-  // @@protoc_insertion_point(field_release:Group.GroupInfo.name)
-  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupInfo::release_groupname() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupInfo.groupName)
+  return groupname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupInfo::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
+inline void GroupInfo::set_allocated_groupname(std::string* groupname) {
+  if (groupname != nullptr) {
     
   } else {
     
   }
-  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+  groupname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), groupname,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (name_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (groupname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupInfo.name)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupInfo.groupName)
 }
 
-// bytes desc = 3;
-inline void GroupInfo::clear_desc() {
-  desc_.ClearToEmpty();
+// bytes groupDesc = 3;
+inline void GroupInfo::clear_groupdesc() {
+  groupdesc_.ClearToEmpty();
 }
-inline const std::string& GroupInfo::desc() const {
-  // @@protoc_insertion_point(field_get:Group.GroupInfo.desc)
-  return _internal_desc();
+inline const std::string& GroupInfo::groupdesc() const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupInfo.groupDesc)
+  return _internal_groupdesc();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GroupInfo::set_desc(ArgT0&& arg0, ArgT... args) {
+void GroupInfo::set_groupdesc(ArgT0&& arg0, ArgT... args) {
  
- desc_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.GroupInfo.desc)
+ groupdesc_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.GroupInfo.groupDesc)
 }
-inline std::string* GroupInfo::mutable_desc() {
-  std::string* _s = _internal_mutable_desc();
-  // @@protoc_insertion_point(field_mutable:Group.GroupInfo.desc)
+inline std::string* GroupInfo::mutable_groupdesc() {
+  std::string* _s = _internal_mutable_groupdesc();
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupInfo.groupDesc)
   return _s;
 }
-inline const std::string& GroupInfo::_internal_desc() const {
-  return desc_.Get();
+inline const std::string& GroupInfo::_internal_groupdesc() const {
+  return groupdesc_.Get();
 }
-inline void GroupInfo::_internal_set_desc(const std::string& value) {
+inline void GroupInfo::_internal_set_groupdesc(const std::string& value) {
   
-  desc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  groupdesc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* GroupInfo::_internal_mutable_desc() {
+inline std::string* GroupInfo::_internal_mutable_groupdesc() {
   
-  return desc_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return groupdesc_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* GroupInfo::release_desc() {
-  // @@protoc_insertion_point(field_release:Group.GroupInfo.desc)
-  return desc_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* GroupInfo::release_groupdesc() {
+  // @@protoc_insertion_point(field_release:GroupProto.GroupInfo.groupDesc)
+  return groupdesc_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void GroupInfo::set_allocated_desc(std::string* desc) {
-  if (desc != nullptr) {
+inline void GroupInfo::set_allocated_groupdesc(std::string* groupdesc) {
+  if (groupdesc != nullptr) {
     
   } else {
     
   }
-  desc_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), desc,
+  groupdesc_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), groupdesc,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (desc_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (groupdesc_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    groupdesc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.GroupInfo.desc)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.GroupInfo.groupDesc)
 }
 
-// repeated .Group.GroupUser users = 4;
-inline int GroupInfo::_internal_users_size() const {
-  return users_.size();
+// repeated .GroupProto.GroupUser groupUsers = 4;
+inline int GroupInfo::_internal_groupusers_size() const {
+  return groupusers_.size();
 }
-inline int GroupInfo::users_size() const {
-  return _internal_users_size();
+inline int GroupInfo::groupusers_size() const {
+  return _internal_groupusers_size();
 }
-inline void GroupInfo::clear_users() {
-  users_.Clear();
+inline void GroupInfo::clear_groupusers() {
+  groupusers_.Clear();
 }
-inline ::Group::GroupUser* GroupInfo::mutable_users(int index) {
-  // @@protoc_insertion_point(field_mutable:Group.GroupInfo.users)
-  return users_.Mutable(index);
+inline ::GroupProto::GroupUser* GroupInfo::mutable_groupusers(int index) {
+  // @@protoc_insertion_point(field_mutable:GroupProto.GroupInfo.groupUsers)
+  return groupusers_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupUser >*
-GroupInfo::mutable_users() {
-  // @@protoc_insertion_point(field_mutable_list:Group.GroupInfo.users)
-  return &users_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >*
+GroupInfo::mutable_groupusers() {
+  // @@protoc_insertion_point(field_mutable_list:GroupProto.GroupInfo.groupUsers)
+  return &groupusers_;
 }
-inline const ::Group::GroupUser& GroupInfo::_internal_users(int index) const {
-  return users_.Get(index);
+inline const ::GroupProto::GroupUser& GroupInfo::_internal_groupusers(int index) const {
+  return groupusers_.Get(index);
 }
-inline const ::Group::GroupUser& GroupInfo::users(int index) const {
-  // @@protoc_insertion_point(field_get:Group.GroupInfo.users)
-  return _internal_users(index);
+inline const ::GroupProto::GroupUser& GroupInfo::groupusers(int index) const {
+  // @@protoc_insertion_point(field_get:GroupProto.GroupInfo.groupUsers)
+  return _internal_groupusers(index);
 }
-inline ::Group::GroupUser* GroupInfo::_internal_add_users() {
-  return users_.Add();
+inline ::GroupProto::GroupUser* GroupInfo::_internal_add_groupusers() {
+  return groupusers_.Add();
 }
-inline ::Group::GroupUser* GroupInfo::add_users() {
-  ::Group::GroupUser* _add = _internal_add_users();
-  // @@protoc_insertion_point(field_add:Group.GroupInfo.users)
+inline ::GroupProto::GroupUser* GroupInfo::add_groupusers() {
+  ::GroupProto::GroupUser* _add = _internal_add_groupusers();
+  // @@protoc_insertion_point(field_add:GroupProto.GroupInfo.groupUsers)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupUser >&
-GroupInfo::users() const {
-  // @@protoc_insertion_point(field_list:Group.GroupInfo.users)
-  return users_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >&
+GroupInfo::groupusers() const {
+  // @@protoc_insertion_point(field_list:GroupProto.GroupInfo.groupUsers)
+  return groupusers_;
 }
 
 // -------------------------------------------------------------------
@@ -2505,7 +2505,7 @@ inline int32_t ResultCode::_internal_errcode() const {
   return errcode_;
 }
 inline int32_t ResultCode::errcode() const {
-  // @@protoc_insertion_point(field_get:Group.ResultCode.errcode)
+  // @@protoc_insertion_point(field_get:GroupProto.ResultCode.errcode)
   return _internal_errcode();
 }
 inline void ResultCode::_internal_set_errcode(int32_t value) {
@@ -2514,7 +2514,7 @@ inline void ResultCode::_internal_set_errcode(int32_t value) {
 }
 inline void ResultCode::set_errcode(int32_t value) {
   _internal_set_errcode(value);
-  // @@protoc_insertion_point(field_set:Group.ResultCode.errcode)
+  // @@protoc_insertion_point(field_set:GroupProto.ResultCode.errcode)
 }
 
 // bytes errmsg = 2;
@@ -2522,7 +2522,7 @@ inline void ResultCode::clear_errmsg() {
   errmsg_.ClearToEmpty();
 }
 inline const std::string& ResultCode::errmsg() const {
-  // @@protoc_insertion_point(field_get:Group.ResultCode.errmsg)
+  // @@protoc_insertion_point(field_get:GroupProto.ResultCode.errmsg)
   return _internal_errmsg();
 }
 template <typename ArgT0, typename... ArgT>
@@ -2530,11 +2530,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ResultCode::set_errmsg(ArgT0&& arg0, ArgT... args) {
  
  errmsg_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.ResultCode.errmsg)
+  // @@protoc_insertion_point(field_set:GroupProto.ResultCode.errmsg)
 }
 inline std::string* ResultCode::mutable_errmsg() {
   std::string* _s = _internal_mutable_errmsg();
-  // @@protoc_insertion_point(field_mutable:Group.ResultCode.errmsg)
+  // @@protoc_insertion_point(field_mutable:GroupProto.ResultCode.errmsg)
   return _s;
 }
 inline const std::string& ResultCode::_internal_errmsg() const {
@@ -2549,7 +2549,7 @@ inline std::string* ResultCode::_internal_mutable_errmsg() {
   return errmsg_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* ResultCode::release_errmsg() {
-  // @@protoc_insertion_point(field_release:Group.ResultCode.errmsg)
+  // @@protoc_insertion_point(field_release:GroupProto.ResultCode.errmsg)
   return errmsg_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void ResultCode::set_allocated_errmsg(std::string* errmsg) {
@@ -2565,14 +2565,14 @@ inline void ResultCode::set_allocated_errmsg(std::string* errmsg) {
     errmsg_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.ResultCode.errmsg)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.ResultCode.errmsg)
 }
 
 // -------------------------------------------------------------------
 
 // CreateGroupRequest
 
-// .Group.GroupInfo Group = 1;
+// .GroupProto.GroupInfo group = 1;
 inline bool CreateGroupRequest::_internal_has_group() const {
   return this != internal_default_instance() && group_ != nullptr;
 }
@@ -2585,17 +2585,17 @@ inline void CreateGroupRequest::clear_group() {
   }
   group_ = nullptr;
 }
-inline const ::Group::GroupInfo& CreateGroupRequest::_internal_group() const {
-  const ::Group::GroupInfo* p = group_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Group::GroupInfo&>(
-      ::Group::_GroupInfo_default_instance_);
+inline const ::GroupProto::GroupInfo& CreateGroupRequest::_internal_group() const {
+  const ::GroupProto::GroupInfo* p = group_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GroupProto::GroupInfo&>(
+      ::GroupProto::_GroupInfo_default_instance_);
 }
-inline const ::Group::GroupInfo& CreateGroupRequest::group() const {
-  // @@protoc_insertion_point(field_get:Group.CreateGroupRequest.Group)
+inline const ::GroupProto::GroupInfo& CreateGroupRequest::group() const {
+  // @@protoc_insertion_point(field_get:GroupProto.CreateGroupRequest.group)
   return _internal_group();
 }
 inline void CreateGroupRequest::unsafe_arena_set_allocated_group(
-    ::Group::GroupInfo* group) {
+    ::GroupProto::GroupInfo* group) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(group_);
   }
@@ -2605,11 +2605,11 @@ inline void CreateGroupRequest::unsafe_arena_set_allocated_group(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Group.CreateGroupRequest.Group)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GroupProto.CreateGroupRequest.group)
 }
-inline ::Group::GroupInfo* CreateGroupRequest::release_group() {
+inline ::GroupProto::GroupInfo* CreateGroupRequest::release_group() {
   
-  ::Group::GroupInfo* temp = group_;
+  ::GroupProto::GroupInfo* temp = group_;
   group_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2622,34 +2622,34 @@ inline ::Group::GroupInfo* CreateGroupRequest::release_group() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Group::GroupInfo* CreateGroupRequest::unsafe_arena_release_group() {
-  // @@protoc_insertion_point(field_release:Group.CreateGroupRequest.Group)
+inline ::GroupProto::GroupInfo* CreateGroupRequest::unsafe_arena_release_group() {
+  // @@protoc_insertion_point(field_release:GroupProto.CreateGroupRequest.group)
   
-  ::Group::GroupInfo* temp = group_;
+  ::GroupProto::GroupInfo* temp = group_;
   group_ = nullptr;
   return temp;
 }
-inline ::Group::GroupInfo* CreateGroupRequest::_internal_mutable_group() {
+inline ::GroupProto::GroupInfo* CreateGroupRequest::_internal_mutable_group() {
   
   if (group_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Group::GroupInfo>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GroupProto::GroupInfo>(GetArenaForAllocation());
     group_ = p;
   }
   return group_;
 }
-inline ::Group::GroupInfo* CreateGroupRequest::mutable_group() {
-  ::Group::GroupInfo* _msg = _internal_mutable_group();
-  // @@protoc_insertion_point(field_mutable:Group.CreateGroupRequest.Group)
+inline ::GroupProto::GroupInfo* CreateGroupRequest::mutable_group() {
+  ::GroupProto::GroupInfo* _msg = _internal_mutable_group();
+  // @@protoc_insertion_point(field_mutable:GroupProto.CreateGroupRequest.group)
   return _msg;
 }
-inline void CreateGroupRequest::set_allocated_group(::Group::GroupInfo* group) {
+inline void CreateGroupRequest::set_allocated_group(::GroupProto::GroupInfo* group) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete group_;
   }
   if (group) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Group::GroupInfo>::GetOwningArena(group);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GroupProto::GroupInfo>::GetOwningArena(group);
     if (message_arena != submessage_arena) {
       group = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, group, submessage_arena);
@@ -2659,14 +2659,14 @@ inline void CreateGroupRequest::set_allocated_group(::Group::GroupInfo* group) {
     
   }
   group_ = group;
-  // @@protoc_insertion_point(field_set_allocated:Group.CreateGroupRequest.Group)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.CreateGroupRequest.group)
 }
 
 // -------------------------------------------------------------------
 
 // CreateGroupResponse
 
-// .Group.ResultCode result = 1;
+// .GroupProto.ResultCode result = 1;
 inline bool CreateGroupResponse::_internal_has_result() const {
   return this != internal_default_instance() && result_ != nullptr;
 }
@@ -2679,17 +2679,17 @@ inline void CreateGroupResponse::clear_result() {
   }
   result_ = nullptr;
 }
-inline const ::Group::ResultCode& CreateGroupResponse::_internal_result() const {
-  const ::Group::ResultCode* p = result_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Group::ResultCode&>(
-      ::Group::_ResultCode_default_instance_);
+inline const ::GroupProto::ResultCode& CreateGroupResponse::_internal_result() const {
+  const ::GroupProto::ResultCode* p = result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GroupProto::ResultCode&>(
+      ::GroupProto::_ResultCode_default_instance_);
 }
-inline const ::Group::ResultCode& CreateGroupResponse::result() const {
-  // @@protoc_insertion_point(field_get:Group.CreateGroupResponse.result)
+inline const ::GroupProto::ResultCode& CreateGroupResponse::result() const {
+  // @@protoc_insertion_point(field_get:GroupProto.CreateGroupResponse.result)
   return _internal_result();
 }
 inline void CreateGroupResponse::unsafe_arena_set_allocated_result(
-    ::Group::ResultCode* result) {
+    ::GroupProto::ResultCode* result) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
   }
@@ -2699,11 +2699,11 @@ inline void CreateGroupResponse::unsafe_arena_set_allocated_result(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Group.CreateGroupResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GroupProto.CreateGroupResponse.result)
 }
-inline ::Group::ResultCode* CreateGroupResponse::release_result() {
+inline ::GroupProto::ResultCode* CreateGroupResponse::release_result() {
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2716,34 +2716,34 @@ inline ::Group::ResultCode* CreateGroupResponse::release_result() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Group::ResultCode* CreateGroupResponse::unsafe_arena_release_result() {
-  // @@protoc_insertion_point(field_release:Group.CreateGroupResponse.result)
+inline ::GroupProto::ResultCode* CreateGroupResponse::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:GroupProto.CreateGroupResponse.result)
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
   return temp;
 }
-inline ::Group::ResultCode* CreateGroupResponse::_internal_mutable_result() {
+inline ::GroupProto::ResultCode* CreateGroupResponse::_internal_mutable_result() {
   
   if (result_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Group::ResultCode>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GroupProto::ResultCode>(GetArenaForAllocation());
     result_ = p;
   }
   return result_;
 }
-inline ::Group::ResultCode* CreateGroupResponse::mutable_result() {
-  ::Group::ResultCode* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:Group.CreateGroupResponse.result)
+inline ::GroupProto::ResultCode* CreateGroupResponse::mutable_result() {
+  ::GroupProto::ResultCode* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:GroupProto.CreateGroupResponse.result)
   return _msg;
 }
-inline void CreateGroupResponse::set_allocated_result(::Group::ResultCode* result) {
+inline void CreateGroupResponse::set_allocated_result(::GroupProto::ResultCode* result) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete result_;
   }
   if (result) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Group::ResultCode>::GetOwningArena(result);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GroupProto::ResultCode>::GetOwningArena(result);
     if (message_arena != submessage_arena) {
       result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, result, submessage_arena);
@@ -2753,7 +2753,7 @@ inline void CreateGroupResponse::set_allocated_result(::Group::ResultCode* resul
     
   }
   result_ = result;
-  // @@protoc_insertion_point(field_set_allocated:Group.CreateGroupResponse.result)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.CreateGroupResponse.result)
 }
 
 // bool success = 2;
@@ -2764,7 +2764,7 @@ inline bool CreateGroupResponse::_internal_success() const {
   return success_;
 }
 inline bool CreateGroupResponse::success() const {
-  // @@protoc_insertion_point(field_get:Group.CreateGroupResponse.success)
+  // @@protoc_insertion_point(field_get:GroupProto.CreateGroupResponse.success)
   return _internal_success();
 }
 inline void CreateGroupResponse::_internal_set_success(bool value) {
@@ -2773,62 +2773,62 @@ inline void CreateGroupResponse::_internal_set_success(bool value) {
 }
 inline void CreateGroupResponse::set_success(bool value) {
   _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:Group.CreateGroupResponse.success)
+  // @@protoc_insertion_point(field_set:GroupProto.CreateGroupResponse.success)
 }
 
 // -------------------------------------------------------------------
 
 // AddGroupRequest
 
-// bytes adminName = 1;
-inline void AddGroupRequest::clear_adminname() {
-  adminname_.ClearToEmpty();
+// bytes userName = 1;
+inline void AddGroupRequest::clear_username() {
+  username_.ClearToEmpty();
 }
-inline const std::string& AddGroupRequest::adminname() const {
-  // @@protoc_insertion_point(field_get:Group.AddGroupRequest.adminName)
-  return _internal_adminname();
+inline const std::string& AddGroupRequest::username() const {
+  // @@protoc_insertion_point(field_get:GroupProto.AddGroupRequest.userName)
+  return _internal_username();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void AddGroupRequest::set_adminname(ArgT0&& arg0, ArgT... args) {
+void AddGroupRequest::set_username(ArgT0&& arg0, ArgT... args) {
  
- adminname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.AddGroupRequest.adminName)
+ username_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.AddGroupRequest.userName)
 }
-inline std::string* AddGroupRequest::mutable_adminname() {
-  std::string* _s = _internal_mutable_adminname();
-  // @@protoc_insertion_point(field_mutable:Group.AddGroupRequest.adminName)
+inline std::string* AddGroupRequest::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:GroupProto.AddGroupRequest.userName)
   return _s;
 }
-inline const std::string& AddGroupRequest::_internal_adminname() const {
-  return adminname_.Get();
+inline const std::string& AddGroupRequest::_internal_username() const {
+  return username_.Get();
 }
-inline void AddGroupRequest::_internal_set_adminname(const std::string& value) {
+inline void AddGroupRequest::_internal_set_username(const std::string& value) {
   
-  adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* AddGroupRequest::_internal_mutable_adminname() {
+inline std::string* AddGroupRequest::_internal_mutable_username() {
   
-  return adminname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return username_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* AddGroupRequest::release_adminname() {
-  // @@protoc_insertion_point(field_release:Group.AddGroupRequest.adminName)
-  return adminname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* AddGroupRequest::release_username() {
+  // @@protoc_insertion_point(field_release:GroupProto.AddGroupRequest.userName)
+  return username_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void AddGroupRequest::set_allocated_adminname(std::string* adminname) {
-  if (adminname != nullptr) {
+inline void AddGroupRequest::set_allocated_username(std::string* username) {
+  if (username != nullptr) {
     
   } else {
     
   }
-  adminname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), adminname,
+  username_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), username,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (adminname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (username_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.AddGroupRequest.adminName)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.AddGroupRequest.userName)
 }
 
 // bytes groupName = 2;
@@ -2836,7 +2836,7 @@ inline void AddGroupRequest::clear_groupname() {
   groupname_.ClearToEmpty();
 }
 inline const std::string& AddGroupRequest::groupname() const {
-  // @@protoc_insertion_point(field_get:Group.AddGroupRequest.groupName)
+  // @@protoc_insertion_point(field_get:GroupProto.AddGroupRequest.groupName)
   return _internal_groupname();
 }
 template <typename ArgT0, typename... ArgT>
@@ -2844,11 +2844,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void AddGroupRequest::set_groupname(ArgT0&& arg0, ArgT... args) {
  
  groupname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.AddGroupRequest.groupName)
+  // @@protoc_insertion_point(field_set:GroupProto.AddGroupRequest.groupName)
 }
 inline std::string* AddGroupRequest::mutable_groupname() {
   std::string* _s = _internal_mutable_groupname();
-  // @@protoc_insertion_point(field_mutable:Group.AddGroupRequest.groupName)
+  // @@protoc_insertion_point(field_mutable:GroupProto.AddGroupRequest.groupName)
   return _s;
 }
 inline const std::string& AddGroupRequest::_internal_groupname() const {
@@ -2863,7 +2863,7 @@ inline std::string* AddGroupRequest::_internal_mutable_groupname() {
   return groupname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* AddGroupRequest::release_groupname() {
-  // @@protoc_insertion_point(field_release:Group.AddGroupRequest.groupName)
+  // @@protoc_insertion_point(field_release:GroupProto.AddGroupRequest.groupName)
   return groupname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void AddGroupRequest::set_allocated_groupname(std::string* groupname) {
@@ -2879,65 +2879,65 @@ inline void AddGroupRequest::set_allocated_groupname(std::string* groupname) {
     groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.AddGroupRequest.groupName)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.AddGroupRequest.groupName)
 }
 
-// bytes role = 3;
-inline void AddGroupRequest::clear_role() {
-  role_.ClearToEmpty();
+// bytes userRole = 3;
+inline void AddGroupRequest::clear_userrole() {
+  userrole_.ClearToEmpty();
 }
-inline const std::string& AddGroupRequest::role() const {
-  // @@protoc_insertion_point(field_get:Group.AddGroupRequest.role)
-  return _internal_role();
+inline const std::string& AddGroupRequest::userrole() const {
+  // @@protoc_insertion_point(field_get:GroupProto.AddGroupRequest.userRole)
+  return _internal_userrole();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void AddGroupRequest::set_role(ArgT0&& arg0, ArgT... args) {
+void AddGroupRequest::set_userrole(ArgT0&& arg0, ArgT... args) {
  
- role_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.AddGroupRequest.role)
+ userrole_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.AddGroupRequest.userRole)
 }
-inline std::string* AddGroupRequest::mutable_role() {
-  std::string* _s = _internal_mutable_role();
-  // @@protoc_insertion_point(field_mutable:Group.AddGroupRequest.role)
+inline std::string* AddGroupRequest::mutable_userrole() {
+  std::string* _s = _internal_mutable_userrole();
+  // @@protoc_insertion_point(field_mutable:GroupProto.AddGroupRequest.userRole)
   return _s;
 }
-inline const std::string& AddGroupRequest::_internal_role() const {
-  return role_.Get();
+inline const std::string& AddGroupRequest::_internal_userrole() const {
+  return userrole_.Get();
 }
-inline void AddGroupRequest::_internal_set_role(const std::string& value) {
+inline void AddGroupRequest::_internal_set_userrole(const std::string& value) {
   
-  role_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  userrole_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* AddGroupRequest::_internal_mutable_role() {
+inline std::string* AddGroupRequest::_internal_mutable_userrole() {
   
-  return role_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return userrole_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* AddGroupRequest::release_role() {
-  // @@protoc_insertion_point(field_release:Group.AddGroupRequest.role)
-  return role_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* AddGroupRequest::release_userrole() {
+  // @@protoc_insertion_point(field_release:GroupProto.AddGroupRequest.userRole)
+  return userrole_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void AddGroupRequest::set_allocated_role(std::string* role) {
-  if (role != nullptr) {
+inline void AddGroupRequest::set_allocated_userrole(std::string* userrole) {
+  if (userrole != nullptr) {
     
   } else {
     
   }
-  role_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), role,
+  userrole_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), userrole,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (role_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (userrole_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.AddGroupRequest.role)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.AddGroupRequest.userRole)
 }
 
 // -------------------------------------------------------------------
 
 // AddGroupResponse
 
-// .Group.ResultCode result = 1;
+// .GroupProto.ResultCode result = 1;
 inline bool AddGroupResponse::_internal_has_result() const {
   return this != internal_default_instance() && result_ != nullptr;
 }
@@ -2950,17 +2950,17 @@ inline void AddGroupResponse::clear_result() {
   }
   result_ = nullptr;
 }
-inline const ::Group::ResultCode& AddGroupResponse::_internal_result() const {
-  const ::Group::ResultCode* p = result_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Group::ResultCode&>(
-      ::Group::_ResultCode_default_instance_);
+inline const ::GroupProto::ResultCode& AddGroupResponse::_internal_result() const {
+  const ::GroupProto::ResultCode* p = result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GroupProto::ResultCode&>(
+      ::GroupProto::_ResultCode_default_instance_);
 }
-inline const ::Group::ResultCode& AddGroupResponse::result() const {
-  // @@protoc_insertion_point(field_get:Group.AddGroupResponse.result)
+inline const ::GroupProto::ResultCode& AddGroupResponse::result() const {
+  // @@protoc_insertion_point(field_get:GroupProto.AddGroupResponse.result)
   return _internal_result();
 }
 inline void AddGroupResponse::unsafe_arena_set_allocated_result(
-    ::Group::ResultCode* result) {
+    ::GroupProto::ResultCode* result) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
   }
@@ -2970,11 +2970,11 @@ inline void AddGroupResponse::unsafe_arena_set_allocated_result(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Group.AddGroupResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GroupProto.AddGroupResponse.result)
 }
-inline ::Group::ResultCode* AddGroupResponse::release_result() {
+inline ::GroupProto::ResultCode* AddGroupResponse::release_result() {
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -2987,34 +2987,34 @@ inline ::Group::ResultCode* AddGroupResponse::release_result() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Group::ResultCode* AddGroupResponse::unsafe_arena_release_result() {
-  // @@protoc_insertion_point(field_release:Group.AddGroupResponse.result)
+inline ::GroupProto::ResultCode* AddGroupResponse::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:GroupProto.AddGroupResponse.result)
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
   return temp;
 }
-inline ::Group::ResultCode* AddGroupResponse::_internal_mutable_result() {
+inline ::GroupProto::ResultCode* AddGroupResponse::_internal_mutable_result() {
   
   if (result_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Group::ResultCode>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GroupProto::ResultCode>(GetArenaForAllocation());
     result_ = p;
   }
   return result_;
 }
-inline ::Group::ResultCode* AddGroupResponse::mutable_result() {
-  ::Group::ResultCode* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:Group.AddGroupResponse.result)
+inline ::GroupProto::ResultCode* AddGroupResponse::mutable_result() {
+  ::GroupProto::ResultCode* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:GroupProto.AddGroupResponse.result)
   return _msg;
 }
-inline void AddGroupResponse::set_allocated_result(::Group::ResultCode* result) {
+inline void AddGroupResponse::set_allocated_result(::GroupProto::ResultCode* result) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete result_;
   }
   if (result) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Group::ResultCode>::GetOwningArena(result);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GroupProto::ResultCode>::GetOwningArena(result);
     if (message_arena != submessage_arena) {
       result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, result, submessage_arena);
@@ -3024,7 +3024,7 @@ inline void AddGroupResponse::set_allocated_result(::Group::ResultCode* result) 
     
   }
   result_ = result;
-  // @@protoc_insertion_point(field_set_allocated:Group.AddGroupResponse.result)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.AddGroupResponse.result)
 }
 
 // bool success = 2;
@@ -3035,7 +3035,7 @@ inline bool AddGroupResponse::_internal_success() const {
   return success_;
 }
 inline bool AddGroupResponse::success() const {
-  // @@protoc_insertion_point(field_get:Group.AddGroupResponse.success)
+  // @@protoc_insertion_point(field_get:GroupProto.AddGroupResponse.success)
   return _internal_success();
 }
 inline void AddGroupResponse::_internal_set_success(bool value) {
@@ -3044,69 +3044,69 @@ inline void AddGroupResponse::_internal_set_success(bool value) {
 }
 inline void AddGroupResponse::set_success(bool value) {
   _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:Group.AddGroupResponse.success)
+  // @@protoc_insertion_point(field_set:GroupProto.AddGroupResponse.success)
 }
 
 // -------------------------------------------------------------------
 
 // QueryGroupRequest
 
-// bytes adminName = 1;
-inline void QueryGroupRequest::clear_adminname() {
-  adminname_.ClearToEmpty();
+// bytes userName = 1;
+inline void QueryGroupRequest::clear_username() {
+  username_.ClearToEmpty();
 }
-inline const std::string& QueryGroupRequest::adminname() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupRequest.adminName)
-  return _internal_adminname();
+inline const std::string& QueryGroupRequest::username() const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupRequest.userName)
+  return _internal_username();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void QueryGroupRequest::set_adminname(ArgT0&& arg0, ArgT... args) {
+void QueryGroupRequest::set_username(ArgT0&& arg0, ArgT... args) {
  
- adminname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.QueryGroupRequest.adminName)
+ username_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupRequest.userName)
 }
-inline std::string* QueryGroupRequest::mutable_adminname() {
-  std::string* _s = _internal_mutable_adminname();
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupRequest.adminName)
+inline std::string* QueryGroupRequest::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupRequest.userName)
   return _s;
 }
-inline const std::string& QueryGroupRequest::_internal_adminname() const {
-  return adminname_.Get();
+inline const std::string& QueryGroupRequest::_internal_username() const {
+  return username_.Get();
 }
-inline void QueryGroupRequest::_internal_set_adminname(const std::string& value) {
+inline void QueryGroupRequest::_internal_set_username(const std::string& value) {
   
-  adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* QueryGroupRequest::_internal_mutable_adminname() {
+inline std::string* QueryGroupRequest::_internal_mutable_username() {
   
-  return adminname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return username_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* QueryGroupRequest::release_adminname() {
-  // @@protoc_insertion_point(field_release:Group.QueryGroupRequest.adminName)
-  return adminname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* QueryGroupRequest::release_username() {
+  // @@protoc_insertion_point(field_release:GroupProto.QueryGroupRequest.userName)
+  return username_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void QueryGroupRequest::set_allocated_adminname(std::string* adminname) {
-  if (adminname != nullptr) {
+inline void QueryGroupRequest::set_allocated_username(std::string* username) {
+  if (username != nullptr) {
     
   } else {
     
   }
-  adminname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), adminname,
+  username_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), username,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (adminname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (username_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.QueryGroupRequest.adminName)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.QueryGroupRequest.userName)
 }
 
 // -------------------------------------------------------------------
 
 // QueryGroupResponse
 
-// .Group.ResultCode result = 1;
+// .GroupProto.ResultCode result = 1;
 inline bool QueryGroupResponse::_internal_has_result() const {
   return this != internal_default_instance() && result_ != nullptr;
 }
@@ -3119,17 +3119,17 @@ inline void QueryGroupResponse::clear_result() {
   }
   result_ = nullptr;
 }
-inline const ::Group::ResultCode& QueryGroupResponse::_internal_result() const {
-  const ::Group::ResultCode* p = result_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Group::ResultCode&>(
-      ::Group::_ResultCode_default_instance_);
+inline const ::GroupProto::ResultCode& QueryGroupResponse::_internal_result() const {
+  const ::GroupProto::ResultCode* p = result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GroupProto::ResultCode&>(
+      ::GroupProto::_ResultCode_default_instance_);
 }
-inline const ::Group::ResultCode& QueryGroupResponse::result() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupResponse.result)
+inline const ::GroupProto::ResultCode& QueryGroupResponse::result() const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupResponse.result)
   return _internal_result();
 }
 inline void QueryGroupResponse::unsafe_arena_set_allocated_result(
-    ::Group::ResultCode* result) {
+    ::GroupProto::ResultCode* result) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
   }
@@ -3139,11 +3139,11 @@ inline void QueryGroupResponse::unsafe_arena_set_allocated_result(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Group.QueryGroupResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GroupProto.QueryGroupResponse.result)
 }
-inline ::Group::ResultCode* QueryGroupResponse::release_result() {
+inline ::GroupProto::ResultCode* QueryGroupResponse::release_result() {
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -3156,34 +3156,34 @@ inline ::Group::ResultCode* QueryGroupResponse::release_result() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Group::ResultCode* QueryGroupResponse::unsafe_arena_release_result() {
-  // @@protoc_insertion_point(field_release:Group.QueryGroupResponse.result)
+inline ::GroupProto::ResultCode* QueryGroupResponse::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:GroupProto.QueryGroupResponse.result)
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
   return temp;
 }
-inline ::Group::ResultCode* QueryGroupResponse::_internal_mutable_result() {
+inline ::GroupProto::ResultCode* QueryGroupResponse::_internal_mutable_result() {
   
   if (result_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Group::ResultCode>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GroupProto::ResultCode>(GetArenaForAllocation());
     result_ = p;
   }
   return result_;
 }
-inline ::Group::ResultCode* QueryGroupResponse::mutable_result() {
-  ::Group::ResultCode* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupResponse.result)
+inline ::GroupProto::ResultCode* QueryGroupResponse::mutable_result() {
+  ::GroupProto::ResultCode* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupResponse.result)
   return _msg;
 }
-inline void QueryGroupResponse::set_allocated_result(::Group::ResultCode* result) {
+inline void QueryGroupResponse::set_allocated_result(::GroupProto::ResultCode* result) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete result_;
   }
   if (result) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Group::ResultCode>::GetOwningArena(result);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GroupProto::ResultCode>::GetOwningArena(result);
     if (message_arena != submessage_arena) {
       result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, result, submessage_arena);
@@ -3193,7 +3193,7 @@ inline void QueryGroupResponse::set_allocated_result(::Group::ResultCode* result
     
   }
   result_ = result;
-  // @@protoc_insertion_point(field_set_allocated:Group.QueryGroupResponse.result)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.QueryGroupResponse.result)
 }
 
 // bool success = 2;
@@ -3204,7 +3204,7 @@ inline bool QueryGroupResponse::_internal_success() const {
   return success_;
 }
 inline bool QueryGroupResponse::success() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupResponse.success)
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupResponse.success)
   return _internal_success();
 }
 inline void QueryGroupResponse::_internal_set_success(bool value) {
@@ -3213,102 +3213,102 @@ inline void QueryGroupResponse::_internal_set_success(bool value) {
 }
 inline void QueryGroupResponse::set_success(bool value) {
   _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:Group.QueryGroupResponse.success)
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupResponse.success)
 }
 
-// repeated .Group.GroupInfo groupInfo = 3;
-inline int QueryGroupResponse::_internal_groupinfo_size() const {
-  return groupinfo_.size();
+// repeated .GroupProto.GroupInfo groups = 3;
+inline int QueryGroupResponse::_internal_groups_size() const {
+  return groups_.size();
 }
-inline int QueryGroupResponse::groupinfo_size() const {
-  return _internal_groupinfo_size();
+inline int QueryGroupResponse::groups_size() const {
+  return _internal_groups_size();
 }
-inline void QueryGroupResponse::clear_groupinfo() {
-  groupinfo_.Clear();
+inline void QueryGroupResponse::clear_groups() {
+  groups_.Clear();
 }
-inline ::Group::GroupInfo* QueryGroupResponse::mutable_groupinfo(int index) {
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupResponse.groupInfo)
-  return groupinfo_.Mutable(index);
+inline ::GroupProto::GroupInfo* QueryGroupResponse::mutable_groups(int index) {
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupResponse.groups)
+  return groups_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupInfo >*
-QueryGroupResponse::mutable_groupinfo() {
-  // @@protoc_insertion_point(field_mutable_list:Group.QueryGroupResponse.groupInfo)
-  return &groupinfo_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupInfo >*
+QueryGroupResponse::mutable_groups() {
+  // @@protoc_insertion_point(field_mutable_list:GroupProto.QueryGroupResponse.groups)
+  return &groups_;
 }
-inline const ::Group::GroupInfo& QueryGroupResponse::_internal_groupinfo(int index) const {
-  return groupinfo_.Get(index);
+inline const ::GroupProto::GroupInfo& QueryGroupResponse::_internal_groups(int index) const {
+  return groups_.Get(index);
 }
-inline const ::Group::GroupInfo& QueryGroupResponse::groupinfo(int index) const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupResponse.groupInfo)
-  return _internal_groupinfo(index);
+inline const ::GroupProto::GroupInfo& QueryGroupResponse::groups(int index) const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupResponse.groups)
+  return _internal_groups(index);
 }
-inline ::Group::GroupInfo* QueryGroupResponse::_internal_add_groupinfo() {
-  return groupinfo_.Add();
+inline ::GroupProto::GroupInfo* QueryGroupResponse::_internal_add_groups() {
+  return groups_.Add();
 }
-inline ::Group::GroupInfo* QueryGroupResponse::add_groupinfo() {
-  ::Group::GroupInfo* _add = _internal_add_groupinfo();
-  // @@protoc_insertion_point(field_add:Group.QueryGroupResponse.groupInfo)
+inline ::GroupProto::GroupInfo* QueryGroupResponse::add_groups() {
+  ::GroupProto::GroupInfo* _add = _internal_add_groups();
+  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupResponse.groups)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::Group::GroupInfo >&
-QueryGroupResponse::groupinfo() const {
-  // @@protoc_insertion_point(field_list:Group.QueryGroupResponse.groupInfo)
-  return groupinfo_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupInfo >&
+QueryGroupResponse::groups() const {
+  // @@protoc_insertion_point(field_list:GroupProto.QueryGroupResponse.groups)
+  return groups_;
 }
 
 // -------------------------------------------------------------------
 
 // QueryGroupUsersRequest
 
-// bytes adminName = 1;
-inline void QueryGroupUsersRequest::clear_adminname() {
-  adminname_.ClearToEmpty();
+// bytes userName = 1;
+inline void QueryGroupUsersRequest::clear_username() {
+  username_.ClearToEmpty();
 }
-inline const std::string& QueryGroupUsersRequest::adminname() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupUsersRequest.adminName)
-  return _internal_adminname();
+inline const std::string& QueryGroupUsersRequest::username() const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersRequest.userName)
+  return _internal_username();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void QueryGroupUsersRequest::set_adminname(ArgT0&& arg0, ArgT... args) {
+void QueryGroupUsersRequest::set_username(ArgT0&& arg0, ArgT... args) {
  
- adminname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.QueryGroupUsersRequest.adminName)
+ username_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersRequest.userName)
 }
-inline std::string* QueryGroupUsersRequest::mutable_adminname() {
-  std::string* _s = _internal_mutable_adminname();
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupUsersRequest.adminName)
+inline std::string* QueryGroupUsersRequest::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersRequest.userName)
   return _s;
 }
-inline const std::string& QueryGroupUsersRequest::_internal_adminname() const {
-  return adminname_.Get();
+inline const std::string& QueryGroupUsersRequest::_internal_username() const {
+  return username_.Get();
 }
-inline void QueryGroupUsersRequest::_internal_set_adminname(const std::string& value) {
+inline void QueryGroupUsersRequest::_internal_set_username(const std::string& value) {
   
-  adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+  username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* QueryGroupUsersRequest::_internal_mutable_adminname() {
+inline std::string* QueryGroupUsersRequest::_internal_mutable_username() {
   
-  return adminname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+  return username_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* QueryGroupUsersRequest::release_adminname() {
-  // @@protoc_insertion_point(field_release:Group.QueryGroupUsersRequest.adminName)
-  return adminname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline std::string* QueryGroupUsersRequest::release_username() {
+  // @@protoc_insertion_point(field_release:GroupProto.QueryGroupUsersRequest.userName)
+  return username_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void QueryGroupUsersRequest::set_allocated_adminname(std::string* adminname) {
-  if (adminname != nullptr) {
+inline void QueryGroupUsersRequest::set_allocated_username(std::string* username) {
+  if (username != nullptr) {
     
   } else {
     
   }
-  adminname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), adminname,
+  username_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), username,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (adminname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (username_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.QueryGroupUsersRequest.adminName)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.QueryGroupUsersRequest.userName)
 }
 
 // bytes groupName = 2;
@@ -3316,7 +3316,7 @@ inline void QueryGroupUsersRequest::clear_groupname() {
   groupname_.ClearToEmpty();
 }
 inline const std::string& QueryGroupUsersRequest::groupname() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupUsersRequest.groupName)
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersRequest.groupName)
   return _internal_groupname();
 }
 template <typename ArgT0, typename... ArgT>
@@ -3324,11 +3324,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void QueryGroupUsersRequest::set_groupname(ArgT0&& arg0, ArgT... args) {
  
  groupname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Group.QueryGroupUsersRequest.groupName)
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersRequest.groupName)
 }
 inline std::string* QueryGroupUsersRequest::mutable_groupname() {
   std::string* _s = _internal_mutable_groupname();
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupUsersRequest.groupName)
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersRequest.groupName)
   return _s;
 }
 inline const std::string& QueryGroupUsersRequest::_internal_groupname() const {
@@ -3343,7 +3343,7 @@ inline std::string* QueryGroupUsersRequest::_internal_mutable_groupname() {
   return groupname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* QueryGroupUsersRequest::release_groupname() {
-  // @@protoc_insertion_point(field_release:Group.QueryGroupUsersRequest.groupName)
+  // @@protoc_insertion_point(field_release:GroupProto.QueryGroupUsersRequest.groupName)
   return groupname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void QueryGroupUsersRequest::set_allocated_groupname(std::string* groupname) {
@@ -3359,14 +3359,14 @@ inline void QueryGroupUsersRequest::set_allocated_groupname(std::string* groupna
     groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Group.QueryGroupUsersRequest.groupName)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.QueryGroupUsersRequest.groupName)
 }
 
 // -------------------------------------------------------------------
 
 // QueryGroupUsersResponse
 
-// .Group.ResultCode result = 1;
+// .GroupProto.ResultCode result = 1;
 inline bool QueryGroupUsersResponse::_internal_has_result() const {
   return this != internal_default_instance() && result_ != nullptr;
 }
@@ -3379,17 +3379,17 @@ inline void QueryGroupUsersResponse::clear_result() {
   }
   result_ = nullptr;
 }
-inline const ::Group::ResultCode& QueryGroupUsersResponse::_internal_result() const {
-  const ::Group::ResultCode* p = result_;
-  return p != nullptr ? *p : reinterpret_cast<const ::Group::ResultCode&>(
-      ::Group::_ResultCode_default_instance_);
+inline const ::GroupProto::ResultCode& QueryGroupUsersResponse::_internal_result() const {
+  const ::GroupProto::ResultCode* p = result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GroupProto::ResultCode&>(
+      ::GroupProto::_ResultCode_default_instance_);
 }
-inline const ::Group::ResultCode& QueryGroupUsersResponse::result() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupUsersResponse.result)
+inline const ::GroupProto::ResultCode& QueryGroupUsersResponse::result() const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersResponse.result)
   return _internal_result();
 }
 inline void QueryGroupUsersResponse::unsafe_arena_set_allocated_result(
-    ::Group::ResultCode* result) {
+    ::GroupProto::ResultCode* result) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
   }
@@ -3399,11 +3399,11 @@ inline void QueryGroupUsersResponse::unsafe_arena_set_allocated_result(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Group.QueryGroupUsersResponse.result)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GroupProto.QueryGroupUsersResponse.result)
 }
-inline ::Group::ResultCode* QueryGroupUsersResponse::release_result() {
+inline ::GroupProto::ResultCode* QueryGroupUsersResponse::release_result() {
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -3416,34 +3416,34 @@ inline ::Group::ResultCode* QueryGroupUsersResponse::release_result() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::Group::ResultCode* QueryGroupUsersResponse::unsafe_arena_release_result() {
-  // @@protoc_insertion_point(field_release:Group.QueryGroupUsersResponse.result)
+inline ::GroupProto::ResultCode* QueryGroupUsersResponse::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:GroupProto.QueryGroupUsersResponse.result)
   
-  ::Group::ResultCode* temp = result_;
+  ::GroupProto::ResultCode* temp = result_;
   result_ = nullptr;
   return temp;
 }
-inline ::Group::ResultCode* QueryGroupUsersResponse::_internal_mutable_result() {
+inline ::GroupProto::ResultCode* QueryGroupUsersResponse::_internal_mutable_result() {
   
   if (result_ == nullptr) {
-    auto* p = CreateMaybeMessage<::Group::ResultCode>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::GroupProto::ResultCode>(GetArenaForAllocation());
     result_ = p;
   }
   return result_;
 }
-inline ::Group::ResultCode* QueryGroupUsersResponse::mutable_result() {
-  ::Group::ResultCode* _msg = _internal_mutable_result();
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupUsersResponse.result)
+inline ::GroupProto::ResultCode* QueryGroupUsersResponse::mutable_result() {
+  ::GroupProto::ResultCode* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersResponse.result)
   return _msg;
 }
-inline void QueryGroupUsersResponse::set_allocated_result(::Group::ResultCode* result) {
+inline void QueryGroupUsersResponse::set_allocated_result(::GroupProto::ResultCode* result) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete result_;
   }
   if (result) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::Group::ResultCode>::GetOwningArena(result);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::GroupProto::ResultCode>::GetOwningArena(result);
     if (message_arena != submessage_arena) {
       result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, result, submessage_arena);
@@ -3453,7 +3453,7 @@ inline void QueryGroupUsersResponse::set_allocated_result(::Group::ResultCode* r
     
   }
   result_ = result;
-  // @@protoc_insertion_point(field_set_allocated:Group.QueryGroupUsersResponse.result)
+  // @@protoc_insertion_point(field_set_allocated:GroupProto.QueryGroupUsersResponse.result)
 }
 
 // bool success = 2;
@@ -3464,7 +3464,7 @@ inline bool QueryGroupUsersResponse::_internal_success() const {
   return success_;
 }
 inline bool QueryGroupUsersResponse::success() const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupUsersResponse.success)
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersResponse.success)
   return _internal_success();
 }
 inline void QueryGroupUsersResponse::_internal_set_success(bool value) {
@@ -3473,7 +3473,7 @@ inline void QueryGroupUsersResponse::_internal_set_success(bool value) {
 }
 inline void QueryGroupUsersResponse::set_success(bool value) {
   _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:Group.QueryGroupUsersResponse.success)
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.success)
 }
 
 // repeated bytes groupUserName = 3;
@@ -3488,66 +3488,66 @@ inline void QueryGroupUsersResponse::clear_groupusername() {
 }
 inline std::string* QueryGroupUsersResponse::add_groupusername() {
   std::string* _s = _internal_add_groupusername();
-  // @@protoc_insertion_point(field_add_mutable:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_add_mutable:GroupProto.QueryGroupUsersResponse.groupUserName)
   return _s;
 }
 inline const std::string& QueryGroupUsersResponse::_internal_groupusername(int index) const {
   return groupusername_.Get(index);
 }
 inline const std::string& QueryGroupUsersResponse::groupusername(int index) const {
-  // @@protoc_insertion_point(field_get:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersResponse.groupUserName)
   return _internal_groupusername(index);
 }
 inline std::string* QueryGroupUsersResponse::mutable_groupusername(int index) {
-  // @@protoc_insertion_point(field_mutable:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersResponse.groupUserName)
   return groupusername_.Mutable(index);
 }
 inline void QueryGroupUsersResponse::set_groupusername(int index, const std::string& value) {
   groupusername_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::set_groupusername(int index, std::string&& value) {
   groupusername_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::set_groupusername(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   groupusername_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_set_char:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::set_groupusername(int index, const void* value, size_t size) {
   groupusername_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_set_pointer:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline std::string* QueryGroupUsersResponse::_internal_add_groupusername() {
   return groupusername_.Add();
 }
 inline void QueryGroupUsersResponse::add_groupusername(const std::string& value) {
   groupusername_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::add_groupusername(std::string&& value) {
   groupusername_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::add_groupusername(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   groupusername_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_add_char:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline void QueryGroupUsersResponse::add_groupusername(const void* value, size_t size) {
   groupusername_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_add_pointer:GroupProto.QueryGroupUsersResponse.groupUserName)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 QueryGroupUsersResponse::groupusername() const {
-  // @@protoc_insertion_point(field_list:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_list:GroupProto.QueryGroupUsersResponse.groupUserName)
   return groupusername_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 QueryGroupUsersResponse::mutable_groupusername() {
-  // @@protoc_insertion_point(field_mutable_list:Group.QueryGroupUsersResponse.groupUserName)
+  // @@protoc_insertion_point(field_mutable_list:GroupProto.QueryGroupUsersResponse.groupUserName)
   return &groupusername_;
 }
 
@@ -3577,7 +3577,7 @@ QueryGroupUsersResponse::mutable_groupusername() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace Group
+}  // namespace GroupProto
 
 // @@protoc_insertion_point(global_scope)
 

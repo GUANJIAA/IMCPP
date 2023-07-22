@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-bool LoginService::Login(std::string name, std::string pwd, Login::ResultCode *code)
+bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCode *code)
 {
     Admin admin = adminmodel.query(name);
     if (admin.getName() == name && admin.getPassword() == pwd)
@@ -34,7 +34,7 @@ bool LoginService::Login(std::string name, std::string pwd, Login::ResultCode *c
     return true;
 }
 
-bool LoginService::Logout(std::string name, Login::ResultCode *code)
+bool LoginService::Logout(std::string name, LoginProto::ResultCode *code)
 {
     Admin admin = adminmodel.query(name);
     if (admin.getStatus() == "offline")
@@ -55,7 +55,7 @@ bool LoginService::Logout(std::string name, Login::ResultCode *code)
 
 bool LoginService::Register(std::string name, std::string pwd,
                             std::string email, std::string phone,
-                            Login::ResultCode *code)
+                            LoginProto::ResultCode *code)
 {
     Admin admin;
     admin.setName(name);
@@ -80,7 +80,7 @@ bool LoginService::Register(std::string name, std::string pwd,
 
 bool LoginService::Retrieve(std::string name, std::string password,
                             std::string email, std::string phone,
-                            Login::ResultCode *code)
+                            LoginProto::ResultCode *code)
 {
     Admin admin = adminmodel.query(name);
     if (admin.getName() == name &&
@@ -108,14 +108,14 @@ bool LoginService::Retrieve(std::string name, std::string password,
 }
 
 void LoginService::Login(::google::protobuf::RpcController *controller,
-                         const ::Login::LoginRequest *request,
-                         ::Login::LoginResponse *response,
+                         const ::LoginProto::LoginRequest *request,
+                         ::LoginProto::LoginResponse *response,
                          ::google::protobuf::Closure *done)
 {
     std::string name = request->name();
     std::string pwd = request->pwd();
 
-    Login::ResultCode *code = response->mutable_result();
+    LoginProto::ResultCode *code = response->mutable_result();
     bool login_result = Login(name, pwd, code);
 
     response->set_success(login_result);
@@ -124,13 +124,13 @@ void LoginService::Login(::google::protobuf::RpcController *controller,
 }
 
 void LoginService::Logout(::google::protobuf::RpcController *controller,
-                          const ::Login::LogoutRequest *request,
-                          ::Login::LogoutResponse *response,
+                          const ::LoginProto::LogoutRequest *request,
+                          ::LoginProto::LogoutResponse *response,
                           ::google::protobuf::Closure *done)
 {
     std::string name = request->name();
 
-    Login::ResultCode *code = response->mutable_result();
+    LoginProto::ResultCode *code = response->mutable_result();
     bool login_result = Logout(name, code);
     response->set_success(login_result);
 
@@ -138,8 +138,8 @@ void LoginService::Logout(::google::protobuf::RpcController *controller,
 }
 
 void LoginService::Register(::google::protobuf::RpcController *controller,
-                            const ::Login::RegisterRequest *request,
-                            ::Login::RegisterResponse *response,
+                            const ::LoginProto::RegisterRequest *request,
+                            ::LoginProto::RegisterResponse *response,
                             ::google::protobuf::Closure *done)
 {
     std::string name = request->name();
@@ -147,7 +147,7 @@ void LoginService::Register(::google::protobuf::RpcController *controller,
     std::string email = request->email();
     std::string phone = request->phone();
 
-    Login::ResultCode *code = response->mutable_result();
+    LoginProto::ResultCode *code = response->mutable_result();
     bool login_result = Register(name, pwd, email, phone, code);
     response->set_success(login_result);
 
@@ -155,8 +155,8 @@ void LoginService::Register(::google::protobuf::RpcController *controller,
 }
 
 void LoginService::Retrieve(::google::protobuf::RpcController *controller,
-                            const ::Login::RetrieveRequest *request,
-                            ::Login::RetrieveResponse *response,
+                            const ::LoginProto::RetrieveRequest *request,
+                            ::LoginProto::RetrieveResponse *response,
                             ::google::protobuf::Closure *done)
 {
     std::string name = request->name();
@@ -164,7 +164,7 @@ void LoginService::Retrieve(::google::protobuf::RpcController *controller,
     std::string email = request->email();
     std::string phone = request->phone();
 
-    Login::ResultCode *code = response->mutable_result();
+    LoginProto::ResultCode *code = response->mutable_result();
     bool login_result = Retrieve(name, password, email, phone, code);
     response->set_success(login_result);
 

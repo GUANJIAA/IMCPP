@@ -1,7 +1,7 @@
 #include "FriendService.h"
 
-bool FriendServer::AddFriend(std::string adminName, std::string peerName,
-                             Friend::ResultCode *code)
+bool FriendService::AddFriend(std::string adminName, std::string peerName,
+                             FriendProto::ResultCode *code)
 {
     bool result = friendmodel.insert(adminName, peerName);
     if (result)
@@ -17,9 +17,9 @@ bool FriendServer::AddFriend(std::string adminName, std::string peerName,
     return result;
 }
 
-bool FriendServer::GetFriend(std::string adminName,
-                             Friend::ResultCode *code,
-                             std::vector<Friend::AdminInfo> &friends)
+bool FriendService::GetFriend(std::string adminName,
+                             FriendProto::ResultCode *code,
+                             std::vector<FriendProto::AdminInfo> &friends)
 {
     bool result = false;
     std::vector<Admin> vec = friendmodel.query(adminName);
@@ -32,7 +32,7 @@ bool FriendServer::GetFriend(std::string adminName,
     {
         for (const auto &val : vec)
         {
-            Friend::AdminInfo temp;
+            FriendProto::AdminInfo temp;
             temp.set_name(val.getName().c_str());
             temp.set_email(val.getEmail().c_str());
             temp.set_phone(val.getPhone().c_str());
@@ -45,8 +45,8 @@ bool FriendServer::GetFriend(std::string adminName,
     return result;
 }
 
-bool FriendServer::DelFriend(std::string adminName, std::string peerName,
-                             Friend::ResultCode *code)
+bool FriendService::DelFriend(std::string adminName, std::string peerName,
+                             FriendProto::ResultCode *code)
 {
     bool result = friendmodel.removal(adminName, peerName);
     if (result)
@@ -62,15 +62,15 @@ bool FriendServer::DelFriend(std::string adminName, std::string peerName,
     return result;
 }
 
-void FriendServer::AddFriend(::google::protobuf::RpcController *controller,
-                             const ::Friend::AddFriendRequest *request,
-                             ::Friend::AddFriendResponse *response,
+void FriendService::AddFriend(::google::protobuf::RpcController *controller,
+                             const ::FriendProto::AddFriendRequest *request,
+                             ::FriendProto::AddFriendResponse *response,
                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
     std::string peerName = request->peername();
 
-    Friend::ResultCode *code = response->mutable_result();
+    FriendProto::ResultCode *code = response->mutable_result();
     bool result = AddFriend(adminName, peerName, code);
 
     response->set_success(result);
@@ -78,20 +78,20 @@ void FriendServer::AddFriend(::google::protobuf::RpcController *controller,
     done->Run();
 }
 
-void FriendServer::GetFriend(::google::protobuf::RpcController *controller,
-                             const ::Friend::GetFriendRequest *request,
-                             ::Friend::GetFriendResponse *response,
+void FriendService::GetFriend(::google::protobuf::RpcController *controller,
+                             const ::FriendProto::GetFriendRequest *request,
+                             ::FriendProto::GetFriendResponse *response,
                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
 
-    Friend::ResultCode *code = response->mutable_result();
-    std::vector<Friend::AdminInfo> friends;
+    FriendProto::ResultCode *code = response->mutable_result();
+    std::vector<FriendProto::AdminInfo> friends;
     bool result = GetFriend(adminName, code, friends);
 
     for (const auto &val : friends)
     {
-        Friend::AdminInfo *temp = response->add_data();
+        FriendProto::AdminInfo *temp = response->add_data();
         temp->set_name(val.name());
         temp->set_email(val.email());
         temp->set_phone(val.phone());
@@ -102,15 +102,15 @@ void FriendServer::GetFriend(::google::protobuf::RpcController *controller,
     done->Run();
 }
 
-void FriendServer::DelFriend(::google::protobuf::RpcController *controller,
-                             const ::Friend::DelFriendRequest *request,
-                             ::Friend::DelFriendResponse *response,
+void FriendService::DelFriend(::google::protobuf::RpcController *controller,
+                             const ::FriendProto::DelFriendRequest *request,
+                             ::FriendProto::DelFriendResponse *response,
                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
     std::string peerName = request->peername();
 
-    Friend::ResultCode *code = response->mutable_result();
+    FriendProto::ResultCode *code = response->mutable_result();
     bool result = DelFriend(adminName, peerName, code);
 
     response->set_success(result);

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Login.pb.h"
 #include "Friend.pb.h"
+#include "Group.pb.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
 
@@ -10,16 +11,16 @@ int test_Login(int argc, char **argv)
 {
     MprpcApplication::Init(argc, argv);
 
-    Login::UserServiceRpc_Stub stub(new MprpcChannel());
+    LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
 
     // {
-    //     Login::RegisterRequest request;
+    //     LoginProto::RegisterRequest request;
     //     request.set_name("test_6");
     //     request.set_pwd("123456");
     //     request.set_email("xxxxxxxxxxxxxx123");
     //     request.set_phone("123456789");
 
-    //     Login::RegisterResponse response;
+    //     LoginProto::RegisterResponse response;
 
     //     stub.Register(nullptr, &request, &response, nullptr);
 
@@ -36,13 +37,13 @@ int test_Login(int argc, char **argv)
     // }
 
     {
-        Login::RetrieveRequest request;
+        LoginProto::RetrieveRequest request;
         request.set_name("test_2");
         request.set_pwd("123456789");
         request.set_email("2783688001@qq.com");
         request.set_phone("13926413813");
 
-        Login::RetrieveResponse response;
+        LoginProto::RetrieveResponse response;
 
         stub.Retrieve(nullptr, &request, &response, nullptr);
 
@@ -61,10 +62,10 @@ int test_Login(int argc, char **argv)
     // sleep(10);
 
     // {
-    //     Login::LogoutRequest request;
+    //     LoginProto::LogoutRequest request;
     //     request.set_name("123");
 
-    //     Login::LogoutResponse response;
+    //     LoginProto::LogoutResponse response;
 
     //     stub.Logout(nullptr, &request, &response, nullptr);
 
@@ -87,13 +88,13 @@ int test_friend(int argc, char **argv)
 {
     MprpcApplication::Init(argc, argv);
 
-    Friend::FriendServiceRpc_Stub stub(new MprpcChannel());
+    FriendProto::FriendServiceRpc_Stub stub(new MprpcChannel());
 
     // {
-    //     Friend::DelFriendRequest request;
+    //     FriendProto::DelFriendRequest request;
     //     request.set_adminname("test_3");
     //     request.set_peername("test_4");
-    //     Friend::DelFriendResponse response;
+    //     FriendProto::DelFriendResponse response;
 
     //     stub.DelFriend(nullptr, &request, &response, nullptr);
     //     if (0 == response.result().errcode())
@@ -109,9 +110,9 @@ int test_friend(int argc, char **argv)
     // }
 
     {
-        Friend::GetFriendRequest request;
+        FriendProto::GetFriendRequest request;
         request.set_adminname("test_1");
-        Friend::GetFriendResponse response;
+        FriendProto::GetFriendResponse response;
 
         stub.GetFriend(nullptr, &request, &response, nullptr);
         if (0 == response.result().errcode())
@@ -139,7 +140,105 @@ int test_friend(int argc, char **argv)
 
 int test_group(int argc, char **argv)
 {
+    MprpcApplication::Init(argc, argv);
 
+    GroupProto::GroupServiceRpc_Stub stub(new MprpcChannel());
+
+    // {
+    //     GroupProto::CreateGroupRequest request;
+    //     GroupProto::GroupInfo *group = request.mutable_group();
+    //     group->set_groupname("test_2");
+    //     group->set_groupdesc("test_code");
+
+    //     GroupProto::CreateGroupResponse response;
+    //     stub.CreateGroup(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelFriend response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelFriend response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     GroupProto::AddGroupRequest request;
+    //     request.set_groupname("test_2");
+    //     request.set_username("test_2");
+    //     request.set_userrole("normal");
+    //     GroupProto::AddGroupResponse response;
+    //     stub.AddGroup(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelFriend response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelFriend response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     GroupProto::QueryGroupRequest request;
+    //     request.set_username("test_2");
+    //     GroupProto::QueryGroupResponse response;
+    //     stub.QueryGroup(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         for (auto &val : response.groups())
+    //         {
+    //             std::cout << "============================"
+    //                       << val.groupname() << " "
+    //                       << val.groupdesc() << " "
+    //                       << "============================";
+    //             for (auto &user : val.groupusers())
+    //             {
+    //                 std::cout << "=========================="
+    //                           << user.username() << " "
+    //                           << user.useremail() << " "
+    //                           << user.userphone() << " "
+    //                           << user.userrole() << " "
+    //                           << "==========================";
+    //             }
+    //         }
+    //         std::cout << "rpc DelFriend response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelFriend response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    {
+        GroupProto::QueryGroupUsersRequest request;
+        request.set_username("test_2");
+        request.set_groupname("C++");
+        GroupProto::QueryGroupUsersResponse response;
+        stub.QueryGroupUsers(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            for (auto &user : response.groupusername())
+            {
+                std::cout << "=========================="
+                          << user << " "
+                          << "==========================";
+            }
+            std::cout << "rpc DelFriend response success: "
+                      << response.success() << std::endl;
+        }
+        else
+        {
+            std::cout << "rpc DelFriend response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
 
     return 0;
 }

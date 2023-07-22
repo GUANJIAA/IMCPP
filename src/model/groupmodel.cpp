@@ -2,6 +2,7 @@
 
 #include "mysqldb.h"
 
+
 bool GroupModel::createGroup(Group &group)
 {
     char sql[1024] = {0};
@@ -19,11 +20,11 @@ bool GroupModel::createGroup(Group &group)
     return result;
 }
 
-bool GroupModel::addGroup(std::string groupName, std::string userName, std::string role)
+bool GroupModel::addGroup(std::string groupName, std::string userName, std::string userRole)
 {
     char sql[1024] = {0};
     sprintf(sql, "insert into `groupuser` values('%s','%s','%s')",
-            groupName.c_str(), userName.c_str(), role.c_str());
+            groupName.c_str(), userName.c_str(), userRole.c_str());
 
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
     bool result = false;
@@ -39,7 +40,7 @@ std::vector<Group> GroupModel::queryGroup(std::string userName)
 {
     char sql[1024] = {0};
     sprintf(sql, "select a.id,a.groupname,a.groupdesc from \
-            allgroup a inner join groupuser b on a.id = b.groupid \
+            allgroup a inner join groupuser b on a.groupname = b.groupname \
             where b.username = '%s'",
             userName.c_str());
 
@@ -63,7 +64,7 @@ std::vector<Group> GroupModel::queryGroup(std::string userName)
 
     for (Group &group : groupVec)
     {
-        sprintf(sql, "select a.id,a.name,a.status,a.email,a.phone,b.grouprole from Admin a\
+        sprintf(sql, "select a.id,a.name,a.status,a.email,a.phone,b.userrole from Admin a\
                 inner join groupuser b on a.name=b.username where b.groupname = '%s'",
                 group.getName().c_str());
 

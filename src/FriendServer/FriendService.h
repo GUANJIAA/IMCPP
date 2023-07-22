@@ -8,31 +8,31 @@
 #include <string>
 #include <vector>
 
-class FriendServer : public Friend::FriendServiceRpc
+class FriendService : public FriendProto::FriendServiceRpc
 {
 public:
     bool AddFriend(std::string adminName, std::string peerName,
-                   Friend::ResultCode *code);
+                   FriendProto::ResultCode *code);
 
-    bool GetFriend(std::string adminName, Friend::ResultCode *code,
-                   std::vector<Friend::AdminInfo> &friends);
+    bool GetFriend(std::string adminName, FriendProto::ResultCode *code,
+                   std::vector<FriendProto::AdminInfo> &friends);
 
     bool DelFriend(std::string adminName, std::string peerName,
-                   Friend::ResultCode *code);
+                   FriendProto::ResultCode *code);
 
     virtual void AddFriend(::google::protobuf::RpcController *controller,
-                           const ::Friend::AddFriendRequest *request,
-                           ::Friend::AddFriendResponse *response,
+                           const ::FriendProto::AddFriendRequest *request,
+                           ::FriendProto::AddFriendResponse *response,
                            ::google::protobuf::Closure *done) override;
 
     virtual void GetFriend(::google::protobuf::RpcController *controller,
-                           const ::Friend::GetFriendRequest *request,
-                           ::Friend::GetFriendResponse *response,
+                           const ::FriendProto::GetFriendRequest *request,
+                           ::FriendProto::GetFriendResponse *response,
                            ::google::protobuf::Closure *done) override;
 
     virtual void DelFriend(::google::protobuf::RpcController *controller,
-                           const ::Friend::DelFriendRequest *request,
-                           ::Friend::DelFriendResponse *response,
+                           const ::FriendProto::DelFriendRequest *request,
+                           ::FriendProto::DelFriendResponse *response,
                            ::google::protobuf::Closure *done) override;
 
 private:

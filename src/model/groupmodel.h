@@ -10,7 +10,7 @@ class GroupModel
 {
 public:
     bool createGroup(Group &group);
-    bool addGroup(std::string groupName, std::string userName, std::string role);
+    bool addGroup(std::string groupName, std::string userName, std::string userRole);
     std::vector<Group> queryGroup(std::string userName);
     std::vector<std::string> queryGroupUsers(std::string groupName, std::string userName);
 };

@@ -10,7 +10,7 @@ int main(int argc, char **argv)
     connection_pool::GetInstance()->init();
 
     RpcProvider provider;
-    provider.NotifyService(new FriendServer());
+    provider.NotifyService(new FriendService());
 
     provider.Run();
 

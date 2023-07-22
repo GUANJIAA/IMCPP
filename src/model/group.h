@@ -1,7 +1,7 @@
 #ifndef __GROUP_H__
 #define __GROUP_H__
 
-#include <groupuser.h>
+#include "groupuser.h"
 
 #include <vector>
 
@@ -15,13 +15,13 @@ public:
     void setName(std::string name) { m_name = name; }
     void setDesc(std::string desc) { m_desc = desc; }
 
-    int getId() { return m_id; }
+    int32_t getId() { return m_id; }
     std::string getName() { return m_name; }
     std::string getDesc() { return m_desc; }
     std::vector<GroupUser> &getUsers() { return m_users; }
 
 private:
-    int m_id;
+    int32_t m_id;
     std::string m_name;
     std::string m_desc;
     std::vector<GroupUser> m_users;

@@ -9,40 +9,40 @@
 #include <iostream>
 #include <string>
 
-class LoginService : public Login::UserServiceRpc
+class LoginService : public LoginProto::UserServiceRpc
 {
 public:
     bool Login(std::string name, std::string pwd,
-               Login::ResultCode *code);
+               LoginProto::ResultCode *code);
 
-    bool Logout(std::string name, Login::ResultCode *code);
+    bool Logout(std::string name, LoginProto::ResultCode *code);
 
     bool Register(std::string name, std::string pwd,
                   std::string email, std::string phone,
-                  Login::ResultCode *code);
+                  LoginProto::ResultCode *code);
 
     bool Retrieve(std::string name, std::string password,
                   std::string email, std::string phone,
-                  Login::ResultCode *code);
+                  LoginProto::ResultCode *code);
 
     virtual void Login(::google::protobuf::RpcController *controller,
-                       const ::Login::LoginRequest *request,
-                       ::Login::LoginResponse *response,
+                       const ::LoginProto::LoginRequest *request,
+                       ::LoginProto::LoginResponse *response,
                        ::google::protobuf::Closure *done) override;
 
     virtual void Logout(::google::protobuf::RpcController *controller,
-                        const ::Login::LogoutRequest *request,
-                        ::Login::LogoutResponse *response,
+                        const ::LoginProto::LogoutRequest *request,
+                        ::LoginProto::LogoutResponse *response,
                         ::google::protobuf::Closure *done) override;
 
     virtual void Register(::google::protobuf::RpcController *controller,
-                          const ::Login::RegisterRequest *request,
-                          ::Login::RegisterResponse *response,
+                          const ::LoginProto::RegisterRequest *request,
+                          ::LoginProto::RegisterResponse *response,
                           ::google::protobuf::Closure *done) override;
 
     virtual void Retrieve(::google::protobuf::RpcController *controller,
-                          const ::Login::RetrieveRequest *request,
-                          ::Login::RetrieveResponse *response,
+                          const ::LoginProto::RetrieveRequest *request,
+                          ::LoginProto::RetrieveResponse *response,
                           ::google::protobuf::Closure *done) override;
 
 private:

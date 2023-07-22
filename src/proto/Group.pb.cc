@@ -16,13 +16,13 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-namespace Group {
+namespace GroupProto {
 constexpr GroupUser::GroupUser(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , role_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  : username_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , useremail_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , userphone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , userrole_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct GroupUserDefaultTypeInternal {
   constexpr GroupUserDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -34,10 +34,10 @@ struct GroupUserDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GroupUserDefaultTypeInternal _GroupUser_default_instance_;
 constexpr GroupInfo::GroupInfo(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : users_()
-  , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , desc_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , id_(0){}
+  : groupusers_()
+  , groupname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , groupdesc_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , groupid_(0){}
 struct GroupInfoDefaultTypeInternal {
   constexpr GroupInfoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -87,9 +87,9 @@ struct CreateGroupResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CreateGroupResponseDefaultTypeInternal _CreateGroupResponse_default_instance_;
 constexpr AddGroupRequest::AddGroupRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : adminname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : username_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , groupname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , role_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  , userrole_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct AddGroupRequestDefaultTypeInternal {
   constexpr AddGroupRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -114,7 +114,7 @@ struct AddGroupResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT AddGroupResponseDefaultTypeInternal _AddGroupResponse_default_instance_;
 constexpr QueryGroupRequest::QueryGroupRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : adminname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  : username_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct QueryGroupRequestDefaultTypeInternal {
   constexpr QueryGroupRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -126,7 +126,7 @@ struct QueryGroupRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT QueryGroupRequestDefaultTypeInternal _QueryGroupRequest_default_instance_;
 constexpr QueryGroupResponse::QueryGroupResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : groupinfo_()
+  : groups_()
   , result_(nullptr)
   , success_(false){}
 struct QueryGroupResponseDefaultTypeInternal {
@@ -140,7 +140,7 @@ struct QueryGroupResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT QueryGroupResponseDefaultTypeInternal _QueryGroupResponse_default_instance_;
 constexpr QueryGroupUsersRequest::QueryGroupUsersRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : adminname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : username_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , groupname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct QueryGroupUsersRequestDefaultTypeInternal {
   constexpr QueryGroupUsersRequestDefaultTypeInternal()
@@ -165,168 +165,171 @@ struct QueryGroupUsersResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT QueryGroupUsersResponseDefaultTypeInternal _QueryGroupUsersResponse_default_instance_;
-}  // namespace Group
+}  // namespace GroupProto
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Group_2eproto[11];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_Group_2eproto = nullptr;
 static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* file_level_service_descriptors_Group_2eproto[1];
 
 const uint32_t TableStruct_Group_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::GroupUser, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupUser, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::GroupUser, name_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupUser, email_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupUser, phone_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupUser, role_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupUser, username_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupUser, useremail_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupUser, userphone_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupUser, userrole_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::GroupInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::GroupInfo, id_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupInfo, name_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupInfo, desc_),
-  PROTOBUF_FIELD_OFFSET(::Group::GroupInfo, users_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupInfo, groupid_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupInfo, groupname_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupInfo, groupdesc_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::GroupInfo, groupusers_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::ResultCode, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::ResultCode, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::ResultCode, errcode_),
-  PROTOBUF_FIELD_OFFSET(::Group::ResultCode, errmsg_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::ResultCode, errcode_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::ResultCode, errmsg_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::CreateGroupRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::CreateGroupRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::CreateGroupRequest, group_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::CreateGroupRequest, group_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::CreateGroupResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::CreateGroupResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::CreateGroupResponse, result_),
-  PROTOBUF_FIELD_OFFSET(::Group::CreateGroupResponse, success_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::CreateGroupResponse, result_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::CreateGroupResponse, success_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupRequest, adminname_),
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupRequest, groupname_),
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupRequest, role_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupRequest, username_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupRequest, groupname_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupRequest, userrole_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupResponse, result_),
-  PROTOBUF_FIELD_OFFSET(::Group::AddGroupResponse, success_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupResponse, result_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::AddGroupResponse, success_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupRequest, adminname_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupRequest, username_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupResponse, result_),
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupResponse, success_),
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupResponse, groupinfo_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupResponse, result_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupResponse, success_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupResponse, groups_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersRequest, adminname_),
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersRequest, groupname_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersRequest, username_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersRequest, groupname_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersResponse, result_),
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersResponse, success_),
-  PROTOBUF_FIELD_OFFSET(::Group::QueryGroupUsersResponse, groupusername_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, result_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, success_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, groupusername_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::Group::GroupUser)},
-  { 10, -1, -1, sizeof(::Group::GroupInfo)},
-  { 20, -1, -1, sizeof(::Group::ResultCode)},
-  { 28, -1, -1, sizeof(::Group::CreateGroupRequest)},
-  { 35, -1, -1, sizeof(::Group::CreateGroupResponse)},
-  { 43, -1, -1, sizeof(::Group::AddGroupRequest)},
-  { 52, -1, -1, sizeof(::Group::AddGroupResponse)},
-  { 60, -1, -1, sizeof(::Group::QueryGroupRequest)},
-  { 67, -1, -1, sizeof(::Group::QueryGroupResponse)},
-  { 76, -1, -1, sizeof(::Group::QueryGroupUsersRequest)},
-  { 84, -1, -1, sizeof(::Group::QueryGroupUsersResponse)},
+  { 0, -1, -1, sizeof(::GroupProto::GroupUser)},
+  { 10, -1, -1, sizeof(::GroupProto::GroupInfo)},
+  { 20, -1, -1, sizeof(::GroupProto::ResultCode)},
+  { 28, -1, -1, sizeof(::GroupProto::CreateGroupRequest)},
+  { 35, -1, -1, sizeof(::GroupProto::CreateGroupResponse)},
+  { 43, -1, -1, sizeof(::GroupProto::AddGroupRequest)},
+  { 52, -1, -1, sizeof(::GroupProto::AddGroupResponse)},
+  { 60, -1, -1, sizeof(::GroupProto::QueryGroupRequest)},
+  { 67, -1, -1, sizeof(::GroupProto::QueryGroupResponse)},
+  { 76, -1, -1, sizeof(::GroupProto::QueryGroupUsersRequest)},
+  { 84, -1, -1, sizeof(::GroupProto::QueryGroupUsersResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_GroupUser_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_GroupInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_ResultCode_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_CreateGroupRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_CreateGroupResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_AddGroupRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_AddGroupResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_QueryGroupRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_QueryGroupResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_QueryGroupUsersRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Group::_QueryGroupUsersResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_GroupUser_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_GroupInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_ResultCode_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_CreateGroupRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_CreateGroupResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_AddGroupRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_AddGroupResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_QueryGroupRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_QueryGroupResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_QueryGroupUsersRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GroupProto::_QueryGroupUsersResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_Group_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\013Group.proto\022\005Group\"E\n\tGroupUser\022\014\n\004nam"
-  "e\030\001 \001(\014\022\r\n\005email\030\002 \001(\014\022\r\n\005phone\030\003 \001(\014\022\014\n"
-  "\004role\030\004 \001(\014\"T\n\tGroupInfo\022\n\n\002id\030\001 \001(\005\022\014\n\004"
-  "name\030\002 \001(\014\022\014\n\004desc\030\003 \001(\014\022\037\n\005users\030\004 \003(\0132"
-  "\020.Group.GroupUser\"-\n\nResultCode\022\017\n\007errco"
-  "de\030\001 \001(\005\022\016\n\006errmsg\030\002 \001(\014\"5\n\022CreateGroupR"
-  "equest\022\037\n\005Group\030\001 \001(\0132\020.Group.GroupInfo\""
-  "I\n\023CreateGroupResponse\022!\n\006result\030\001 \001(\0132\021"
-  ".Group.ResultCode\022\017\n\007success\030\002 \001(\010\"E\n\017Ad"
-  "dGroupRequest\022\021\n\tadminName\030\001 \001(\014\022\021\n\tgrou"
-  "pName\030\002 \001(\014\022\014\n\004role\030\003 \001(\014\"F\n\020AddGroupRes"
-  "ponse\022!\n\006result\030\001 \001(\0132\021.Group.ResultCode"
-  "\022\017\n\007success\030\002 \001(\010\"&\n\021QueryGroupRequest\022\021"
-  "\n\tadminName\030\001 \001(\014\"m\n\022QueryGroupResponse\022"
-  "!\n\006result\030\001 \001(\0132\021.Group.ResultCode\022\017\n\007su"
-  "ccess\030\002 \001(\010\022#\n\tgroupInfo\030\003 \003(\0132\020.Group.G"
-  "roupInfo\">\n\026QueryGroupUsersRequest\022\021\n\tad"
-  "minName\030\001 \001(\014\022\021\n\tgroupName\030\002 \001(\014\"d\n\027Quer"
-  "yGroupUsersResponse\022!\n\006result\030\001 \001(\0132\021.Gr"
-  "oup.ResultCode\022\017\n\007success\030\002 \001(\010\022\025\n\rgroup"
-  "UserName\030\003 \003(\0142\251\002\n\017GroupServiceRpc\022D\n\013Cr"
-  "eateGroup\022\031.Group.CreateGroupRequest\032\032.G"
-  "roup.CreateGroupResponse\022;\n\010AddGroup\022\026.G"
-  "roup.AddGroupRequest\032\027.Group.AddGroupRes"
-  "ponse\022A\n\nQueryGroup\022\030.Group.QueryGroupRe"
-  "quest\032\031.Group.QueryGroupResponse\022P\n\017Quer"
-  "yGroupUsers\022\035.Group.QueryGroupUsersReque"
-  "st\032\036.Group.QueryGroupUsersResponseB\003\200\001\001b"
-  "\006proto3"
+  "\n\013Group.proto\022\nGroupProto\"U\n\tGroupUser\022\020"
+  "\n\010userName\030\001 \001(\014\022\021\n\tuserEmail\030\002 \001(\014\022\021\n\tu"
+  "serPhone\030\003 \001(\014\022\020\n\010userRole\030\004 \001(\014\"m\n\tGrou"
+  "pInfo\022\017\n\007groupId\030\001 \001(\005\022\021\n\tgroupName\030\002 \001("
+  "\014\022\021\n\tgroupDesc\030\003 \001(\014\022)\n\ngroupUsers\030\004 \003(\013"
+  "2\025.GroupProto.GroupUser\"-\n\nResultCode\022\017\n"
+  "\007errcode\030\001 \001(\005\022\016\n\006errmsg\030\002 \001(\014\":\n\022Create"
+  "GroupRequest\022$\n\005group\030\001 \001(\0132\025.GroupProto"
+  ".GroupInfo\"N\n\023CreateGroupResponse\022&\n\006res"
+  "ult\030\001 \001(\0132\026.GroupProto.ResultCode\022\017\n\007suc"
+  "cess\030\002 \001(\010\"H\n\017AddGroupRequest\022\020\n\010userNam"
+  "e\030\001 \001(\014\022\021\n\tgroupName\030\002 \001(\014\022\020\n\010userRole\030\003"
+  " \001(\014\"K\n\020AddGroupResponse\022&\n\006result\030\001 \001(\013"
+  "2\026.GroupProto.ResultCode\022\017\n\007success\030\002 \001("
+  "\010\"%\n\021QueryGroupRequest\022\020\n\010userName\030\001 \001(\014"
+  "\"t\n\022QueryGroupResponse\022&\n\006result\030\001 \001(\0132\026"
+  ".GroupProto.ResultCode\022\017\n\007success\030\002 \001(\010\022"
+  "%\n\006groups\030\003 \003(\0132\025.GroupProto.GroupInfo\"="
+  "\n\026QueryGroupUsersRequest\022\020\n\010userName\030\001 \001"
+  "(\014\022\021\n\tgroupName\030\002 \001(\014\"i\n\027QueryGroupUsers"
+  "Response\022&\n\006result\030\001 \001(\0132\026.GroupProto.Re"
+  "sultCode\022\017\n\007success\030\002 \001(\010\022\025\n\rgroupUserNa"
+  "me\030\003 \003(\0142\321\002\n\017GroupServiceRpc\022N\n\013CreateGr"
+  "oup\022\036.GroupProto.CreateGroupRequest\032\037.Gr"
+  "oupProto.CreateGroupResponse\022E\n\010AddGroup"
+  "\022\033.GroupProto.AddGroupRequest\032\034.GroupPro"
+  "to.AddGroupResponse\022K\n\nQueryGroup\022\035.Grou"
+  "pProto.QueryGroupRequest\032\036.GroupProto.Qu"
+  "eryGroupResponse\022Z\n\017QueryGroupUsers\022\".Gr"
+  "oupProto.QueryGroupUsersRequest\032#.GroupP"
+  "roto.QueryGroupUsersResponseB\003\200\001\001b\006proto"
+  "3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Group_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Group_2eproto = {
-  false, false, 1127, descriptor_table_protodef_Group_2eproto, "Group.proto", 
+  false, false, 1241, descriptor_table_protodef_Group_2eproto, "Group.proto", 
   &descriptor_table_Group_2eproto_once, nullptr, 0, 11,
   schemas, file_default_instances, TableStruct_Group_2eproto::offsets,
   file_level_metadata_Group_2eproto, file_level_enum_descriptors_Group_2eproto, file_level_service_descriptors_Group_2eproto,
@@ -337,7 +340,7 @@ PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Group_2eproto(&descriptor_table_Group_2eproto);
-namespace Group {
+namespace GroupProto {
 
 // ===================================================================
 
@@ -352,67 +355,67 @@ GroupUser::GroupUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.GroupUser)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.GroupUser)
 }
 GroupUser::GroupUser(const GroupUser& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+  if (!from._internal_username().empty()) {
+    username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_username(), 
       GetArenaForAllocation());
   }
-  email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  useremail_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    useremail_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_email().empty()) {
-    email_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_email(), 
+  if (!from._internal_useremail().empty()) {
+    useremail_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_useremail(), 
       GetArenaForAllocation());
   }
-  phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userphone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    userphone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_phone().empty()) {
-    phone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_phone(), 
+  if (!from._internal_userphone().empty()) {
+    userphone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_userphone(), 
       GetArenaForAllocation());
   }
-  role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userrole_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_role().empty()) {
-    role_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_role(), 
+  if (!from._internal_userrole().empty()) {
+    userrole_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_userrole(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:Group.GroupUser)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.GroupUser)
 }
 
 inline void GroupUser::SharedCtor() {
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-email_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+useremail_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  email_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  useremail_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+userphone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  userphone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+userrole_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 GroupUser::~GroupUser() {
-  // @@protoc_insertion_point(destructor:Group.GroupUser)
+  // @@protoc_insertion_point(destructor:GroupProto.GroupUser)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -420,10 +423,10 @@ GroupUser::~GroupUser() {
 
 inline void GroupUser::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  phone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  role_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  useremail_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userphone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userrole_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void GroupUser::ArenaDtor(void* object) {
@@ -437,15 +440,15 @@ void GroupUser::SetCachedSize(int size) const {
 }
 
 void GroupUser::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.GroupUser)
+// @@protoc_insertion_point(message_clear_start:GroupProto.GroupUser)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  name_.ClearToEmpty();
-  email_.ClearToEmpty();
-  phone_.ClearToEmpty();
-  role_.ClearToEmpty();
+  username_.ClearToEmpty();
+  useremail_.ClearToEmpty();
+  userphone_.ClearToEmpty();
+  userrole_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -455,37 +458,37 @@ const char* GroupUser::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes name = 1;
+      // bytes userName = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_name();
+          auto str = _internal_mutable_username();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bytes email = 2;
+      // bytes userEmail = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_email();
+          auto str = _internal_mutable_useremail();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bytes phone = 3;
+      // bytes userPhone = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_phone();
+          auto str = _internal_mutable_userphone();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bytes role = 4;
+      // bytes userRole = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_role();
+          auto str = _internal_mutable_userrole();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -516,76 +519,76 @@ failure:
 
 uint8_t* GroupUser::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.GroupUser)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.GroupUser)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes name = 1;
-  if (!this->_internal_name().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        1, this->_internal_name(), target);
+        1, this->_internal_username(), target);
   }
 
-  // bytes email = 2;
-  if (!this->_internal_email().empty()) {
+  // bytes userEmail = 2;
+  if (!this->_internal_useremail().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        2, this->_internal_email(), target);
+        2, this->_internal_useremail(), target);
   }
 
-  // bytes phone = 3;
-  if (!this->_internal_phone().empty()) {
+  // bytes userPhone = 3;
+  if (!this->_internal_userphone().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_phone(), target);
+        3, this->_internal_userphone(), target);
   }
 
-  // bytes role = 4;
-  if (!this->_internal_role().empty()) {
+  // bytes userRole = 4;
+  if (!this->_internal_userrole().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        4, this->_internal_role(), target);
+        4, this->_internal_userrole(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.GroupUser)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.GroupUser)
   return target;
 }
 
 size_t GroupUser::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.GroupUser)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.GroupUser)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes name = 1;
-  if (!this->_internal_name().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_name());
+        this->_internal_username());
   }
 
-  // bytes email = 2;
-  if (!this->_internal_email().empty()) {
+  // bytes userEmail = 2;
+  if (!this->_internal_useremail().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_email());
+        this->_internal_useremail());
   }
 
-  // bytes phone = 3;
-  if (!this->_internal_phone().empty()) {
+  // bytes userPhone = 3;
+  if (!this->_internal_userphone().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_phone());
+        this->_internal_userphone());
   }
 
-  // bytes role = 4;
-  if (!this->_internal_role().empty()) {
+  // bytes userRole = 4;
+  if (!this->_internal_userrole().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_role());
+        this->_internal_userrole());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -605,28 +608,28 @@ void GroupUser::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GroupUser::MergeFrom(const GroupUser& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.GroupUser)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.GroupUser)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_name().empty()) {
-    _internal_set_name(from._internal_name());
+  if (!from._internal_username().empty()) {
+    _internal_set_username(from._internal_username());
   }
-  if (!from._internal_email().empty()) {
-    _internal_set_email(from._internal_email());
+  if (!from._internal_useremail().empty()) {
+    _internal_set_useremail(from._internal_useremail());
   }
-  if (!from._internal_phone().empty()) {
-    _internal_set_phone(from._internal_phone());
+  if (!from._internal_userphone().empty()) {
+    _internal_set_userphone(from._internal_userphone());
   }
-  if (!from._internal_role().empty()) {
-    _internal_set_role(from._internal_role());
+  if (!from._internal_userrole().empty()) {
+    _internal_set_userrole(from._internal_userrole());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void GroupUser::CopyFrom(const GroupUser& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.GroupUser)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.GroupUser)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -643,23 +646,23 @@ void GroupUser::InternalSwap(GroupUser* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &username_, lhs_arena,
+      &other->username_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &email_, lhs_arena,
-      &other->email_, rhs_arena
+      &useremail_, lhs_arena,
+      &other->useremail_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &phone_, lhs_arena,
-      &other->phone_, rhs_arena
+      &userphone_, lhs_arena,
+      &other->userphone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &role_, lhs_arena,
-      &other->role_, rhs_arena
+      &userrole_, lhs_arena,
+      &other->userrole_, rhs_arena
   );
 }
 
@@ -678,51 +681,51 @@ class GroupInfo::_Internal {
 GroupInfo::GroupInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  users_(arena) {
+  groupusers_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.GroupInfo)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.GroupInfo)
 }
 GroupInfo::GroupInfo(const GroupInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      users_(from.users_) {
+      groupusers_(from.groupusers_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+  if (!from._internal_groupname().empty()) {
+    groupname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_groupname(), 
       GetArenaForAllocation());
   }
-  desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  groupdesc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    groupdesc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_desc().empty()) {
-    desc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_desc(), 
+  if (!from._internal_groupdesc().empty()) {
+    groupdesc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_groupdesc(), 
       GetArenaForAllocation());
   }
-  id_ = from.id_;
-  // @@protoc_insertion_point(copy_constructor:Group.GroupInfo)
+  groupid_ = from.groupid_;
+  // @@protoc_insertion_point(copy_constructor:GroupProto.GroupInfo)
 }
 
 inline void GroupInfo::SharedCtor() {
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+groupdesc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  groupdesc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-id_ = 0;
+groupid_ = 0;
 }
 
 GroupInfo::~GroupInfo() {
-  // @@protoc_insertion_point(destructor:Group.GroupInfo)
+  // @@protoc_insertion_point(destructor:GroupProto.GroupInfo)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -730,8 +733,8 @@ GroupInfo::~GroupInfo() {
 
 inline void GroupInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  desc_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  groupname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  groupdesc_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void GroupInfo::ArenaDtor(void* object) {
@@ -745,15 +748,15 @@ void GroupInfo::SetCachedSize(int size) const {
 }
 
 void GroupInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.GroupInfo)
+// @@protoc_insertion_point(message_clear_start:GroupProto.GroupInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  users_.Clear();
-  name_.ClearToEmpty();
-  desc_.ClearToEmpty();
-  id_ = 0;
+  groupusers_.Clear();
+  groupname_.ClearToEmpty();
+  groupdesc_.ClearToEmpty();
+  groupid_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -763,39 +766,39 @@ const char* GroupInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 id = 1;
+      // int32 groupId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          groupid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bytes name = 2;
+      // bytes groupName = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_name();
+          auto str = _internal_mutable_groupname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bytes desc = 3;
+      // bytes groupDesc = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_desc();
+          auto str = _internal_mutable_groupdesc();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // repeated .Group.GroupUser users = 4;
+      // repeated .GroupProto.GroupUser groupUsers = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_users(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_groupusers(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
@@ -827,76 +830,76 @@ failure:
 
 uint8_t* GroupInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.GroupInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.GroupInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 id = 1;
-  if (this->_internal_id() != 0) {
+  // int32 groupId = 1;
+  if (this->_internal_groupid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_groupid(), target);
   }
 
-  // bytes name = 2;
-  if (!this->_internal_name().empty()) {
+  // bytes groupName = 2;
+  if (!this->_internal_groupname().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        2, this->_internal_name(), target);
+        2, this->_internal_groupname(), target);
   }
 
-  // bytes desc = 3;
-  if (!this->_internal_desc().empty()) {
+  // bytes groupDesc = 3;
+  if (!this->_internal_groupdesc().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_desc(), target);
+        3, this->_internal_groupdesc(), target);
   }
 
-  // repeated .Group.GroupUser users = 4;
+  // repeated .GroupProto.GroupUser groupUsers = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_users_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_groupusers_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, this->_internal_users(i), target, stream);
+      InternalWriteMessage(4, this->_internal_groupusers(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.GroupInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.GroupInfo)
   return target;
 }
 
 size_t GroupInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.GroupInfo)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.GroupInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .Group.GroupUser users = 4;
-  total_size += 1UL * this->_internal_users_size();
-  for (const auto& msg : this->users_) {
+  // repeated .GroupProto.GroupUser groupUsers = 4;
+  total_size += 1UL * this->_internal_groupusers_size();
+  for (const auto& msg : this->groupusers_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // bytes name = 2;
-  if (!this->_internal_name().empty()) {
+  // bytes groupName = 2;
+  if (!this->_internal_groupname().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_name());
+        this->_internal_groupname());
   }
 
-  // bytes desc = 3;
-  if (!this->_internal_desc().empty()) {
+  // bytes groupDesc = 3;
+  if (!this->_internal_groupdesc().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_desc());
+        this->_internal_groupdesc());
   }
 
-  // int32 id = 1;
-  if (this->_internal_id() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+  // int32 groupId = 1;
+  if (this->_internal_groupid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_groupid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -916,26 +919,26 @@ void GroupInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GroupInfo::MergeFrom(const GroupInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.GroupInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.GroupInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  users_.MergeFrom(from.users_);
-  if (!from._internal_name().empty()) {
-    _internal_set_name(from._internal_name());
+  groupusers_.MergeFrom(from.groupusers_);
+  if (!from._internal_groupname().empty()) {
+    _internal_set_groupname(from._internal_groupname());
   }
-  if (!from._internal_desc().empty()) {
-    _internal_set_desc(from._internal_desc());
+  if (!from._internal_groupdesc().empty()) {
+    _internal_set_groupdesc(from._internal_groupdesc());
   }
-  if (from._internal_id() != 0) {
-    _internal_set_id(from._internal_id());
+  if (from._internal_groupid() != 0) {
+    _internal_set_groupid(from._internal_groupid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void GroupInfo::CopyFrom(const GroupInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.GroupInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.GroupInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -950,18 +953,18 @@ void GroupInfo::InternalSwap(GroupInfo* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  users_.InternalSwap(&other->users_);
+  groupusers_.InternalSwap(&other->groupusers_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &groupname_, lhs_arena,
+      &other->groupname_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &desc_, lhs_arena,
-      &other->desc_, rhs_arena
+      &groupdesc_, lhs_arena,
+      &other->groupdesc_, rhs_arena
   );
-  swap(id_, other->id_);
+  swap(groupid_, other->groupid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GroupInfo::GetMetadata() const {
@@ -983,7 +986,7 @@ ResultCode::ResultCode(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.ResultCode)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.ResultCode)
 }
 ResultCode::ResultCode(const ResultCode& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -997,7 +1000,7 @@ ResultCode::ResultCode(const ResultCode& from)
       GetArenaForAllocation());
   }
   errcode_ = from.errcode_;
-  // @@protoc_insertion_point(copy_constructor:Group.ResultCode)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.ResultCode)
 }
 
 inline void ResultCode::SharedCtor() {
@@ -1009,7 +1012,7 @@ errcode_ = 0;
 }
 
 ResultCode::~ResultCode() {
-  // @@protoc_insertion_point(destructor:Group.ResultCode)
+  // @@protoc_insertion_point(destructor:GroupProto.ResultCode)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1031,7 +1034,7 @@ void ResultCode::SetCachedSize(int size) const {
 }
 
 void ResultCode::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.ResultCode)
+// @@protoc_insertion_point(message_clear_start:GroupProto.ResultCode)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1089,7 +1092,7 @@ failure:
 
 uint8_t* ResultCode::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.ResultCode)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.ResultCode)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1109,12 +1112,12 @@ uint8_t* ResultCode::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.ResultCode)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.ResultCode)
   return target;
 }
 
 size_t ResultCode::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.ResultCode)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.ResultCode)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1150,7 +1153,7 @@ void ResultCode::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ResultCode::MergeFrom(const ResultCode& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.ResultCode)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.ResultCode)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1165,7 +1168,7 @@ void ResultCode::MergeFrom(const ResultCode& from) {
 }
 
 void ResultCode::CopyFrom(const ResultCode& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.ResultCode)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.ResultCode)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1198,10 +1201,10 @@ void ResultCode::InternalSwap(ResultCode* other) {
 
 class CreateGroupRequest::_Internal {
  public:
-  static const ::Group::GroupInfo& group(const CreateGroupRequest* msg);
+  static const ::GroupProto::GroupInfo& group(const CreateGroupRequest* msg);
 };
 
-const ::Group::GroupInfo&
+const ::GroupProto::GroupInfo&
 CreateGroupRequest::_Internal::group(const CreateGroupRequest* msg) {
   return *msg->group_;
 }
@@ -1212,17 +1215,17 @@ CreateGroupRequest::CreateGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.CreateGroupRequest)
 }
 CreateGroupRequest::CreateGroupRequest(const CreateGroupRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_group()) {
-    group_ = new ::Group::GroupInfo(*from.group_);
+    group_ = new ::GroupProto::GroupInfo(*from.group_);
   } else {
     group_ = nullptr;
   }
-  // @@protoc_insertion_point(copy_constructor:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.CreateGroupRequest)
 }
 
 inline void CreateGroupRequest::SharedCtor() {
@@ -1230,7 +1233,7 @@ group_ = nullptr;
 }
 
 CreateGroupRequest::~CreateGroupRequest() {
-  // @@protoc_insertion_point(destructor:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(destructor:GroupProto.CreateGroupRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1252,7 +1255,7 @@ void CreateGroupRequest::SetCachedSize(int size) const {
 }
 
 void CreateGroupRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.CreateGroupRequest)
+// @@protoc_insertion_point(message_clear_start:GroupProto.CreateGroupRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1270,7 +1273,7 @@ const char* CreateGroupRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .Group.GroupInfo Group = 1;
+      // .GroupProto.GroupInfo group = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_group(), ptr);
@@ -1303,11 +1306,11 @@ failure:
 
 uint8_t* CreateGroupRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.CreateGroupRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Group.GroupInfo Group = 1;
+  // .GroupProto.GroupInfo group = 1;
   if (this->_internal_has_group()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -1319,19 +1322,19 @@ uint8_t* CreateGroupRequest::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.CreateGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.CreateGroupRequest)
   return target;
 }
 
 size_t CreateGroupRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.CreateGroupRequest)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.CreateGroupRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .Group.GroupInfo Group = 1;
+  // .GroupProto.GroupInfo group = 1;
   if (this->_internal_has_group()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1355,19 +1358,19 @@ void CreateGroupRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CreateGroupRequest::MergeFrom(const CreateGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.CreateGroupRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.CreateGroupRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_has_group()) {
-    _internal_mutable_group()->::Group::GroupInfo::MergeFrom(from._internal_group());
+    _internal_mutable_group()->::GroupProto::GroupInfo::MergeFrom(from._internal_group());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CreateGroupRequest::CopyFrom(const CreateGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.CreateGroupRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.CreateGroupRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1393,10 +1396,10 @@ void CreateGroupRequest::InternalSwap(CreateGroupRequest* other) {
 
 class CreateGroupResponse::_Internal {
  public:
-  static const ::Group::ResultCode& result(const CreateGroupResponse* msg);
+  static const ::GroupProto::ResultCode& result(const CreateGroupResponse* msg);
 };
 
-const ::Group::ResultCode&
+const ::GroupProto::ResultCode&
 CreateGroupResponse::_Internal::result(const CreateGroupResponse* msg) {
   return *msg->result_;
 }
@@ -1407,18 +1410,18 @@ CreateGroupResponse::CreateGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.CreateGroupResponse)
 }
 CreateGroupResponse::CreateGroupResponse(const CreateGroupResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
-    result_ = new ::Group::ResultCode(*from.result_);
+    result_ = new ::GroupProto::ResultCode(*from.result_);
   } else {
     result_ = nullptr;
   }
   success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.CreateGroupResponse)
 }
 
 inline void CreateGroupResponse::SharedCtor() {
@@ -1429,7 +1432,7 @@ inline void CreateGroupResponse::SharedCtor() {
 }
 
 CreateGroupResponse::~CreateGroupResponse() {
-  // @@protoc_insertion_point(destructor:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(destructor:GroupProto.CreateGroupResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1451,7 +1454,7 @@ void CreateGroupResponse::SetCachedSize(int size) const {
 }
 
 void CreateGroupResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.CreateGroupResponse)
+// @@protoc_insertion_point(message_clear_start:GroupProto.CreateGroupResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1470,7 +1473,7 @@ const char* CreateGroupResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .Group.ResultCode result = 1;
+      // .GroupProto.ResultCode result = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_result(), ptr);
@@ -1511,11 +1514,11 @@ failure:
 
 uint8_t* CreateGroupResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.CreateGroupResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -1533,19 +1536,19 @@ uint8_t* CreateGroupResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.CreateGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.CreateGroupResponse)
   return target;
 }
 
 size_t CreateGroupResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.CreateGroupResponse)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.CreateGroupResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1574,13 +1577,13 @@ void CreateGroupResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CreateGroupResponse::MergeFrom(const CreateGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.CreateGroupResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.CreateGroupResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_has_result()) {
-    _internal_mutable_result()->::Group::ResultCode::MergeFrom(from._internal_result());
+    _internal_mutable_result()->::GroupProto::ResultCode::MergeFrom(from._internal_result());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -1589,7 +1592,7 @@ void CreateGroupResponse::MergeFrom(const CreateGroupResponse& from) {
 }
 
 void CreateGroupResponse::CopyFrom(const CreateGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.CreateGroupResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.CreateGroupResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1629,17 +1632,17 @@ AddGroupRequest::AddGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.AddGroupRequest)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.AddGroupRequest)
 }
 AddGroupRequest::AddGroupRequest(const AddGroupRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_adminname().empty()) {
-    adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_adminname(), 
+  if (!from._internal_username().empty()) {
+    username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_username(), 
       GetArenaForAllocation());
   }
   groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -1650,34 +1653,34 @@ AddGroupRequest::AddGroupRequest(const AddGroupRequest& from)
     groupname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_groupname(), 
       GetArenaForAllocation());
   }
-  role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userrole_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_role().empty()) {
-    role_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_role(), 
+  if (!from._internal_userrole().empty()) {
+    userrole_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_userrole(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:Group.AddGroupRequest)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.AddGroupRequest)
 }
 
 inline void AddGroupRequest::SharedCtor() {
-adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   groupname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+userrole_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  userrole_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 AddGroupRequest::~AddGroupRequest() {
-  // @@protoc_insertion_point(destructor:Group.AddGroupRequest)
+  // @@protoc_insertion_point(destructor:GroupProto.AddGroupRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1685,9 +1688,9 @@ AddGroupRequest::~AddGroupRequest() {
 
 inline void AddGroupRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  adminname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   groupname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  role_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  userrole_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void AddGroupRequest::ArenaDtor(void* object) {
@@ -1701,14 +1704,14 @@ void AddGroupRequest::SetCachedSize(int size) const {
 }
 
 void AddGroupRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.AddGroupRequest)
+// @@protoc_insertion_point(message_clear_start:GroupProto.AddGroupRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  adminname_.ClearToEmpty();
+  username_.ClearToEmpty();
   groupname_.ClearToEmpty();
-  role_.ClearToEmpty();
+  userrole_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1718,10 +1721,10 @@ const char* AddGroupRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes adminName = 1;
+      // bytes userName = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_adminname();
+          auto str = _internal_mutable_username();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -1736,10 +1739,10 @@ const char* AddGroupRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
         } else
           goto handle_unusual;
         continue;
-      // bytes role = 3;
+      // bytes userRole = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_role();
+          auto str = _internal_mutable_userrole();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -1770,14 +1773,14 @@ failure:
 
 uint8_t* AddGroupRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.AddGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.AddGroupRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        1, this->_internal_adminname(), target);
+        1, this->_internal_username(), target);
   }
 
   // bytes groupName = 2;
@@ -1786,33 +1789,33 @@ uint8_t* AddGroupRequest::_InternalSerialize(
         2, this->_internal_groupname(), target);
   }
 
-  // bytes role = 3;
-  if (!this->_internal_role().empty()) {
+  // bytes userRole = 3;
+  if (!this->_internal_userrole().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_role(), target);
+        3, this->_internal_userrole(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.AddGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.AddGroupRequest)
   return target;
 }
 
 size_t AddGroupRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.AddGroupRequest)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.AddGroupRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_adminname());
+        this->_internal_username());
   }
 
   // bytes groupName = 2;
@@ -1822,11 +1825,11 @@ size_t AddGroupRequest::ByteSizeLong() const {
         this->_internal_groupname());
   }
 
-  // bytes role = 3;
-  if (!this->_internal_role().empty()) {
+  // bytes userRole = 3;
+  if (!this->_internal_userrole().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_role());
+        this->_internal_userrole());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1846,25 +1849,25 @@ void AddGroupRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AddGroupRequest::MergeFrom(const AddGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.AddGroupRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.AddGroupRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_adminname().empty()) {
-    _internal_set_adminname(from._internal_adminname());
+  if (!from._internal_username().empty()) {
+    _internal_set_username(from._internal_username());
   }
   if (!from._internal_groupname().empty()) {
     _internal_set_groupname(from._internal_groupname());
   }
-  if (!from._internal_role().empty()) {
-    _internal_set_role(from._internal_role());
+  if (!from._internal_userrole().empty()) {
+    _internal_set_userrole(from._internal_userrole());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void AddGroupRequest::CopyFrom(const AddGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.AddGroupRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.AddGroupRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1881,8 +1884,8 @@ void AddGroupRequest::InternalSwap(AddGroupRequest* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &adminname_, lhs_arena,
-      &other->adminname_, rhs_arena
+      &username_, lhs_arena,
+      &other->username_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -1891,8 +1894,8 @@ void AddGroupRequest::InternalSwap(AddGroupRequest* other) {
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &role_, lhs_arena,
-      &other->role_, rhs_arena
+      &userrole_, lhs_arena,
+      &other->userrole_, rhs_arena
   );
 }
 
@@ -1906,10 +1909,10 @@ void AddGroupRequest::InternalSwap(AddGroupRequest* other) {
 
 class AddGroupResponse::_Internal {
  public:
-  static const ::Group::ResultCode& result(const AddGroupResponse* msg);
+  static const ::GroupProto::ResultCode& result(const AddGroupResponse* msg);
 };
 
-const ::Group::ResultCode&
+const ::GroupProto::ResultCode&
 AddGroupResponse::_Internal::result(const AddGroupResponse* msg) {
   return *msg->result_;
 }
@@ -1920,18 +1923,18 @@ AddGroupResponse::AddGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.AddGroupResponse)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.AddGroupResponse)
 }
 AddGroupResponse::AddGroupResponse(const AddGroupResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
-    result_ = new ::Group::ResultCode(*from.result_);
+    result_ = new ::GroupProto::ResultCode(*from.result_);
   } else {
     result_ = nullptr;
   }
   success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:Group.AddGroupResponse)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.AddGroupResponse)
 }
 
 inline void AddGroupResponse::SharedCtor() {
@@ -1942,7 +1945,7 @@ inline void AddGroupResponse::SharedCtor() {
 }
 
 AddGroupResponse::~AddGroupResponse() {
-  // @@protoc_insertion_point(destructor:Group.AddGroupResponse)
+  // @@protoc_insertion_point(destructor:GroupProto.AddGroupResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1964,7 +1967,7 @@ void AddGroupResponse::SetCachedSize(int size) const {
 }
 
 void AddGroupResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.AddGroupResponse)
+// @@protoc_insertion_point(message_clear_start:GroupProto.AddGroupResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1983,7 +1986,7 @@ const char* AddGroupResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .Group.ResultCode result = 1;
+      // .GroupProto.ResultCode result = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_result(), ptr);
@@ -2024,11 +2027,11 @@ failure:
 
 uint8_t* AddGroupResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.AddGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.AddGroupResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2046,19 +2049,19 @@ uint8_t* AddGroupResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.AddGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.AddGroupResponse)
   return target;
 }
 
 size_t AddGroupResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.AddGroupResponse)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.AddGroupResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2087,13 +2090,13 @@ void AddGroupResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AddGroupResponse::MergeFrom(const AddGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.AddGroupResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.AddGroupResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_has_result()) {
-    _internal_mutable_result()->::Group::ResultCode::MergeFrom(from._internal_result());
+    _internal_mutable_result()->::GroupProto::ResultCode::MergeFrom(from._internal_result());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -2102,7 +2105,7 @@ void AddGroupResponse::MergeFrom(const AddGroupResponse& from) {
 }
 
 void AddGroupResponse::CopyFrom(const AddGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.AddGroupResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.AddGroupResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2142,31 +2145,31 @@ QueryGroupRequest::QueryGroupRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.QueryGroupRequest)
 }
 QueryGroupRequest::QueryGroupRequest(const QueryGroupRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_adminname().empty()) {
-    adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_adminname(), 
+  if (!from._internal_username().empty()) {
+    username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_username(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.QueryGroupRequest)
 }
 
 inline void QueryGroupRequest::SharedCtor() {
-adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 QueryGroupRequest::~QueryGroupRequest() {
-  // @@protoc_insertion_point(destructor:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(destructor:GroupProto.QueryGroupRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2174,7 +2177,7 @@ QueryGroupRequest::~QueryGroupRequest() {
 
 inline void QueryGroupRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  adminname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void QueryGroupRequest::ArenaDtor(void* object) {
@@ -2188,12 +2191,12 @@ void QueryGroupRequest::SetCachedSize(int size) const {
 }
 
 void QueryGroupRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.QueryGroupRequest)
+// @@protoc_insertion_point(message_clear_start:GroupProto.QueryGroupRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  adminname_.ClearToEmpty();
+  username_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2203,10 +2206,10 @@ const char* QueryGroupRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes adminName = 1;
+      // bytes userName = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_adminname();
+          auto str = _internal_mutable_username();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -2237,37 +2240,37 @@ failure:
 
 uint8_t* QueryGroupRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.QueryGroupRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        1, this->_internal_adminname(), target);
+        1, this->_internal_username(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.QueryGroupRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.QueryGroupRequest)
   return target;
 }
 
 size_t QueryGroupRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.QueryGroupRequest)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.QueryGroupRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_adminname());
+        this->_internal_username());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2287,19 +2290,19 @@ void QueryGroupRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void QueryGroupRequest::MergeFrom(const QueryGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.QueryGroupRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.QueryGroupRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_adminname().empty()) {
-    _internal_set_adminname(from._internal_adminname());
+  if (!from._internal_username().empty()) {
+    _internal_set_username(from._internal_username());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void QueryGroupRequest::CopyFrom(const QueryGroupRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.QueryGroupRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.QueryGroupRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2316,8 +2319,8 @@ void QueryGroupRequest::InternalSwap(QueryGroupRequest* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &adminname_, lhs_arena,
-      &other->adminname_, rhs_arena
+      &username_, lhs_arena,
+      &other->username_, rhs_arena
   );
 }
 
@@ -2331,34 +2334,34 @@ void QueryGroupRequest::InternalSwap(QueryGroupRequest* other) {
 
 class QueryGroupResponse::_Internal {
  public:
-  static const ::Group::ResultCode& result(const QueryGroupResponse* msg);
+  static const ::GroupProto::ResultCode& result(const QueryGroupResponse* msg);
 };
 
-const ::Group::ResultCode&
+const ::GroupProto::ResultCode&
 QueryGroupResponse::_Internal::result(const QueryGroupResponse* msg) {
   return *msg->result_;
 }
 QueryGroupResponse::QueryGroupResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  groupinfo_(arena) {
+  groups_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.QueryGroupResponse)
 }
 QueryGroupResponse::QueryGroupResponse(const QueryGroupResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      groupinfo_(from.groupinfo_) {
+      groups_(from.groups_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
-    result_ = new ::Group::ResultCode(*from.result_);
+    result_ = new ::GroupProto::ResultCode(*from.result_);
   } else {
     result_ = nullptr;
   }
   success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.QueryGroupResponse)
 }
 
 inline void QueryGroupResponse::SharedCtor() {
@@ -2369,7 +2372,7 @@ inline void QueryGroupResponse::SharedCtor() {
 }
 
 QueryGroupResponse::~QueryGroupResponse() {
-  // @@protoc_insertion_point(destructor:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(destructor:GroupProto.QueryGroupResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2391,12 +2394,12 @@ void QueryGroupResponse::SetCachedSize(int size) const {
 }
 
 void QueryGroupResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.QueryGroupResponse)
+// @@protoc_insertion_point(message_clear_start:GroupProto.QueryGroupResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  groupinfo_.Clear();
+  groups_.Clear();
   if (GetArenaForAllocation() == nullptr && result_ != nullptr) {
     delete result_;
   }
@@ -2411,7 +2414,7 @@ const char* QueryGroupResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .Group.ResultCode result = 1;
+      // .GroupProto.ResultCode result = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_result(), ptr);
@@ -2427,13 +2430,13 @@ const char* QueryGroupResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
         } else
           goto handle_unusual;
         continue;
-      // repeated .Group.GroupInfo groupInfo = 3;
+      // repeated .GroupProto.GroupInfo groups = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_groupinfo(), ptr);
+            ptr = ctx->ParseMessage(_internal_add_groups(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
@@ -2465,11 +2468,11 @@ failure:
 
 uint8_t* QueryGroupResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.QueryGroupResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2483,38 +2486,38 @@ uint8_t* QueryGroupResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_success(), target);
   }
 
-  // repeated .Group.GroupInfo groupInfo = 3;
+  // repeated .GroupProto.GroupInfo groups = 3;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_groupinfo_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->_internal_groups_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_groupinfo(i), target, stream);
+      InternalWriteMessage(3, this->_internal_groups(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.QueryGroupResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.QueryGroupResponse)
   return target;
 }
 
 size_t QueryGroupResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.QueryGroupResponse)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.QueryGroupResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .Group.GroupInfo groupInfo = 3;
-  total_size += 1UL * this->_internal_groupinfo_size();
-  for (const auto& msg : this->groupinfo_) {
+  // repeated .GroupProto.GroupInfo groups = 3;
+  total_size += 1UL * this->_internal_groups_size();
+  for (const auto& msg : this->groups_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2543,14 +2546,14 @@ void QueryGroupResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void QueryGroupResponse::MergeFrom(const QueryGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.QueryGroupResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.QueryGroupResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  groupinfo_.MergeFrom(from.groupinfo_);
+  groups_.MergeFrom(from.groups_);
   if (from._internal_has_result()) {
-    _internal_mutable_result()->::Group::ResultCode::MergeFrom(from._internal_result());
+    _internal_mutable_result()->::GroupProto::ResultCode::MergeFrom(from._internal_result());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -2559,7 +2562,7 @@ void QueryGroupResponse::MergeFrom(const QueryGroupResponse& from) {
 }
 
 void QueryGroupResponse::CopyFrom(const QueryGroupResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.QueryGroupResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.QueryGroupResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2572,7 +2575,7 @@ bool QueryGroupResponse::IsInitialized() const {
 void QueryGroupResponse::InternalSwap(QueryGroupResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  groupinfo_.InternalSwap(&other->groupinfo_);
+  groups_.InternalSwap(&other->groups_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(QueryGroupResponse, success_)
       + sizeof(QueryGroupResponse::success_)
@@ -2600,17 +2603,17 @@ QueryGroupUsersRequest::QueryGroupUsersRequest(::PROTOBUF_NAMESPACE_ID::Arena* a
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.QueryGroupUsersRequest)
 }
 QueryGroupUsersRequest::QueryGroupUsersRequest(const QueryGroupUsersRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_adminname().empty()) {
-    adminname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_adminname(), 
+  if (!from._internal_username().empty()) {
+    username_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_username(), 
       GetArenaForAllocation());
   }
   groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -2621,13 +2624,13 @@ QueryGroupUsersRequest::QueryGroupUsersRequest(const QueryGroupUsersRequest& fro
     groupname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_groupname(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.QueryGroupUsersRequest)
 }
 
 inline void QueryGroupUsersRequest::SharedCtor() {
-adminname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+username_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  adminname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  username_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2636,7 +2639,7 @@ groupname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAl
 }
 
 QueryGroupUsersRequest::~QueryGroupUsersRequest() {
-  // @@protoc_insertion_point(destructor:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(destructor:GroupProto.QueryGroupUsersRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2644,7 +2647,7 @@ QueryGroupUsersRequest::~QueryGroupUsersRequest() {
 
 inline void QueryGroupUsersRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  adminname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   groupname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -2659,12 +2662,12 @@ void QueryGroupUsersRequest::SetCachedSize(int size) const {
 }
 
 void QueryGroupUsersRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.QueryGroupUsersRequest)
+// @@protoc_insertion_point(message_clear_start:GroupProto.QueryGroupUsersRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  adminname_.ClearToEmpty();
+  username_.ClearToEmpty();
   groupname_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -2675,10 +2678,10 @@ const char* QueryGroupUsersRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes adminName = 1;
+      // bytes userName = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_adminname();
+          auto str = _internal_mutable_username();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -2718,14 +2721,14 @@ failure:
 
 uint8_t* QueryGroupUsersRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.QueryGroupUsersRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        1, this->_internal_adminname(), target);
+        1, this->_internal_username(), target);
   }
 
   // bytes groupName = 2;
@@ -2738,23 +2741,23 @@ uint8_t* QueryGroupUsersRequest::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.QueryGroupUsersRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.QueryGroupUsersRequest)
   return target;
 }
 
 size_t QueryGroupUsersRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.QueryGroupUsersRequest)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.QueryGroupUsersRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes adminName = 1;
-  if (!this->_internal_adminname().empty()) {
+  // bytes userName = 1;
+  if (!this->_internal_username().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_adminname());
+        this->_internal_username());
   }
 
   // bytes groupName = 2;
@@ -2781,13 +2784,13 @@ void QueryGroupUsersRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void QueryGroupUsersRequest::MergeFrom(const QueryGroupUsersRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.QueryGroupUsersRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.QueryGroupUsersRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_adminname().empty()) {
-    _internal_set_adminname(from._internal_adminname());
+  if (!from._internal_username().empty()) {
+    _internal_set_username(from._internal_username());
   }
   if (!from._internal_groupname().empty()) {
     _internal_set_groupname(from._internal_groupname());
@@ -2796,7 +2799,7 @@ void QueryGroupUsersRequest::MergeFrom(const QueryGroupUsersRequest& from) {
 }
 
 void QueryGroupUsersRequest::CopyFrom(const QueryGroupUsersRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.QueryGroupUsersRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.QueryGroupUsersRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2813,8 +2816,8 @@ void QueryGroupUsersRequest::InternalSwap(QueryGroupUsersRequest* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &adminname_, lhs_arena,
-      &other->adminname_, rhs_arena
+      &username_, lhs_arena,
+      &other->username_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -2833,10 +2836,10 @@ void QueryGroupUsersRequest::InternalSwap(QueryGroupUsersRequest* other) {
 
 class QueryGroupUsersResponse::_Internal {
  public:
-  static const ::Group::ResultCode& result(const QueryGroupUsersResponse* msg);
+  static const ::GroupProto::ResultCode& result(const QueryGroupUsersResponse* msg);
 };
 
-const ::Group::ResultCode&
+const ::GroupProto::ResultCode&
 QueryGroupUsersResponse::_Internal::result(const QueryGroupUsersResponse* msg) {
   return *msg->result_;
 }
@@ -2848,19 +2851,19 @@ QueryGroupUsersResponse::QueryGroupUsersResponse(::PROTOBUF_NAMESPACE_ID::Arena*
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(arena_constructor:GroupProto.QueryGroupUsersResponse)
 }
 QueryGroupUsersResponse::QueryGroupUsersResponse(const QueryGroupUsersResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       groupusername_(from.groupusername_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
-    result_ = new ::Group::ResultCode(*from.result_);
+    result_ = new ::GroupProto::ResultCode(*from.result_);
   } else {
     result_ = nullptr;
   }
   success_ = from.success_;
-  // @@protoc_insertion_point(copy_constructor:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(copy_constructor:GroupProto.QueryGroupUsersResponse)
 }
 
 inline void QueryGroupUsersResponse::SharedCtor() {
@@ -2871,7 +2874,7 @@ inline void QueryGroupUsersResponse::SharedCtor() {
 }
 
 QueryGroupUsersResponse::~QueryGroupUsersResponse() {
-  // @@protoc_insertion_point(destructor:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(destructor:GroupProto.QueryGroupUsersResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2893,7 +2896,7 @@ void QueryGroupUsersResponse::SetCachedSize(int size) const {
 }
 
 void QueryGroupUsersResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:Group.QueryGroupUsersResponse)
+// @@protoc_insertion_point(message_clear_start:GroupProto.QueryGroupUsersResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2913,7 +2916,7 @@ const char* QueryGroupUsersResponse::_InternalParse(const char* ptr, ::PROTOBUF_
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .Group.ResultCode result = 1;
+      // .GroupProto.ResultCode result = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_result(), ptr);
@@ -2968,11 +2971,11 @@ failure:
 
 uint8_t* QueryGroupUsersResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:GroupProto.QueryGroupUsersResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2996,12 +2999,12 @@ uint8_t* QueryGroupUsersResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Group.QueryGroupUsersResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:GroupProto.QueryGroupUsersResponse)
   return target;
 }
 
 size_t QueryGroupUsersResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Group.QueryGroupUsersResponse)
+// @@protoc_insertion_point(message_byte_size_start:GroupProto.QueryGroupUsersResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3016,7 +3019,7 @@ size_t QueryGroupUsersResponse::ByteSizeLong() const {
       groupusername_.Get(i));
   }
 
-  // .Group.ResultCode result = 1;
+  // .GroupProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -3045,14 +3048,14 @@ void QueryGroupUsersResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void QueryGroupUsersResponse::MergeFrom(const QueryGroupUsersResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Group.QueryGroupUsersResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:GroupProto.QueryGroupUsersResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   groupusername_.MergeFrom(from.groupusername_);
   if (from._internal_has_result()) {
-    _internal_mutable_result()->::Group::ResultCode::MergeFrom(from._internal_result());
+    _internal_mutable_result()->::GroupProto::ResultCode::MergeFrom(from._internal_result());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -3061,7 +3064,7 @@ void QueryGroupUsersResponse::MergeFrom(const QueryGroupUsersResponse& from) {
 }
 
 void QueryGroupUsersResponse::CopyFrom(const QueryGroupUsersResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Group.QueryGroupUsersResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:GroupProto.QueryGroupUsersResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3103,32 +3106,32 @@ const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* GroupServiceRpc::GetDescriptor
 }
 
 void GroupServiceRpc::CreateGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::Group::CreateGroupRequest*,
-                         ::Group::CreateGroupResponse*,
+                         const ::GroupProto::CreateGroupRequest*,
+                         ::GroupProto::CreateGroupResponse*,
                          ::google::protobuf::Closure* done) {
   controller->SetFailed("Method CreateGroup() not implemented.");
   done->Run();
 }
 
 void GroupServiceRpc::AddGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::Group::AddGroupRequest*,
-                         ::Group::AddGroupResponse*,
+                         const ::GroupProto::AddGroupRequest*,
+                         ::GroupProto::AddGroupResponse*,
                          ::google::protobuf::Closure* done) {
   controller->SetFailed("Method AddGroup() not implemented.");
   done->Run();
 }
 
 void GroupServiceRpc::QueryGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::Group::QueryGroupRequest*,
-                         ::Group::QueryGroupResponse*,
+                         const ::GroupProto::QueryGroupRequest*,
+                         ::GroupProto::QueryGroupResponse*,
                          ::google::protobuf::Closure* done) {
   controller->SetFailed("Method QueryGroup() not implemented.");
   done->Run();
 }
 
 void GroupServiceRpc::QueryGroupUsers(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::Group::QueryGroupUsersRequest*,
-                         ::Group::QueryGroupUsersResponse*,
+                         const ::GroupProto::QueryGroupUsersRequest*,
+                         ::GroupProto::QueryGroupUsersResponse*,
                          ::google::protobuf::Closure* done) {
   controller->SetFailed("Method QueryGroupUsers() not implemented.");
   done->Run();
@@ -3143,33 +3146,33 @@ void GroupServiceRpc::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor
   switch(method->index()) {
     case 0:
       CreateGroup(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::Group::CreateGroupRequest*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::GroupProto::CreateGroupRequest*>(
                  request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::Group::CreateGroupResponse*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::GroupProto::CreateGroupResponse*>(
                  response),
              done);
       break;
     case 1:
       AddGroup(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::Group::AddGroupRequest*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::GroupProto::AddGroupRequest*>(
                  request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::Group::AddGroupResponse*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::GroupProto::AddGroupResponse*>(
                  response),
              done);
       break;
     case 2:
       QueryGroup(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::Group::QueryGroupRequest*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::GroupProto::QueryGroupRequest*>(
                  request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::Group::QueryGroupResponse*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::GroupProto::QueryGroupResponse*>(
                  response),
              done);
       break;
     case 3:
       QueryGroupUsers(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::Group::QueryGroupUsersRequest*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::GroupProto::QueryGroupUsersRequest*>(
                  request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::Group::QueryGroupUsersResponse*>(
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::GroupProto::QueryGroupUsersResponse*>(
                  response),
              done);
       break;
@@ -3184,13 +3187,13 @@ const ::PROTOBUF_NAMESPACE_ID::Message& GroupServiceRpc::GetRequestPrototype(
   GOOGLE_DCHECK_EQ(method->service(), descriptor());
   switch(method->index()) {
     case 0:
-      return ::Group::CreateGroupRequest::default_instance();
+      return ::GroupProto::CreateGroupRequest::default_instance();
     case 1:
-      return ::Group::AddGroupRequest::default_instance();
+      return ::GroupProto::AddGroupRequest::default_instance();
     case 2:
-      return ::Group::QueryGroupRequest::default_instance();
+      return ::GroupProto::QueryGroupRequest::default_instance();
     case 3:
-      return ::Group::QueryGroupUsersRequest::default_instance();
+      return ::GroupProto::QueryGroupUsersRequest::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -3203,13 +3206,13 @@ const ::PROTOBUF_NAMESPACE_ID::Message& GroupServiceRpc::GetResponsePrototype(
   GOOGLE_DCHECK_EQ(method->service(), descriptor());
   switch(method->index()) {
     case 0:
-      return ::Group::CreateGroupResponse::default_instance();
+      return ::GroupProto::CreateGroupResponse::default_instance();
     case 1:
-      return ::Group::AddGroupResponse::default_instance();
+      return ::GroupProto::AddGroupResponse::default_instance();
     case 2:
-      return ::Group::QueryGroupResponse::default_instance();
+      return ::GroupProto::QueryGroupResponse::default_instance();
     case 3:
-      return ::Group::QueryGroupUsersResponse::default_instance();
+      return ::GroupProto::QueryGroupUsersResponse::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -3229,69 +3232,69 @@ GroupServiceRpc_Stub::~GroupServiceRpc_Stub() {
 }
 
 void GroupServiceRpc_Stub::CreateGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::Group::CreateGroupRequest* request,
-                              ::Group::CreateGroupResponse* response,
+                              const ::GroupProto::CreateGroupRequest* request,
+                              ::GroupProto::CreateGroupResponse* response,
                               ::google::protobuf::Closure* done) {
   channel_->CallMethod(descriptor()->method(0),
                        controller, request, response, done);
 }
 void GroupServiceRpc_Stub::AddGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::Group::AddGroupRequest* request,
-                              ::Group::AddGroupResponse* response,
+                              const ::GroupProto::AddGroupRequest* request,
+                              ::GroupProto::AddGroupResponse* response,
                               ::google::protobuf::Closure* done) {
   channel_->CallMethod(descriptor()->method(1),
                        controller, request, response, done);
 }
 void GroupServiceRpc_Stub::QueryGroup(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::Group::QueryGroupRequest* request,
-                              ::Group::QueryGroupResponse* response,
+                              const ::GroupProto::QueryGroupRequest* request,
+                              ::GroupProto::QueryGroupResponse* response,
                               ::google::protobuf::Closure* done) {
   channel_->CallMethod(descriptor()->method(2),
                        controller, request, response, done);
 }
 void GroupServiceRpc_Stub::QueryGroupUsers(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::Group::QueryGroupUsersRequest* request,
-                              ::Group::QueryGroupUsersResponse* response,
+                              const ::GroupProto::QueryGroupUsersRequest* request,
+                              ::GroupProto::QueryGroupUsersResponse* response,
                               ::google::protobuf::Closure* done) {
   channel_->CallMethod(descriptor()->method(3),
                        controller, request, response, done);
 }
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace Group
+}  // namespace GroupProto
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::Group::GroupUser* Arena::CreateMaybeMessage< ::Group::GroupUser >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::GroupUser >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::GroupUser* Arena::CreateMaybeMessage< ::GroupProto::GroupUser >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::GroupUser >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::GroupInfo* Arena::CreateMaybeMessage< ::Group::GroupInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::GroupInfo >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::GroupInfo* Arena::CreateMaybeMessage< ::GroupProto::GroupInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::GroupInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::ResultCode* Arena::CreateMaybeMessage< ::Group::ResultCode >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::ResultCode >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::ResultCode* Arena::CreateMaybeMessage< ::GroupProto::ResultCode >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::ResultCode >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::CreateGroupRequest* Arena::CreateMaybeMessage< ::Group::CreateGroupRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::CreateGroupRequest >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::CreateGroupRequest* Arena::CreateMaybeMessage< ::GroupProto::CreateGroupRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::CreateGroupRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::CreateGroupResponse* Arena::CreateMaybeMessage< ::Group::CreateGroupResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::CreateGroupResponse >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::CreateGroupResponse* Arena::CreateMaybeMessage< ::GroupProto::CreateGroupResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::CreateGroupResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::AddGroupRequest* Arena::CreateMaybeMessage< ::Group::AddGroupRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::AddGroupRequest >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::AddGroupRequest* Arena::CreateMaybeMessage< ::GroupProto::AddGroupRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::AddGroupRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::AddGroupResponse* Arena::CreateMaybeMessage< ::Group::AddGroupResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::AddGroupResponse >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::AddGroupResponse* Arena::CreateMaybeMessage< ::GroupProto::AddGroupResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::AddGroupResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::QueryGroupRequest* Arena::CreateMaybeMessage< ::Group::QueryGroupRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::QueryGroupRequest >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::QueryGroupRequest* Arena::CreateMaybeMessage< ::GroupProto::QueryGroupRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::QueryGroupRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::QueryGroupResponse* Arena::CreateMaybeMessage< ::Group::QueryGroupResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::QueryGroupResponse >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::QueryGroupResponse* Arena::CreateMaybeMessage< ::GroupProto::QueryGroupResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::QueryGroupResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::QueryGroupUsersRequest* Arena::CreateMaybeMessage< ::Group::QueryGroupUsersRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::QueryGroupUsersRequest >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::QueryGroupUsersRequest* Arena::CreateMaybeMessage< ::GroupProto::QueryGroupUsersRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::QueryGroupUsersRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Group::QueryGroupUsersResponse* Arena::CreateMaybeMessage< ::Group::QueryGroupUsersResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Group::QueryGroupUsersResponse >(arena);
+template<> PROTOBUF_NOINLINE ::GroupProto::QueryGroupUsersResponse* Arena::CreateMaybeMessage< ::GroupProto::QueryGroupUsersResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::GroupProto::QueryGroupUsersResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

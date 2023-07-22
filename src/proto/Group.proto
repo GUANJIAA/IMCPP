@@ -1,23 +1,23 @@
 syntax = "proto3";
 
-package Group;
+package GroupProto;
 
 option cc_generic_services = true;
 
 message GroupUser
 {
-    bytes name = 1;
-    bytes email = 2;
-    bytes phone = 3;
-    bytes role = 4;
+    bytes userName = 1;
+    bytes userEmail = 2;
+    bytes userPhone = 3;
+    bytes userRole = 4;
 }
 
 message GroupInfo
 {
-    int32 id = 1;
-    bytes name = 2;
-    bytes desc = 3;
-    repeated GroupUser users = 4;
+    int32 groupId = 1;
+    bytes groupName = 2;
+    bytes groupDesc = 3;
+    repeated GroupUser groupUsers = 4;
 }
 
 message ResultCode
@@ -28,7 +28,7 @@ message ResultCode
 
 message CreateGroupRequest
 {
-    GroupInfo Group = 1;
+    GroupInfo group = 1;
 }
 
 message CreateGroupResponse
@@ -39,9 +39,9 @@ message CreateGroupResponse
 
 message AddGroupRequest
 {
-    bytes adminName = 1;
+    bytes userName = 1;
     bytes groupName = 2;
-    bytes role = 3;
+    bytes userRole = 3;
 }
 
 message AddGroupResponse
@@ -52,19 +52,19 @@ message AddGroupResponse
 
 message QueryGroupRequest
 {
-    bytes adminName = 1;
+    bytes userName = 1;
 }
 
 message QueryGroupResponse
 {
     ResultCode result = 1;
     bool success = 2;
-    repeated GroupInfo groupInfo = 3;
+    repeated GroupInfo groups = 3;
 }
 
 message QueryGroupUsersRequest
 {
-    bytes adminName = 1;
+    bytes userName = 1;
     bytes groupName = 2;
 }
 

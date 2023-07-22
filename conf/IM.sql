@@ -66,13 +66,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `groupuser`;
 
 CREATE TABLE `groupuser` (
-    `groupid` int(11) NOT NULL COMMENT '组id',
-    `userid` int(11) NOT NULL COMMENT '用户id',
-    `grouprole` enum('creator','normal') CHARACTER SET latin1 DEFAULT NULL COMMENT '用户权限',
-    KEY `groupid` (`groupid`,`userid`)
+    `groupname` varchar(50) NOT NULL COMMENT '组名称',
+    `username` varchar(50) NOT NULL COMMENT '用户名称',
+    `userrole` enum('creator','normal') CHARACTER SET latin1 DEFAULT NULL COMMENT '用户权限',
+    KEY `groupname` (`groupname`,`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `groupuser` WRITE;
-INSERT INTO `groupuser` VALUES (1,1,'creator'),(1,2,'normal');
+INSERT INTO `groupuser` VALUES ('C++','test_4','creator'),('C++','test_3','normal');
 UNLOCK TABLES;
 # -------------------------------------------
