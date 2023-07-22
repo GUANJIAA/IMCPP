@@ -1,0 +1,2 @@
+17:19:3 =>[ERROR] first log message!
+17:19:3 =>[ERROR] /root/githubCode/mprpc/example/callee/friendservice.cpp:main:46
