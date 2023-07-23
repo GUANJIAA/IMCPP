@@ -51,7 +51,7 @@ Admin AdminModel::query(std::string name)
         }
     }
     connection_pool::GetInstance()->ReleaseConnection(mysql);
-    return NULL;
+    return Admin();
 }
 
 bool AdminModel::update(Admin &admin)

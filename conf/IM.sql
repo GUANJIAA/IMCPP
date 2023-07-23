@@ -76,3 +76,34 @@ LOCK TABLES `groupuser` WRITE;
 INSERT INTO `groupuser` VALUES ('C++','test_4','creator'),('C++','test_3','normal');
 UNLOCK TABLES;
 # -------------------------------------------
+
+# -------------------------------------------
+DROP TABLE IF EXISTS `alldepart`;
+
+CREATE TABLE `alldepart` (
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '部门id',
+	`departname` varchar(50) CHARACTER SET latin1 NOT NULL COMMENT '部门名称',
+	`departdesc` varchar(200) CHARACTER SET latin1 DEFAULT '' COMMENT '部门描述',
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `departname` (`departname`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+LOCK TABLES `alldepart` WRITE;
+INSERT INTO `alldepart` VALUES (1,'C++','default_1');
+UNLOCK TABLES;
+# -------------------------------------------
+
+# -------------------------------------------
+DROP TABLE IF EXISTS `departuser`;
+
+CREATE TABLE `departuser` (
+    `departname` varchar(50) NOT NULL COMMENT '部门名称',
+    `username` varchar(50) NOT NULL COMMENT '用户名称',
+    `userrole` enum('intendant','employee') CHARACTER SET latin1 DEFAULT NULL COMMENT '用户权限',
+    KEY `departname` (`departname`,`username`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `departuser` WRITE;
+INSERT INTO `departuser` VALUES ('C++','test_4','intendant'),('C++','test_3','employee');
+UNLOCK TABLES;
+# -------------------------------------------

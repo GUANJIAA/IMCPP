@@ -2,6 +2,7 @@
 #include "Login.pb.h"
 #include "Friend.pb.h"
 #include "Group.pb.h"
+#include "Depart.pb.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
 
@@ -243,9 +244,115 @@ int test_group(int argc, char **argv)
     return 0;
 }
 
+int test_depart(int argc, char **argv)
+{
+    MprpcApplication::Init(argc, argv);
+
+    DepartProto::DepartServiceRpc_Stub stub(new MprpcChannel());
+
+    // {
+    //     DepartProto::CreateDepartRequest request;
+    //     DepartProto::DepartInfo *depart = request.mutable_depart();
+    //     depart->set_departname("test_2");
+    //     depart->set_departdesc("test_code");
+
+    //     DepartProto::CreateDepartResponse response;
+    //     stub.CreateDepart(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc CreateDepart response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc CreateDepart response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     DepartProto::AddDepartRequest request;
+    //     request.set_departname("test_2");
+    //     request.set_username("test_2");
+    //     request.set_userrole("intendant");
+    //     DepartProto::AddDepartResponse response;
+    //     stub.AddDepart(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddDepart response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddDepart response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     DepartProto::QueryDepartRequest request;
+    //     request.set_username("test_2");
+    //     DepartProto::QueryDepartResponse response;
+    //     stub.QueryDepart(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         for (auto &val : response.departs())
+    //         {
+    //             std::cout << "============================"
+    //                       << val.departname() << " "
+    //                       << val.departdesc() << " "
+    //                       << "============================";
+    //             for (auto &user : val.departusers())
+    //             {
+    //                 std::cout << "=========================="
+    //                           << user.username() << " "
+    //                           << user.useremail() << " "
+    //                           << user.userphone() << " "
+    //                           << user.userrole() << " "
+    //                           << "==========================";
+    //             }
+    //         }
+    //         std::cout << "rpc QueryDepart response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc QueryDepart response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    {
+        DepartProto::QueryDepartUsersRequest request;
+        request.set_username("test_2");
+        request.set_departname("C++");
+        DepartProto::QueryDepartUsersResponse response;
+        stub.QueryDepartUsers(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            for (auto &user : response.departusername())
+            {
+                std::cout << "=========================="
+                          << user << " "
+                          << "==========================";
+            }
+            std::cout << "rpc QueryDepartUsers response success: "
+                      << response.success() << std::endl;
+        }
+        else
+        {
+            std::cout << "rpc QueryDepartUsers response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     // test_Login(argc, argv);
     // test_friend(argc, argv);
-    test_group(argc, argv);
+    // test_group(argc, argv);
+    test_depart(argc, argv);
 }

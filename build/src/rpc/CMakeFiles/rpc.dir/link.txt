@@ -1,2 +1,0 @@
-/usr/bin/ar qc /root/projects/IMCPP/lib/librpc.a CMakeFiles/rpc.dir/logger.o CMakeFiles/rpc.dir/mprpcapplication.o CMakeFiles/rpc.dir/mprpcchannel.o CMakeFiles/rpc.dir/mprpcconfig.o CMakeFiles/rpc.dir/mprpccontroller.o CMakeFiles/rpc.dir/rpcheader.pb.o CMakeFiles/rpc.dir/rpcprovider.o CMakeFiles/rpc.dir/zookeeperutil.o
-/usr/bin/ranlib /root/projects/IMCPP/lib/librpc.a
