@@ -3,6 +3,7 @@
 #include "Friend.pb.h"
 #include "Group.pb.h"
 #include "Depart.pb.h"
+#include "offlinemessage.pb.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
 
@@ -349,10 +350,224 @@ int test_depart(int argc, char **argv)
     return 0;
 }
 
+int test_offlineMsg(int argc, char **argv)
+{
+    MprpcApplication::Init(argc, argv);
+    OfflineMessageProto::offlineMsgRpc_Stub stub(new MprpcChannel());
+
+    // {
+    //     OfflineMessageProto::addOfflineMsgRequest request;
+    //     request.mutable_offlinemsg()->set_recvname("test_2");
+    //     request.mutable_offlinemsg()->set_sendname("test_1");
+    //     request.mutable_offlinemsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::addOfflineMsgResponse response;
+
+    //     stub.AddOfflineMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddOfflineMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddOfflineMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     OfflineMessageProto::addOfflineGroupMsgRequest request;
+    //     request.mutable_offlinegroupmsg()->set_groupname("test_2");
+    //     request.mutable_offlinegroupmsg()->set_sendname("test_1");
+    //     request.mutable_offlinegroupmsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::addOfflineGroupMsgResponse response;
+
+    //     stub.AddOfflineGroupMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddOfflineGroupMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddOfflineGroupMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     OfflineMessageProto::addOfflineDepartMsgRequest request;
+    //     request.mutable_offlinedepartmsg()->set_departname("test_2");
+    //     request.mutable_offlinedepartmsg()->set_sendname("test_1");
+    //     request.mutable_offlinedepartmsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::addOfflineDepartMsgResponse response;
+
+    //     stub.AddOfflineDepartMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddOfflineDepartMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddOfflineDepartMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     OfflineMessageProto::delOfflineMsgRequest request;
+    //     request.mutable_offlinemsg()->set_msgid(3);
+    //     request.mutable_offlinemsg()->set_recvname("test_2");
+    //     request.mutable_offlinemsg()->set_sendname("test_1");
+    //     request.mutable_offlinemsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::delOfflineMsgResponse response;
+
+    //     stub.DelOfflineMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelOfflineMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelOfflineMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     OfflineMessageProto::delOfflineGroupMsgRequest request;
+    //     request.mutable_offlinegroupmsg()->set_msgid(3);
+    //     request.mutable_offlinegroupmsg()->set_groupname("test_2");
+    //     request.mutable_offlinegroupmsg()->set_sendname("test_1");
+    //     request.mutable_offlinegroupmsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::delOfflineGroupMsgResponse response;
+
+    //     stub.DelOfflineGroupMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelOfflineGroupMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelOfflineGroupMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     OfflineMessageProto::delOfflineDepartMsgRequest request;
+    //     request.mutable_offlinedepartmsg()->set_msgid(2);
+    //     request.mutable_offlinedepartmsg()->set_departname("test_2");
+    //     request.mutable_offlinedepartmsg()->set_sendname("test_1");
+    //     request.mutable_offlinedepartmsg()->set_message("test_C++_code");
+    //     OfflineMessageProto::delOfflineDepartMsgResponse response;
+
+    //     stub.DelOfflineDepartMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelOfflineDepartMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelOfflineDepartMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    {
+        OfflineMessageProto::queryOfflineMsgRequest request;
+        request.set_recvname("test_2");
+        OfflineMessageProto::queryOfflineMsgResponse response;
+
+        stub.QueryOfflineMsg(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            std::cout << "rpc QueryOfflineMsg response success: "
+                      << response.success() << std::endl;
+            for (const auto &val : response.offlinemsg())
+            {
+                std::cout << "========================="
+                          << val.msgid() << " "
+                          << val.recvname() << " "
+                          << val.sendname() << " "
+                          << val.message() << " "
+                          << "=========================";
+            }
+        }
+        else
+        {
+            std::cout << "rpc QueryOfflineMsg response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
+
+    {
+        OfflineMessageProto::queryOfflineGroupMsgRequest request;
+        request.set_username("test_2");
+        OfflineMessageProto::queryOfflineGroupMsgResponse response;
+
+        stub.QueryOfflineGroupMsg(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            std::cout << "rpc QueryOfflineGroupMsg response success: "
+                      << response.success() << std::endl;
+            for (const auto &val : response.offlinegroupmsg())
+            {
+                std::cout << "========================="
+                          << val.msgid() << " "
+                          << val.groupname() << " "
+                          << val.sendname() << " "
+                          << val.message() << " "
+                          << "=========================";
+            }
+        }
+        else
+        {
+            std::cout << "rpc QueryOfflineGroupMsg response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
+
+    {
+        OfflineMessageProto::queryOfflineDepartMsgRequest request;
+        request.set_username("test_2");
+        OfflineMessageProto::queryOfflineDepartMsgResponse response;
+
+        stub.QueryOfflineDepartMsg(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            std::cout << "rpc QueryOfflineDepartMsg response success: "
+                      << response.success() << std::endl;
+            for (const auto &val : response.offlinedepartmsg())
+            {
+                std::cout << "========================="
+                          << val.msgid() << " "
+                          << val.departname() << " "
+                          << val.sendname() << " "
+                          << val.message() << " "
+                          << "=========================";
+            }
+        }
+        else
+        {
+            std::cout << "rpc QueryOfflineDepartMsg response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     // test_Login(argc, argv);
     // test_friend(argc, argv);
     // test_group(argc, argv);
-    test_depart(argc, argv);
+    // test_depart(argc, argv);
+    test_offlineMsg(argc, argv);
+    return 0;
 }

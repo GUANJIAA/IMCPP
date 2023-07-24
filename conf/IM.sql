@@ -107,3 +107,57 @@ LOCK TABLES `departuser` WRITE;
 INSERT INTO `departuser` VALUES ('C++','test_4','intendant'),('C++','test_3','employee');
 UNLOCK TABLES;
 # -------------------------------------------
+
+# -------------------------------------------
+DROP TABLE IF EXISTS `offlinemessage`;
+ 
+CREATE TABLE `offlinemessage`(
+	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
+	`recvname` varchar(50) NOT NULL COMMENT '接收者名称',
+	`sendname` varchar(50) NOT NULL COMMENT '发送者名称',
+	`message` varchar(500) NOT NULL COMMENT '消息',
+	PRIMARY KEY (`msgid`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+LOCK TABLES `offlinemessage` WRITE;
+
+INSERT INTO `offlinemessage`(`recvname`,`sendname`,`message`) VALUES ('test_2','test_1','test_code');
+
+UNLOCK TABLES;
+# -------------------------------------------
+
+# -------------------------------------------
+DROP TABLE IF EXISTS `offlinegroupmessage`;
+
+CREATE TABLE `offlinegroupmessage`(
+	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
+	`groupname` varchar(50) NOT NULL,
+	`sendname` varchar(50) NOT NULL,
+	`message` varchar(500) NOT NULL,
+	PRIMARY KEY (`msgid`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `offlinegroupmessage` WRITE;
+
+INSERT INTO `offlinegroupmessage`(`groupname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
+
+UNLOCK TABLES;
+# -------------------------------------------
+
+# -------------------------------------------
+DROP TABLE IF EXISTS `offlinedepartmessage`;
+
+CREATE TABLE `offlinedepartmessage`(
+	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
+	`departname` varchar(50) NOT NULL,
+	`sendname` varchar(50) NOT NULL,
+	`message` varchar(500) NOT NULL,
+	PRIMARY KEY (`msgid`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `offlinedepartmessage` WRITE;
+
+INSERT INTO `offlinedepartmessage`(`departname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
+
+UNLOCK TABLES;
+# -------------------------------------------
