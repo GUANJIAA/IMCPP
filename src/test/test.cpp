@@ -3,6 +3,7 @@
 #include "Friend.pb.h"
 #include "Group.pb.h"
 #include "Depart.pb.h"
+#include "ChatMsg.pb.h"
 #include "offlinemessage.pb.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
@@ -562,12 +563,272 @@ int test_offlineMsg(int argc, char **argv)
     return 0;
 }
 
+int test_chatMsg(int argc, char **argv)
+{
+    MprpcApplication::Init(argc, argv);
+    ChatMessageProto::chatMsgRpc_Stub stub(new MprpcChannel());
+
+    // {
+    //     ChatMessageProto::addMsgRequest request;
+    //     request.mutable_msg()->set_recvname("test_2");
+    //     request.mutable_msg()->set_sendname("test_1");
+    //     request.mutable_msg()->set_message("test_C++_code");
+    //     ChatMessageProto::addMsgResponse response;
+
+    //     stub.AddChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::addGroupMsgRequest request;
+    //     request.mutable_groupmsg()->set_groupname("test_2");
+    //     request.mutable_groupmsg()->set_sendname("test_1");
+    //     request.mutable_groupmsg()->set_message("test_C++_code");
+    //     ChatMessageProto::addGroupMsgResponse response;
+
+    //     stub.AddGroupChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddGroupChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddGroupChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::addDepartMsgRequest request;
+    //     request.mutable_departmsg()->set_departname("test_2");
+    //     request.mutable_departmsg()->set_sendname("test_1");
+    //     request.mutable_departmsg()->set_message("test_C++_code");
+    //     ChatMessageProto::addDepartMsgResponse response;
+
+    //     stub.AddDepartChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddDepartChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddDepartChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::addDepartMsgRequest request;
+    //     request.mutable_departmsg()->set_departname("test_2");
+    //     request.mutable_departmsg()->set_sendname("test_1");
+    //     request.mutable_departmsg()->set_message("test_C++_code");
+    //     ChatMessageProto::addDepartMsgResponse response;
+
+    //     stub.AddDepartChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc AddDepartChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc AddDepartChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::delMsgRequest request;
+    //     request.mutable_msg()->set_msgid(3);
+    //     request.mutable_msg()->set_recvname("test_2");
+    //     request.mutable_msg()->set_sendname("test_1");
+    //     request.mutable_msg()->set_message("test_C++_code");
+    //     ChatMessageProto::delMsgResponse response;
+
+    //     stub.DelChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::delGroupMsgRequest request;
+    //     request.mutable_groupmsg()->set_msgid(3);
+    //     request.mutable_groupmsg()->set_groupname("test_2");
+    //     request.mutable_groupmsg()->set_sendname("test_1");
+    //     request.mutable_groupmsg()->set_message("test_C++_code");
+    //     ChatMessageProto::delGroupMsgResponse response;
+
+    //     stub.DelGroupChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelGroupChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelGroupChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::delDepartMsgRequest request;
+    //     request.mutable_departmsg()->set_msgid(2);
+    //     request.mutable_departmsg()->set_departname("test_2");
+    //     request.mutable_departmsg()->set_sendname("test_1");
+    //     request.mutable_departmsg()->set_message("test_C++_code");
+    //     ChatMessageProto::delDepartMsgResponse response;
+
+    //     stub.DelDepartChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc DelDepartChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc DelDepartChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::queryMsgRequest request;
+    //     request.set_recvname("test_1");
+    //     ChatMessageProto::queryMsgResponse response;
+
+    //     stub.QueryChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc QueryChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //         for (const auto &val : response.msg())
+    //         {
+    //             std::cout << "========================="
+    //                       << val.msgid() << " "
+    //                       << val.recvname() << " "
+    //                       << val.sendname() << " "
+    //                       << val.message() << " "
+    //                       << "=========================";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc QueryChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::queryOfflineMsgRequest request;
+    //     request.set_recvname("test_2");
+    //     ChatMessageProto::queryOfflineMsgResponse response;
+
+    //     stub.QueryOfflineMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc QueryOfflineMsg response success: "
+    //                   << response.success() << std::endl;
+    //         for (const auto &val : response.msg())
+    //         {
+    //             std::cout << "========================="
+    //                       << val.msgid() << " "
+    //                       << val.recvname() << " "
+    //                       << val.sendname() << " "
+    //                       << val.message() << " "
+    //                       << "=========================";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc QueryOfflineMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    // {
+    //     ChatMessageProto::queryGroupMsgRequest request;
+    //     request.set_username("test_3");
+    //     ChatMessageProto::queryGroupMsgResponse response;
+
+    //     stub.QueryGroupChatMsg(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc QueryGroupChatMsg response success: "
+    //                   << response.success() << std::endl;
+    //         for (const auto &val : response.groupmsg())
+    //         {
+    //             std::cout << "========================="
+    //                       << val.msgid() << " "
+    //                       << val.groupname() << " "
+    //                       << val.sendname() << " "
+    //                       << val.message() << " "
+    //                       << "=========================";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         std::cout << "rpc QueryGroupChatMsg response error: "
+    //                   << response.result().errmsg() << std::endl;
+    //     }
+    // }
+
+    {
+        ChatMessageProto::queryDepartMsgRequest request;
+        request.set_username("test_3");
+        ChatMessageProto::queryDepartMsgResponse response;
+
+        stub.QueryDepartChatMsg(nullptr, &request, &response, nullptr);
+        if (0 == response.result().errcode())
+        {
+            std::cout << "rpc QueryDepartChatMsg response success: "
+                      << response.success() << std::endl;
+            for (const auto &val : response.departmsg())
+            {
+                std::cout << "========================="
+                          << val.msgid() << " "
+                          << val.departname() << " "
+                          << val.sendname() << " "
+                          << val.message() << " "
+                          << "=========================";
+            }
+        }
+        else
+        {
+            std::cout << "rpc QueryDepartChatMsg response error: "
+                      << response.result().errmsg() << std::endl;
+        }
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     // test_Login(argc, argv);
     // test_friend(argc, argv);
     // test_group(argc, argv);
     // test_depart(argc, argv);
-    test_offlineMsg(argc, argv);
+    // test_offlineMsg(argc, argv);
+    test_chatMsg(argc, argv);
     return 0;
 }

@@ -40,7 +40,7 @@ bool OfflineMsgService::QueryOfflineMsg(std::string recvName,
                                         std::vector<OfflineMessageProto::msg> &Msg,
                                         OfflineMessageProto::ResultCode *code)
 {
-    std::vector<OfflineMsg> msgVec = offlinemsgmodel.queryOfflineMsg(recvName);
+    std::vector<Msg> msgVec = offlinemsgmodel.queryOfflineMsg(recvName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -104,7 +104,7 @@ bool OfflineMsgService::QueryOfflineGroupMsg(std::string userName,
                                              std::vector<OfflineMessageProto::groupMsg> &groupMsg,
                                              OfflineMessageProto::ResultCode *code)
 {
-    std::vector<OfflineGroupMsg> msgVec = offlinemsgmodel.queryOfflineGroupMsg(userName);
+    std::vector<GroupMsg> msgVec = offlinemsgmodel.queryOfflineGroupMsg(userName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -167,7 +167,7 @@ bool OfflineMsgService::QueryOfflineDepartMsg(std::string userName,
                                               std::vector<OfflineMessageProto::departMsg> &departMsg,
                                               OfflineMessageProto::ResultCode *code)
 {
-    std::vector<OfflineDepartMsg> msgVec = offlinemsgmodel.queryOfflineDepartMsg(userName);
+    std::vector<DepartMsg> msgVec = offlinemsgmodel.queryOfflineDepartMsg(userName);
     bool result = false;
     if (msgVec.empty())
     {

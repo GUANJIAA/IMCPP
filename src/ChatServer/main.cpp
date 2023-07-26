@@ -1,6 +1,8 @@
-#include "LoginService.h"
+#include "ChatService.h"
+#include "mprpcapplication.h"
+#include "rpcprovider.h"
+
 #include "mysqldb.h"
-#include "redisdb.h"
 
 int main(int argc, char **argv)
 {
@@ -8,10 +10,8 @@ int main(int argc, char **argv)
 
     connection_pool::GetInstance()->init();
 
-    // RedisOpt::GetInstance()->LoginRun();
-
     RpcProvider provider;
-    provider.NotifyService(new LoginService());
+    provider.NotifyService(new ChatService());
 
     provider.Run();
 

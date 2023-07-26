@@ -1,7 +1,7 @@
 #ifndef __OFFLINEMSGSERVICE_H__
 #define __OFFLINEMSGSERVICE_H__
 
-#include "offlinemsgmodel.h"
+#include "msgmodel.h"
 #include "offlinemessage.pb.h"
 
 class OfflineMsgService : public OfflineMessageProto::offlineMsgRpc

@@ -1,12 +1,45 @@
 #include "LoginService.h"
 #include "mysqldb.h"
+// #include "redisdb.h"
 #include "admin.h"
 #include "logger.h"
 
 #include <iostream>
+// #include <json/json.h>
 
 bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCode *code)
 {
+    // char opt[1024] = {0};
+    // sprintf(opt, "HGET LoginHash %s", name.c_str());
+    // std::string str = RedisOpt::GetInstance()->getKeyValue(opt);
+    // if (str != "")
+    // {
+    //     Json::Reader reader;
+    //     Json::Value json;
+    //     reader.parse(str, json);
+    //     if (json["name"] == name && json["pwd"] == pwd)
+    //     {
+    //         if (json["status"] == "online")
+    //         {
+    //             code->set_errcode(2);
+    //             code->set_errmsg("The user is already logged in");
+    //             return false;
+    //         }
+    //         else
+    //         {
+    //             json["status"] = "online";
+    //             str = json.asString();
+    //             sprintf(opt, "HSET LoginHash %s", str.c_str());
+    //             RedisOpt::GetInstance()->setKeyValue(opt);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         code->set_errcode(1);
+    //         code->set_errmsg("The user does not exist or the password is incorrect");
+    //         return false;
+    //     }
+    // }
     Admin admin = adminmodel.query(name);
     if (admin.getName() == name && admin.getPassword() == pwd)
     {
@@ -36,6 +69,31 @@ bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCo
 
 bool LoginService::Logout(std::string name, LoginProto::ResultCode *code)
 {
+    // char opt[1024] = {0};
+    // sprintf(opt, "HGET LoginHash %s", name.c_str());
+    // std::string str = RedisOpt::GetInstance()->getKeyValue(opt);
+    // if (str != "")
+    // {
+    //     Json::Reader reader;
+    //     Json::Value json;
+    //     reader.parse(str, json);
+    //     if (json["name"] == name)
+    //     {
+    //         if (json["status"] == "offline")
+    //         {
+    //             code->set_errcode(1);
+    //             code->set_errmsg("Account has been logged out");
+    //             return false;
+    //         }
+    //         else
+    //         {
+    //             json["status"] = "offline";
+    //             str = json.asString();
+    //             sprintf(opt, "HSET LoginHash %s", str.c_str());
+    //             RedisOpt::GetInstance()->setKeyValue(opt);
+    //         }
+    //     }
+    // }
     Admin admin = adminmodel.query(name);
     if (admin.getStatus() == "offline")
     {
