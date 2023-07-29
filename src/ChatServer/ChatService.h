@@ -2,6 +2,9 @@
 #define __CHATSERVICE_H__
 
 #include "msgmodel.h"
+#include "groupmodel.h"
+#include "departmodel.h"
+#include "redispb.h"
 #include "ChatMsg.pb.h"
 
 #include <vector>
@@ -91,6 +94,8 @@ public:
 
 private:
     ChatMsgModel chatmsgmodel;
+    GroupModel groupmodel;
+    DepartModel departmodel;
     //    OfflineMsgModel offlinemsgmodel;
 };
 
