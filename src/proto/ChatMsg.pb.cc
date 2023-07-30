@@ -35,6 +35,7 @@ constexpr chatMsg::chatMsg(
   : recvname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , sendname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , isread_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , msgid_(0){}
 struct chatMsgDefaultTypeInternal {
   constexpr chatMsgDefaultTypeInternal()
@@ -353,6 +354,7 @@ const uint32_t TableStruct_ChatMsg_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::ChatMessageProto::chatMsg, recvname_),
   PROTOBUF_FIELD_OFFSET(::ChatMessageProto::chatMsg, sendname_),
   PROTOBUF_FIELD_OFFSET(::ChatMessageProto::chatMsg, message_),
+  PROTOBUF_FIELD_OFFSET(::ChatMessageProto::chatMsg, isread_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::ChatMessageProto::addMsgRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -531,28 +533,28 @@ const uint32_t TableStruct_ChatMsg_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::ChatMessageProto::ResultCode)},
   { 8, -1, -1, sizeof(::ChatMessageProto::chatMsg)},
-  { 18, -1, -1, sizeof(::ChatMessageProto::addMsgRequest)},
-  { 25, -1, -1, sizeof(::ChatMessageProto::addMsgResponse)},
-  { 33, -1, -1, sizeof(::ChatMessageProto::delMsgRequest)},
-  { 40, -1, -1, sizeof(::ChatMessageProto::delMsgResponse)},
-  { 48, -1, -1, sizeof(::ChatMessageProto::queryMsgRequest)},
-  { 55, -1, -1, sizeof(::ChatMessageProto::queryMsgResponse)},
-  { 64, -1, -1, sizeof(::ChatMessageProto::groupChatMsg)},
-  { 74, -1, -1, sizeof(::ChatMessageProto::addGroupMsgRequest)},
-  { 81, -1, -1, sizeof(::ChatMessageProto::addGroupMsgResponse)},
-  { 89, -1, -1, sizeof(::ChatMessageProto::delGroupMsgRequest)},
-  { 96, -1, -1, sizeof(::ChatMessageProto::delGroupMsgResponse)},
-  { 104, -1, -1, sizeof(::ChatMessageProto::queryGroupMsgRequest)},
-  { 111, -1, -1, sizeof(::ChatMessageProto::queryGroupMsgResponse)},
-  { 120, -1, -1, sizeof(::ChatMessageProto::departChatMsg)},
-  { 130, -1, -1, sizeof(::ChatMessageProto::addDepartMsgRequest)},
-  { 137, -1, -1, sizeof(::ChatMessageProto::addDepartMsgResponse)},
-  { 145, -1, -1, sizeof(::ChatMessageProto::delDepartMsgRequest)},
-  { 152, -1, -1, sizeof(::ChatMessageProto::delDepartMsgResponse)},
-  { 160, -1, -1, sizeof(::ChatMessageProto::queryDepartMsgRequest)},
-  { 167, -1, -1, sizeof(::ChatMessageProto::queryDepartMsgResponse)},
-  { 176, -1, -1, sizeof(::ChatMessageProto::queryOfflineMsgRequest)},
-  { 183, -1, -1, sizeof(::ChatMessageProto::queryOfflineMsgResponse)},
+  { 19, -1, -1, sizeof(::ChatMessageProto::addMsgRequest)},
+  { 26, -1, -1, sizeof(::ChatMessageProto::addMsgResponse)},
+  { 34, -1, -1, sizeof(::ChatMessageProto::delMsgRequest)},
+  { 41, -1, -1, sizeof(::ChatMessageProto::delMsgResponse)},
+  { 49, -1, -1, sizeof(::ChatMessageProto::queryMsgRequest)},
+  { 56, -1, -1, sizeof(::ChatMessageProto::queryMsgResponse)},
+  { 65, -1, -1, sizeof(::ChatMessageProto::groupChatMsg)},
+  { 75, -1, -1, sizeof(::ChatMessageProto::addGroupMsgRequest)},
+  { 82, -1, -1, sizeof(::ChatMessageProto::addGroupMsgResponse)},
+  { 90, -1, -1, sizeof(::ChatMessageProto::delGroupMsgRequest)},
+  { 97, -1, -1, sizeof(::ChatMessageProto::delGroupMsgResponse)},
+  { 105, -1, -1, sizeof(::ChatMessageProto::queryGroupMsgRequest)},
+  { 112, -1, -1, sizeof(::ChatMessageProto::queryGroupMsgResponse)},
+  { 121, -1, -1, sizeof(::ChatMessageProto::departChatMsg)},
+  { 131, -1, -1, sizeof(::ChatMessageProto::addDepartMsgRequest)},
+  { 138, -1, -1, sizeof(::ChatMessageProto::addDepartMsgResponse)},
+  { 146, -1, -1, sizeof(::ChatMessageProto::delDepartMsgRequest)},
+  { 153, -1, -1, sizeof(::ChatMessageProto::delDepartMsgResponse)},
+  { 161, -1, -1, sizeof(::ChatMessageProto::queryDepartMsgRequest)},
+  { 168, -1, -1, sizeof(::ChatMessageProto::queryDepartMsgResponse)},
+  { 177, -1, -1, sizeof(::ChatMessageProto::queryOfflineMsgRequest)},
+  { 184, -1, -1, sizeof(::ChatMessageProto::queryOfflineMsgResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -585,82 +587,82 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_ChatMsg_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\rChatMsg.proto\022\020ChatMessageProto\"-\n\nRes"
   "ultCode\022\017\n\007errcode\030\001 \001(\005\022\016\n\006errmsg\030\002 \001(\014"
-  "\"M\n\007chatMsg\022\r\n\005msgid\030\001 \001(\005\022\020\n\010recvname\030\002"
-  " \001(\014\022\020\n\010sendname\030\003 \001(\014\022\017\n\007message\030\004 \001(\014\""
-  "7\n\raddMsgRequest\022&\n\003Msg\030\001 \001(\0132\031.ChatMess"
-  "ageProto.chatMsg\"O\n\016addMsgResponse\022,\n\006re"
-  "sult\030\001 \001(\0132\034.ChatMessageProto.ResultCode"
-  "\022\017\n\007success\030\002 \001(\010\"7\n\rdelMsgRequest\022&\n\003Ms"
-  "g\030\001 \001(\0132\031.ChatMessageProto.chatMsg\"O\n\016de"
-  "lMsgResponse\022,\n\006result\030\001 \001(\0132\034.ChatMessa"
-  "geProto.ResultCode\022\017\n\007success\030\002 \001(\010\"#\n\017q"
-  "ueryMsgRequest\022\020\n\010recvname\030\001 \001(\014\"y\n\020quer"
-  "yMsgResponse\022&\n\003Msg\030\001 \003(\0132\031.ChatMessageP"
-  "roto.chatMsg\022,\n\006result\030\002 \001(\0132\034.ChatMessa"
-  "geProto.ResultCode\022\017\n\007success\030\003 \001(\010\"S\n\014g"
-  "roupChatMsg\022\r\n\005msgid\030\001 \001(\005\022\021\n\tgroupname\030"
+  "\"]\n\007chatMsg\022\r\n\005msgid\030\001 \001(\005\022\020\n\010recvname\030\002"
+  " \001(\014\022\020\n\010sendname\030\003 \001(\014\022\017\n\007message\030\004 \001(\014\022"
+  "\016\n\006isRead\030\005 \001(\014\"7\n\raddMsgRequest\022&\n\003Msg\030"
+  "\001 \001(\0132\031.ChatMessageProto.chatMsg\"O\n\016addM"
+  "sgResponse\022,\n\006result\030\001 \001(\0132\034.ChatMessage"
+  "Proto.ResultCode\022\017\n\007success\030\002 \001(\010\"7\n\rdel"
+  "MsgRequest\022&\n\003Msg\030\001 \001(\0132\031.ChatMessagePro"
+  "to.chatMsg\"O\n\016delMsgResponse\022,\n\006result\030\001"
+  " \001(\0132\034.ChatMessageProto.ResultCode\022\017\n\007su"
+  "ccess\030\002 \001(\010\"#\n\017queryMsgRequest\022\020\n\010recvna"
+  "me\030\001 \001(\014\"y\n\020queryMsgResponse\022&\n\003Msg\030\001 \003("
+  "\0132\031.ChatMessageProto.chatMsg\022,\n\006result\030\002"
+  " \001(\0132\034.ChatMessageProto.ResultCode\022\017\n\007su"
+  "ccess\030\003 \001(\010\"S\n\014groupChatMsg\022\r\n\005msgid\030\001 \001"
+  "(\005\022\021\n\tgroupname\030\002 \001(\014\022\020\n\010sendname\030\003 \001(\014\022"
+  "\017\n\007message\030\004 \001(\014\"F\n\022addGroupMsgRequest\0220"
+  "\n\010GroupMsg\030\001 \001(\0132\036.ChatMessageProto.grou"
+  "pChatMsg\"T\n\023addGroupMsgResponse\022,\n\006resul"
+  "t\030\001 \001(\0132\034.ChatMessageProto.ResultCode\022\017\n"
+  "\007success\030\002 \001(\010\"F\n\022delGroupMsgRequest\0220\n\010"
+  "GroupMsg\030\001 \001(\0132\036.ChatMessageProto.groupC"
+  "hatMsg\"T\n\023delGroupMsgResponse\022,\n\006result\030"
+  "\001 \001(\0132\034.ChatMessageProto.ResultCode\022\017\n\007s"
+  "uccess\030\002 \001(\010\"(\n\024queryGroupMsgRequest\022\020\n\010"
+  "username\030\001 \001(\014\"\210\001\n\025queryGroupMsgResponse"
+  "\0220\n\010GroupMsg\030\001 \003(\0132\036.ChatMessageProto.gr"
+  "oupChatMsg\022,\n\006result\030\002 \001(\0132\034.ChatMessage"
+  "Proto.ResultCode\022\017\n\007success\030\003 \001(\010\"U\n\rdep"
+  "artChatMsg\022\r\n\005msgid\030\001 \001(\005\022\022\n\ndepartname\030"
   "\002 \001(\014\022\020\n\010sendname\030\003 \001(\014\022\017\n\007message\030\004 \001(\014"
-  "\"F\n\022addGroupMsgRequest\0220\n\010GroupMsg\030\001 \001(\013"
-  "2\036.ChatMessageProto.groupChatMsg\"T\n\023addG"
-  "roupMsgResponse\022,\n\006result\030\001 \001(\0132\034.ChatMe"
-  "ssageProto.ResultCode\022\017\n\007success\030\002 \001(\010\"F"
-  "\n\022delGroupMsgRequest\0220\n\010GroupMsg\030\001 \001(\0132\036"
-  ".ChatMessageProto.groupChatMsg\"T\n\023delGro"
-  "upMsgResponse\022,\n\006result\030\001 \001(\0132\034.ChatMess"
-  "ageProto.ResultCode\022\017\n\007success\030\002 \001(\010\"(\n\024"
-  "queryGroupMsgRequest\022\020\n\010username\030\001 \001(\014\"\210"
-  "\001\n\025queryGroupMsgResponse\0220\n\010GroupMsg\030\001 \003"
-  "(\0132\036.ChatMessageProto.groupChatMsg\022,\n\006re"
-  "sult\030\002 \001(\0132\034.ChatMessageProto.ResultCode"
-  "\022\017\n\007success\030\003 \001(\010\"U\n\rdepartChatMsg\022\r\n\005ms"
-  "gid\030\001 \001(\005\022\022\n\ndepartname\030\002 \001(\014\022\020\n\010sendnam"
-  "e\030\003 \001(\014\022\017\n\007message\030\004 \001(\014\"I\n\023addDepartMsg"
-  "Request\0222\n\tDepartMsg\030\001 \001(\0132\037.ChatMessage"
-  "Proto.departChatMsg\"U\n\024addDepartMsgRespo"
-  "nse\022,\n\006result\030\001 \001(\0132\034.ChatMessageProto.R"
-  "esultCode\022\017\n\007success\030\002 \001(\010\"I\n\023delDepartM"
-  "sgRequest\0222\n\tDepartMsg\030\001 \001(\0132\037.ChatMessa"
-  "geProto.departChatMsg\"U\n\024delDepartMsgRes"
-  "ponse\022,\n\006result\030\001 \001(\0132\034.ChatMessageProto"
-  ".ResultCode\022\017\n\007success\030\002 \001(\010\")\n\025queryDep"
-  "artMsgRequest\022\020\n\010username\030\001 \001(\014\"\213\001\n\026quer"
-  "yDepartMsgResponse\0222\n\tDepartMsg\030\001 \003(\0132\037."
-  "ChatMessageProto.departChatMsg\022,\n\006result"
-  "\030\002 \001(\0132\034.ChatMessageProto.ResultCode\022\017\n\007"
-  "success\030\003 \001(\010\"*\n\026queryOfflineMsgRequest\022"
-  "\020\n\010recvname\030\001 \001(\014\"\200\001\n\027queryOfflineMsgRes"
-  "ponse\022&\n\003Msg\030\001 \003(\0132\031.ChatMessageProto.ch"
-  "atMsg\022,\n\006result\030\002 \001(\0132\034.ChatMessageProto"
-  ".ResultCode\022\017\n\007success\030\003 \001(\0102\302\007\n\nchatMsg"
-  "Rpc\022O\n\nAddChatMsg\022\037.ChatMessageProto.add"
-  "MsgRequest\032 .ChatMessageProto.addMsgResp"
-  "onse\022O\n\nDelChatMsg\022\037.ChatMessageProto.de"
-  "lMsgRequest\032 .ChatMessageProto.delMsgRes"
-  "ponse\022U\n\014QueryChatMsg\022!.ChatMessageProto"
-  ".queryMsgRequest\032\".ChatMessageProto.quer"
-  "yMsgResponse\022f\n\017QueryOfflineMsg\022(.ChatMe"
-  "ssageProto.queryOfflineMsgRequest\032).Chat"
-  "MessageProto.queryOfflineMsgResponse\022^\n\017"
-  "AddGroupChatMsg\022$.ChatMessageProto.addGr"
-  "oupMsgRequest\032%.ChatMessageProto.addGrou"
-  "pMsgResponse\022^\n\017DelGroupChatMsg\022$.ChatMe"
-  "ssageProto.delGroupMsgRequest\032%.ChatMess"
-  "ageProto.delGroupMsgResponse\022d\n\021QueryGro"
-  "upChatMsg\022&.ChatMessageProto.queryGroupM"
-  "sgRequest\032\'.ChatMessageProto.queryGroupM"
-  "sgResponse\022a\n\020AddDepartChatMsg\022%.ChatMes"
-  "sageProto.addDepartMsgRequest\032&.ChatMess"
-  "ageProto.addDepartMsgResponse\022a\n\020DelDepa"
-  "rtChatMsg\022%.ChatMessageProto.delDepartMs"
-  "gRequest\032&.ChatMessageProto.delDepartMsg"
-  "Response\022g\n\022QueryDepartChatMsg\022\'.ChatMes"
-  "sageProto.queryDepartMsgRequest\032(.ChatMe"
-  "ssageProto.queryDepartMsgResponseB\003\200\001\001b\006"
-  "proto3"
+  "\"I\n\023addDepartMsgRequest\0222\n\tDepartMsg\030\001 \001"
+  "(\0132\037.ChatMessageProto.departChatMsg\"U\n\024a"
+  "ddDepartMsgResponse\022,\n\006result\030\001 \001(\0132\034.Ch"
+  "atMessageProto.ResultCode\022\017\n\007success\030\002 \001"
+  "(\010\"I\n\023delDepartMsgRequest\0222\n\tDepartMsg\030\001"
+  " \001(\0132\037.ChatMessageProto.departChatMsg\"U\n"
+  "\024delDepartMsgResponse\022,\n\006result\030\001 \001(\0132\034."
+  "ChatMessageProto.ResultCode\022\017\n\007success\030\002"
+  " \001(\010\")\n\025queryDepartMsgRequest\022\020\n\010usernam"
+  "e\030\001 \001(\014\"\213\001\n\026queryDepartMsgResponse\0222\n\tDe"
+  "partMsg\030\001 \003(\0132\037.ChatMessageProto.departC"
+  "hatMsg\022,\n\006result\030\002 \001(\0132\034.ChatMessageProt"
+  "o.ResultCode\022\017\n\007success\030\003 \001(\010\"*\n\026queryOf"
+  "flineMsgRequest\022\020\n\010recvname\030\001 \001(\014\"\200\001\n\027qu"
+  "eryOfflineMsgResponse\022&\n\003Msg\030\001 \003(\0132\031.Cha"
+  "tMessageProto.chatMsg\022,\n\006result\030\002 \001(\0132\034."
+  "ChatMessageProto.ResultCode\022\017\n\007success\030\003"
+  " \001(\0102\302\007\n\nchatMsgRpc\022O\n\nAddChatMsg\022\037.Chat"
+  "MessageProto.addMsgRequest\032 .ChatMessage"
+  "Proto.addMsgResponse\022O\n\nDelChatMsg\022\037.Cha"
+  "tMessageProto.delMsgRequest\032 .ChatMessag"
+  "eProto.delMsgResponse\022U\n\014QueryChatMsg\022!."
+  "ChatMessageProto.queryMsgRequest\032\".ChatM"
+  "essageProto.queryMsgResponse\022f\n\017QueryOff"
+  "lineMsg\022(.ChatMessageProto.queryOfflineM"
+  "sgRequest\032).ChatMessageProto.queryOfflin"
+  "eMsgResponse\022^\n\017AddGroupChatMsg\022$.ChatMe"
+  "ssageProto.addGroupMsgRequest\032%.ChatMess"
+  "ageProto.addGroupMsgResponse\022^\n\017DelGroup"
+  "ChatMsg\022$.ChatMessageProto.delGroupMsgRe"
+  "quest\032%.ChatMessageProto.delGroupMsgResp"
+  "onse\022d\n\021QueryGroupChatMsg\022&.ChatMessageP"
+  "roto.queryGroupMsgRequest\032\'.ChatMessageP"
+  "roto.queryGroupMsgResponse\022a\n\020AddDepartC"
+  "hatMsg\022%.ChatMessageProto.addDepartMsgRe"
+  "quest\032&.ChatMessageProto.addDepartMsgRes"
+  "ponse\022a\n\020DelDepartChatMsg\022%.ChatMessageP"
+  "roto.delDepartMsgRequest\032&.ChatMessagePr"
+  "oto.delDepartMsgResponse\022g\n\022QueryDepartC"
+  "hatMsg\022\'.ChatMessageProto.queryDepartMsg"
+  "Request\032(.ChatMessageProto.queryDepartMs"
+  "gResponseB\003\200\001\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ChatMsg_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ChatMsg_2eproto = {
-  false, false, 2926, descriptor_table_protodef_ChatMsg_2eproto, "ChatMsg.proto", 
+  false, false, 2942, descriptor_table_protodef_ChatMsg_2eproto, "ChatMsg.proto", 
   &descriptor_table_ChatMsg_2eproto_once, nullptr, 0, 24,
   schemas, file_default_instances, TableStruct_ChatMsg_2eproto::offsets,
   file_level_metadata_ChatMsg_2eproto, file_level_enum_descriptors_ChatMsg_2eproto, file_level_service_descriptors_ChatMsg_2eproto,
@@ -939,6 +941,14 @@ chatMsg::chatMsg(const chatMsg& from)
     message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
       GetArenaForAllocation());
   }
+  isread_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    isread_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_isread().empty()) {
+    isread_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_isread(), 
+      GetArenaForAllocation());
+  }
   msgid_ = from.msgid_;
   // @@protoc_insertion_point(copy_constructor:ChatMessageProto.chatMsg)
 }
@@ -956,6 +966,10 @@ message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+isread_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  isread_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 msgid_ = 0;
 }
 
@@ -971,6 +985,7 @@ inline void chatMsg::SharedDtor() {
   recvname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   sendname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  isread_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void chatMsg::ArenaDtor(void* object) {
@@ -992,6 +1007,7 @@ void chatMsg::Clear() {
   recvname_.ClearToEmpty();
   sendname_.ClearToEmpty();
   message_.ClearToEmpty();
+  isread_.ClearToEmpty();
   msgid_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -1032,6 +1048,15 @@ const char* chatMsg::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes isRead = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_isread();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -1090,6 +1115,12 @@ uint8_t* chatMsg::_InternalSerialize(
         4, this->_internal_message(), target);
   }
 
+  // bytes isRead = 5;
+  if (!this->_internal_isread().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        5, this->_internal_isread(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1125,6 +1156,13 @@ size_t chatMsg::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_message());
+  }
+
+  // bytes isRead = 5;
+  if (!this->_internal_isread().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_isread());
   }
 
   // int32 msgid = 1;
@@ -1163,6 +1201,9 @@ void chatMsg::MergeFrom(const chatMsg& from) {
   if (!from._internal_message().empty()) {
     _internal_set_message(from._internal_message());
   }
+  if (!from._internal_isread().empty()) {
+    _internal_set_isread(from._internal_isread());
+  }
   if (from._internal_msgid() != 0) {
     _internal_set_msgid(from._internal_msgid());
   }
@@ -1199,6 +1240,11 @@ void chatMsg::InternalSwap(chatMsg* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &message_, lhs_arena,
       &other->message_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &isread_, lhs_arena,
+      &other->isread_, rhs_arena
   );
   swap(msgid_, other->msgid_);
 }

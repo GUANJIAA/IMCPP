@@ -16,6 +16,7 @@ message chatMsg
     bytes recvname = 2;
     bytes sendname = 3;
     bytes message = 4;
+    bytes isRead = 5;
 }
 
 message addMsgRequest

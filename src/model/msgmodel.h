@@ -70,7 +70,7 @@ class ChatMsgModel : public ChatMessageProto::chatMsgRpc
 {
 public:
     bool addChatMsg(std::string recvName, std::string sendName,
-                    std::string message);
+                    std::string message, std::string isRead);
     bool delChatMsg(int msgId, std::string recvName,
                     std::string sendName, std::string message);
     std::vector<Msg> queryChatMsg(std::string recvName);

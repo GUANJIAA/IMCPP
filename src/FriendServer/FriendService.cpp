@@ -1,7 +1,7 @@
 #include "FriendService.h"
 
 bool FriendService::AddFriend(std::string adminName, std::string peerName,
-                             FriendProto::ResultCode *code)
+                              FriendProto::ResultCode *code)
 {
     bool result = friendmodel.insert(adminName, peerName);
     if (result)
@@ -18,8 +18,8 @@ bool FriendService::AddFriend(std::string adminName, std::string peerName,
 }
 
 bool FriendService::GetFriend(std::string adminName,
-                             FriendProto::ResultCode *code,
-                             std::vector<FriendProto::AdminInfo> &friends)
+                              FriendProto::ResultCode *code,
+                              std::vector<FriendProto::AdminInfo> &friends)
 {
     bool result = false;
     std::vector<Admin> vec = friendmodel.query(adminName);
@@ -46,7 +46,7 @@ bool FriendService::GetFriend(std::string adminName,
 }
 
 bool FriendService::DelFriend(std::string adminName, std::string peerName,
-                             FriendProto::ResultCode *code)
+                              FriendProto::ResultCode *code)
 {
     bool result = friendmodel.removal(adminName, peerName);
     if (result)
@@ -63,9 +63,9 @@ bool FriendService::DelFriend(std::string adminName, std::string peerName,
 }
 
 void FriendService::AddFriend(::google::protobuf::RpcController *controller,
-                             const ::FriendProto::AddFriendRequest *request,
-                             ::FriendProto::AddFriendResponse *response,
-                             ::google::protobuf::Closure *done)
+                              const ::FriendProto::AddFriendRequest *request,
+                              ::FriendProto::AddFriendResponse *response,
+                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
     std::string peerName = request->peername();
@@ -74,14 +74,13 @@ void FriendService::AddFriend(::google::protobuf::RpcController *controller,
     bool result = AddFriend(adminName, peerName, code);
 
     response->set_success(result);
-
     done->Run();
 }
 
 void FriendService::GetFriend(::google::protobuf::RpcController *controller,
-                             const ::FriendProto::GetFriendRequest *request,
-                             ::FriendProto::GetFriendResponse *response,
-                             ::google::protobuf::Closure *done)
+                              const ::FriendProto::GetFriendRequest *request,
+                              ::FriendProto::GetFriendResponse *response,
+                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
 
@@ -103,9 +102,9 @@ void FriendService::GetFriend(::google::protobuf::RpcController *controller,
 }
 
 void FriendService::DelFriend(::google::protobuf::RpcController *controller,
-                             const ::FriendProto::DelFriendRequest *request,
-                             ::FriendProto::DelFriendResponse *response,
-                             ::google::protobuf::Closure *done)
+                              const ::FriendProto::DelFriendRequest *request,
+                              ::FriendProto::DelFriendResponse *response,
+                              ::google::protobuf::Closure *done)
 {
     std::string adminName = request->adminname();
     std::string peerName = request->peername();

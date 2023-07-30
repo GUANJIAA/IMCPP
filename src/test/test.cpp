@@ -18,23 +18,29 @@
 
 enum EnMsgType
 {
-    NEW_CONNECTION = 1, // 新连接建立
-    ONE_CHAT_MSG,       // 私聊消息
-    DEL_CHAT_MSG,       // 删除聊天消息
-    QUERY_CHAT_MSG,     // 查询聊天消息
-    ADD_FRIEND_MSG,     // 添加好友
-    DEL_FRIEND_MSG,     // 删除好友
-    QUERY_FRIEND_MSG,   // 查询好友列表
-    GROUP_CHAT_MSG,     // 群组聊天消息
-    CREATE_GROUP_MSG,   // 创建群组
-    ADD_GROUP_MSG,      // 添加群组
-    DEL_GROUP_MSG,      // 删除群组
-    QUIT_GROUP_MSG,     // 退出群组
-    DEPART_CHAT_MSG,    // 部门聊天消息
-    CREATE_DEPART_MSG,  // 创建部门
-    ADD_DEPART_MSG,     // 加入部门
-    DEL_DEPART_MSG,     // 删除部门
-    QUIT_DEPART_MSG,    // 退出部门
+    NEW_CONNECTION = 1,     // 新连接建立
+    QUERY_ADMININFO,        // 查询用户详细信息
+    UPDATE_ADMININFO,       // 更新用户详细信息
+    ONE_CHAT_MSG,           // 私聊消息
+    DEL_CHAT_MSG,           // 删除聊天消息
+    QUERY_CHAT_MSG,         // 查询聊天消息
+    QUERY_OFFLINE_CHAT_MSG, // 查询离线聊天消息
+    ADD_FRIEND_MSG,         // 添加好友
+    DEL_FRIEND_MSG,         // 删除好友
+    QUERY_FRIEND_MSG,       // 查询好友列表
+    GROUP_CHAT_MSG,         // 群组聊天消息
+    CREATE_GROUP_MSG,       // 创建群组
+    ADD_GROUP_MSG,          // 添加群组
+    QUERY_GROUP_MSG,        // 查询所有群组及所有群友
+    QUERY_GROUP_USERS_MSG,  // 查询所在群所有群友
+    DEL_GROUP_MSG,          // 删除群组
+    QUIT_GROUP_MSG,         // 退出群组
+    DEPART_CHAT_MSG,        // 部门聊天消息
+    CREATE_DEPART_MSG,      // 创建部门
+    ADD_DEPART_MSG,         // 加入部门
+    QUERY_DEPART_USERS_MSG, // 查询所在部门的所有同事
+    DEL_DEPART_MSG,         // 删除部门
+    QUIT_DEPART_MSG,        // 退出部门
 };
 
 void readTaskHandler(int clientfd)
@@ -59,16 +65,122 @@ void readTaskHandler(int clientfd)
                       << data["sendName"].asString() << "]"
                       << data["message"].asString() << std::endl;
         }
-
-        sleep(10);
+        else if (QUERY_CHAT_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
+        else if (NEW_CONNECTION == msgtype)
+        {
+            std::cout << data["errmsg"].asString() << std::endl;
+            std::cout << "[" << data["userName"].asString() << "]-["
+                      << data["userPwd"].asString() << "]-"
+                      << data["userEmail"].asString() << "-"
+                      << data["userPhone"].asString() << std::endl;
+        }
+        else if (DEL_CHAT_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (ADD_FRIEND_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (DEL_FRIEND_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (QUERY_FRIEND_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-"
+                      << data["Friend"][0].asString() << std::endl;
+        }
+        else if (CREATE_GROUP_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (ADD_GROUP_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (QUERY_GROUP_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
+        else if (QUERY_GROUP_USERS_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
+        else if (CREATE_DEPART_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (ADD_DEPART_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (QUERY_DEPART_USERS_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
+        else if (QUERY_ADMININFO == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+        }
+        else if (UPDATE_ADMININFO == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
+        else if (QUERY_OFFLINE_CHAT_MSG == msgtype)
+        {
+            std::cout << data["errcode"].asInt() << "-"
+                      << data["errmsg"].asString() << "-" << std::endl;
+            std::cout << buffer << std::endl;
+        }
     }
 }
 
-int main(int argc, char **agrv)
+int main(int argc, char **argv)
 {
-    std::string ip = "127.0.0.1";
+    MprpcApplication::Init(argc, argv);
+    std::string ip = "192.168.61.100";
     uint16_t port = 9000;
 
+    // {
+    //     LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
+    //     LoginProto::LoginRequest request;
+    //     request.set_name("test");
+    //     request.set_pwd("123456");
+    //     LoginProto::LoginResponse response;
+    //     stub.Login(nullptr, &request, &response, nullptr);
+    //     if (0 == response.result().errcode())
+    //     {
+    //         std::cout << "rpc login response success: "
+    //                   << response.success() << std::endl;
+    //         ip = response.msgserverip();
+    //         port = atoi(response.msgserverport().c_str());
+
+    //         std::cout << ip << ":" << port << std::endl;
+    //     }
+    // }
     int clientfd = socket(AF_INET, SOCK_STREAM, 0);
     if (-1 == clientfd)
     {
@@ -93,26 +205,208 @@ int main(int argc, char **agrv)
     std::thread readTask(readTaskHandler, clientfd);
     readTask.detach();
 
-    while (1)
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = NEW_CONNECTION;
+    //     data["userName"] = "test";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // Json::Value data;
+    // data["userName"] = "test_1";
+    // data["peerName"] = "test_2";
+    // data["msgid"] = ADD_FRIEND_MSG;
+    // {
+    //     std::string str = Json::FastWriter().write(data);
+
+    //     // std::cout << "str: " << str << std::endl;
+
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // data["msgid"] = QUERY_FRIEND_MSG;
+    // {
+    //     std::string str = Json::FastWriter().write(data);
+
+    //     // std::cout << "str: " << str << std::endl;
+
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // data["msgid"] = DEL_FRIEND_MSG;
+    // {
+    //     std::string str = Json::FastWriter().write(data);
+
+    //     // std::cout << "str: " << str << std::endl;
+
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+    //     }
+    // }
+
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = CREATE_GROUP_MSG;
+    //     data["groupName"] = "test_2";
+    //     data["groupDesc"] = "test_code";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send CREATE_GROUP_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = ADD_GROUP_MSG;
+    //     data["groupName"] = "test_2";
+    //     data["userName"] = "test_2";
+    //     data["userRole"] = "normal";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ADD_GROUP_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = QUERY_GROUP_MSG;
+    //     data["userName"] = "test_3";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send QUERY_GROUP_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = QUERY_GROUP_USERS_MSG;
+    //     data["groupName"] = "C++";
+    //     data["userName"] = "test_3";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send QUERY_GROUP_USERS_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = CREATE_DEPART_MSG;
+    //     data["departName"] = "C++_TEST";
+    //     data["userName"] = "test_3";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send CREATE_DEPART_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = ADD_DEPART_MSG;
+    //     data["departName"] = "C++_TEST";
+    //     data["userName"] = "test_2";
+    //     data["userRole"] = "intendant";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send ADD_DEPART_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = QUERY_DEPART_USERS_MSG;
+    //     data["departName"] = "C++_TEST";
+    //     data["userName"] = "test_3";
+    //     data["userRole"] = "intendant";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send QUERY_DEPART_USERS_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = QUERY_ADMININFO;
+    //     data["userName"] = "test_2";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send QUERY_ADMININFO error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = UPDATE_ADMININFO;
+    //     data["userName"] = "test_2";
+    //     data["userPwd"] = "123456";
+    //     data["userEmail"] = "@qq.com";
+    //     data["userPhone"] = "xxxxxxxxxxxx";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send UPDATE_ADMININFO error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
     {
         Json::Value data;
-        data["msgid"] = ONE_CHAT_MSG;
+        data["msgid"] = QUERY_CHAT_MSG;
         data["recvName"] = "test_1";
-        data["sendName"] = "test_1";
-        data["message"] = "C++_test_code_message";
-        data["isRead"] = "false";
         std::string str = Json::FastWriter().write(data);
-
-        // std::cout << "str: " << str << std::endl;
-
         int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
         if (len == -1)
         {
-            std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+            std::cerr << "send QUERY_CHAT_MSG error:" << str << std::endl;
         }
-
-        sleep(10);
     }
+    sleep(10);
+    // std::cout << "-------------------" << std::endl;
+    // {
+    //     Json::Value data;
+    //     data["msgid"] = QUERY_OFFLINE_CHAT_MSG;
+    //     data["recvName"] = "test_2";
+    //     std::string str = Json::FastWriter().write(data);
+    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+    //     if (len == -1)
+    //     {
+    //         std::cerr << "send QUERY_OFFLINE_CHAT_MSG error:" << str << std::endl;
+    //     }
+    // }
+    // sleep(10);
 }
 
 // int test_Login(int argc, char **argv)

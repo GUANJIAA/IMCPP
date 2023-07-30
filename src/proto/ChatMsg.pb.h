@@ -445,6 +445,7 @@ class chatMsg final :
     kRecvnameFieldNumber = 2,
     kSendnameFieldNumber = 3,
     kMessageFieldNumber = 4,
+    kIsReadFieldNumber = 5,
     kMsgidFieldNumber = 1,
   };
   // bytes recvname = 2;
@@ -489,6 +490,20 @@ class chatMsg final :
   std::string* _internal_mutable_message();
   public:
 
+  // bytes isRead = 5;
+  void clear_isread();
+  const std::string& isread() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_isread(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_isread();
+  PROTOBUF_NODISCARD std::string* release_isread();
+  void set_allocated_isread(std::string* isread);
+  private:
+  const std::string& _internal_isread() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_isread(const std::string& value);
+  std::string* _internal_mutable_isread();
+  public:
+
   // int32 msgid = 1;
   void clear_msgid();
   int32_t msgid() const;
@@ -508,6 +523,7 @@ class chatMsg final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr recvname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sendname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr isread_;
   int32_t msgid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ChatMsg_2eproto;
@@ -4562,6 +4578,57 @@ inline void chatMsg::set_allocated_message(std::string* message) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:ChatMessageProto.chatMsg.message)
+}
+
+// bytes isRead = 5;
+inline void chatMsg::clear_isread() {
+  isread_.ClearToEmpty();
+}
+inline const std::string& chatMsg::isread() const {
+  // @@protoc_insertion_point(field_get:ChatMessageProto.chatMsg.isRead)
+  return _internal_isread();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void chatMsg::set_isread(ArgT0&& arg0, ArgT... args) {
+ 
+ isread_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChatMessageProto.chatMsg.isRead)
+}
+inline std::string* chatMsg::mutable_isread() {
+  std::string* _s = _internal_mutable_isread();
+  // @@protoc_insertion_point(field_mutable:ChatMessageProto.chatMsg.isRead)
+  return _s;
+}
+inline const std::string& chatMsg::_internal_isread() const {
+  return isread_.Get();
+}
+inline void chatMsg::_internal_set_isread(const std::string& value) {
+  
+  isread_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* chatMsg::_internal_mutable_isread() {
+  
+  return isread_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* chatMsg::release_isread() {
+  // @@protoc_insertion_point(field_release:ChatMessageProto.chatMsg.isRead)
+  return isread_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void chatMsg::set_allocated_isread(std::string* isread) {
+  if (isread != nullptr) {
+    
+  } else {
+    
+  }
+  isread_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), isread,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (isread_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    isread_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChatMessageProto.chatMsg.isRead)
 }
 
 // -------------------------------------------------------------------

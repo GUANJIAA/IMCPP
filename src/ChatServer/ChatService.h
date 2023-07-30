@@ -13,7 +13,8 @@ class ChatService : public ChatMessageProto::chatMsgRpc
 {
 public:
     bool AddChatMsg(std::string recvName, std::string sendName,
-                    std::string message, ChatMessageProto::ResultCode *code);
+                    std::string message, std::string isRead,
+                    ChatMessageProto::ResultCode *code);
 
     bool DelChatMsg(int msgId, std::string recvName, std::string sendName,
                     std::string message, ChatMessageProto::ResultCode *code);

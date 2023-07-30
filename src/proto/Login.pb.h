@@ -549,9 +549,39 @@ class LoginResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kMsgServerIPFieldNumber = 3,
+    kMsgServerPortFieldNumber = 4,
     kResultFieldNumber = 1,
     kSuccessFieldNumber = 2,
   };
+  // bytes MsgServerIP = 3;
+  void clear_msgserverip();
+  const std::string& msgserverip() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msgserverip(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msgserverip();
+  PROTOBUF_NODISCARD std::string* release_msgserverip();
+  void set_allocated_msgserverip(std::string* msgserverip);
+  private:
+  const std::string& _internal_msgserverip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msgserverip(const std::string& value);
+  std::string* _internal_mutable_msgserverip();
+  public:
+
+  // bytes MsgServerPort = 4;
+  void clear_msgserverport();
+  const std::string& msgserverport() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_msgserverport(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_msgserverport();
+  PROTOBUF_NODISCARD std::string* release_msgserverport();
+  void set_allocated_msgserverport(std::string* msgserverport);
+  private:
+  const std::string& _internal_msgserverport() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msgserverport(const std::string& value);
+  std::string* _internal_mutable_msgserverport();
+  public:
+
   // .LoginProto.ResultCode result = 1;
   bool has_result() const;
   private:
@@ -586,6 +616,8 @@ class LoginResponse final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msgserverip_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msgserverport_;
   ::LoginProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -2032,6 +2064,108 @@ inline void LoginResponse::_internal_set_success(bool value) {
 inline void LoginResponse::set_success(bool value) {
   _internal_set_success(value);
   // @@protoc_insertion_point(field_set:LoginProto.LoginResponse.success)
+}
+
+// bytes MsgServerIP = 3;
+inline void LoginResponse::clear_msgserverip() {
+  msgserverip_.ClearToEmpty();
+}
+inline const std::string& LoginResponse::msgserverip() const {
+  // @@protoc_insertion_point(field_get:LoginProto.LoginResponse.MsgServerIP)
+  return _internal_msgserverip();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LoginResponse::set_msgserverip(ArgT0&& arg0, ArgT... args) {
+ 
+ msgserverip_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:LoginProto.LoginResponse.MsgServerIP)
+}
+inline std::string* LoginResponse::mutable_msgserverip() {
+  std::string* _s = _internal_mutable_msgserverip();
+  // @@protoc_insertion_point(field_mutable:LoginProto.LoginResponse.MsgServerIP)
+  return _s;
+}
+inline const std::string& LoginResponse::_internal_msgserverip() const {
+  return msgserverip_.Get();
+}
+inline void LoginResponse::_internal_set_msgserverip(const std::string& value) {
+  
+  msgserverip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* LoginResponse::_internal_mutable_msgserverip() {
+  
+  return msgserverip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* LoginResponse::release_msgserverip() {
+  // @@protoc_insertion_point(field_release:LoginProto.LoginResponse.MsgServerIP)
+  return msgserverip_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void LoginResponse::set_allocated_msgserverip(std::string* msgserverip) {
+  if (msgserverip != nullptr) {
+    
+  } else {
+    
+  }
+  msgserverip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msgserverip,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (msgserverip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    msgserverip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:LoginProto.LoginResponse.MsgServerIP)
+}
+
+// bytes MsgServerPort = 4;
+inline void LoginResponse::clear_msgserverport() {
+  msgserverport_.ClearToEmpty();
+}
+inline const std::string& LoginResponse::msgserverport() const {
+  // @@protoc_insertion_point(field_get:LoginProto.LoginResponse.MsgServerPort)
+  return _internal_msgserverport();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LoginResponse::set_msgserverport(ArgT0&& arg0, ArgT... args) {
+ 
+ msgserverport_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:LoginProto.LoginResponse.MsgServerPort)
+}
+inline std::string* LoginResponse::mutable_msgserverport() {
+  std::string* _s = _internal_mutable_msgserverport();
+  // @@protoc_insertion_point(field_mutable:LoginProto.LoginResponse.MsgServerPort)
+  return _s;
+}
+inline const std::string& LoginResponse::_internal_msgserverport() const {
+  return msgserverport_.Get();
+}
+inline void LoginResponse::_internal_set_msgserverport(const std::string& value) {
+  
+  msgserverport_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* LoginResponse::_internal_mutable_msgserverport() {
+  
+  return msgserverport_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* LoginResponse::release_msgserverport() {
+  // @@protoc_insertion_point(field_release:LoginProto.LoginResponse.MsgServerPort)
+  return msgserverport_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void LoginResponse::set_allocated_msgserverport(std::string* msgserverport) {
+  if (msgserverport != nullptr) {
+    
+  } else {
+    
+  }
+  msgserverport_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msgserverport,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (msgserverport_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    msgserverport_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:LoginProto.LoginResponse.MsgServerPort)
 }
 
 // -------------------------------------------------------------------

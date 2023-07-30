@@ -3,12 +3,12 @@
 #include "mysqldb.h"
 
 bool ChatMsgModel::addChatMsg(std::string recvName, std::string sendName,
-                              std::string message)
+                              std::string message, std::string isRead)
 {
     char sql[1024] = {0};
     sprintf(sql, "INSERT INTO `chatmessage`(`recvname`,`sendname`,`message`,`isread`) \
-            VALUES ('%s','%s','%s','false')",
-            recvName.c_str(), sendName.c_str(), message.c_str());
+            VALUES ('%s','%s','%s','%s')",
+            recvName.c_str(), sendName.c_str(), message.c_str(), isRead.c_str());
 
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
     bool result = false;

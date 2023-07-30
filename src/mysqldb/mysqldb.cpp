@@ -72,7 +72,7 @@ MYSQL *MySQL::getConnection()
 
 void connection_pool::init()
 {
-    int maxConn = atoi(MprpcApplication::GetInstance().GetConfig().Load("mysqlserverIp").c_str());
+    int maxConn = atoi(MprpcApplication::GetInstance().GetConfig().Load("MysqldbPoolSize").c_str());
     for (int i = 0; i < maxConn; ++i)
     {
         MySQL *con(new MySQL);

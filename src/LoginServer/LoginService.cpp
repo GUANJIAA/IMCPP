@@ -177,6 +177,8 @@ void LoginService::Login(::google::protobuf::RpcController *controller,
     bool login_result = Login(name, pwd, code);
 
     response->set_success(login_result);
+    response->set_msgserverip("192.168.61.100");
+    response->set_msgserverport("9000");
 
     done->Run();
 }
@@ -191,7 +193,6 @@ void LoginService::Logout(::google::protobuf::RpcController *controller,
     LoginProto::ResultCode *code = response->mutable_result();
     bool login_result = Logout(name, code);
     response->set_success(login_result);
-
     done->Run();
 }
 

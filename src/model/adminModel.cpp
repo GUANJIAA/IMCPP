@@ -58,10 +58,10 @@ bool AdminModel::update(Admin &admin)
 {
     char sql[1024] = {0};
 
-    sprintf(sql, "UPDATE `Admin` SET `name` = '%s',`pwd` = '%s',\
-            `phone` = '%s',`email` = '%s' WHERE `id` = %d",
-            admin.getName().c_str(), admin.getPassword().c_str(),
-            admin.getEmail().c_str(), admin.getPhone().c_str(), admin.getId());
+    sprintf(sql, "UPDATE `Admin` SET `pwd` = '%s',\
+            `phone` = '%s',`email` = '%s' WHERE `name` = '%s'",
+            admin.getPassword().c_str(), admin.getEmail().c_str(),
+            admin.getPhone().c_str(), admin.getName().c_str());
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
     bool result = false;
     if (mysql->update(sql))

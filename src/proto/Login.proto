@@ -21,6 +21,8 @@ message LoginResponse
 {
     ResultCode result = 1;
     bool success = 2;
+    bytes MsgServerIP = 3;
+    bytes MsgServerPort = 4;
 }
 
 message LogoutRequest
