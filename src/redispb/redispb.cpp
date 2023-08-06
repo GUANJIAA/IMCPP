@@ -56,22 +56,18 @@ bool RedisPb::subscribeConnect()
     return true;
 }
 
-bool RedisPb::ischannel(std::string &channel)
+bool RedisPb::ischannel(std::string channel)
 {
-    const char *channelName = channel.c_str();
-    redisReply *reply = (redisReply *)redisCommand(_publish_context, "EXISTS %s", channelName);
+    redisReply *reply = (redisReply *)redisCommand(_publish_context, "PUBSUB NUMSUB %s", channel.c_str());
 
-    if (reply->type == REDIS_REPLY_INTEGER)
+    if (reply->element[1]->integer != 0)
     {
-        if (reply->integer == 1)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
-bool RedisPb::publish(std::string &channel, std::string &message)
+bool RedisPb::publish(std::string channel, std::string message)
 {
     redisReply *reply = (redisReply *)redisCommand(_publish_context, "PUBLISH %s %s", channel.c_str(), message.c_str());
     if (nullptr == reply)
@@ -83,9 +79,9 @@ bool RedisPb::publish(std::string &channel, std::string &message)
     return true;
 }
 
-bool RedisPb::subscribe(std::string &channel)
+bool RedisPb::subscribe(std::string channel)
 {
-    if (REDIS_ERR == redisAppendCommand(this->_subsrcibe_context, "SUBSCRIBE %d", channel))
+    if (REDIS_ERR == redisAppendCommand(this->_subsrcibe_context, "SUBSCRIBE %s", channel.c_str()))
     {
         std::cerr << "subscribe command failed!" << std::endl;
         return false;
@@ -104,9 +100,9 @@ bool RedisPb::subscribe(std::string &channel)
     return true;
 }
 
-bool RedisPb::unsubscribe(std::string &channel)
+bool RedisPb::unsubscribe(std::string channel)
 {
-    if (REDIS_ERR == redisAppendCommand(this->_subsrcibe_context, "UNSUBSCRIBE %d", channel))
+    if (REDIS_ERR == redisAppendCommand(this->_subsrcibe_context, "UNSUBSCRIBE %s", channel.c_str()))
     {
         std::cerr << "subscribe command failed!" << std::endl;
         return false;
@@ -131,10 +127,11 @@ void RedisPb::observer_channel_message()
     while (REDIS_OK == redisGetReply(this->_subsrcibe_context, (void **)&reply))
     {
         // 订阅收到的消息是一个带三元素的数组
-        if (reply != nullptr && reply->element[2] != nullptr && reply->element[2]->str != nullptr)
+        if (reply != nullptr && reply->element[1] != nullptr && reply->element[2]->str != nullptr)
         {
             // 给业务层上报通道上发生的消息
             _notify_message_handler(reply->element[1]->str, reply->element[2]->str);
+            // std::cout << reply->element[1]->str << "-" << reply->element[2]->str << std::endl;
         }
         freeReplyObject(reply);
     }

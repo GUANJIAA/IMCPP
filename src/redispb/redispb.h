@@ -16,11 +16,11 @@ public:
     bool publishConnect();
     bool subscribeConnect();
 
-    bool ischannel(std::string &channel);
+    bool ischannel(std::string channel);
 
-    bool publish(std::string &channel, std::string &message);
-    bool subscribe(std::string &channel);
-    bool unsubscribe(std::string &channel);
+    bool publish(std::string channel, std::string message);
+    bool subscribe(std::string channel);
+    bool unsubscribe(std::string channel);
 
     void observer_channel_message();
     void init_notify_handler(std::function<void(std::string, std::string)> fn);

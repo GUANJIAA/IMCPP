@@ -41,6 +41,8 @@ bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCo
     //     }
     // }
     Admin admin = adminmodel.query(name);
+    std::cout<<name<<":"<<pwd<<std::endl;
+    std::cout<<admin.getName()<<":"<<admin.getPassword()<<std::endl;
     if (admin.getName() == name && admin.getPassword() == pwd)
     {
         if (admin.getStatus() == "online")
@@ -178,7 +180,7 @@ void LoginService::Login(::google::protobuf::RpcController *controller,
 
     response->set_success(login_result);
     response->set_msgserverip("192.168.61.100");
-    response->set_msgserverport("9000");
+    response->set_msgserverport("9001");
 
     done->Run();
 }

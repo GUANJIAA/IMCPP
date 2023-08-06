@@ -61,9 +61,9 @@ void readTaskHandler(int clientfd)
         int msgtype = data["msgid"].asInt();
         if (ONE_CHAT_MSG == msgtype)
         {
-            // std::cout << "[" << data["recvName"].asString() << "]-["
-            //           << data["sendName"].asString() << "]"
-            //           << data["message"].asString() << std::endl;
+            std::cout << "[" << data["recvName"].asString() << "]-["
+                      << data["sendName"].asString() << "]"
+                      << data["message"].asString() << std::endl;
             std::cout << buffer << std::endl;
         }
         else if (GROUP_CHAT_MSG == msgtype)
@@ -228,9 +228,8 @@ int main(int argc, char **argv)
 
     {
         Json::Value data;
-        data["msgid"]=1;
-        data["name"]="test_1";
-        data["pwd"]="123456";
+        data["msgid"] = NEW_CONNECTION;
+        data["userName"] = "test_2";
         std::string str = Json::FastWriter().write(data);
         int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
         if (len == -1)
@@ -238,32 +237,20 @@ int main(int argc, char **argv)
             std::cerr << "send NEW_CONNECTION error:" << str << std::endl;
         }
     }
-
-    // {
-    //     Json::Value data;
-    //     data["msgid"] = NEW_CONNECTION;
-    //     data["userName"] = "test_1";
-    //     std::string str = Json::FastWriter().write(data);
-    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
-    //     if (len == -1)
-    //     {
-    //         std::cerr << "send NEW_CONNECTION error:" << str << std::endl;
-    //     }
-    // }
-    sleep(10);
-    // {
-    //     Json::Value data;
-    //     data["msgid"] = ONE_CHAT_MSG;
-    //     data["recvName"] = "test_1";
-    //     data["sendName"] = "test_2";
-    //     data["messgae"] = "C++_test_code";
-    //     std::string str = Json::FastWriter().write(data);
-    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
-    //     if (len == -1)
-    //     {
-    //         std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
-    //     }
-    // }
+    sleep(20);
+    {
+        Json::Value data;
+        data["msgid"] = ONE_CHAT_MSG;
+        data["recvName"] = "test_1";
+        data["sendName"] = "test_2";
+        data["messgae"] = "C++_test_code";
+        std::string str = Json::FastWriter().write(data);
+        int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+        if (len == -1)
+        {
+            std::cerr << "send ONE_CHAT_MSG error:" << str << std::endl;
+        }
+    }
     // sleep(10);
     // {
     //     Json::Value data;
@@ -292,35 +279,35 @@ int main(int argc, char **argv)
     //         std::cerr << "send GROUP_CHAT_MSG error:" << str << std::endl;
     //     }
     // }
-    // sleep(10);
-    // {
-    //     Json::Value data;
-    //     data["msgid"] = GROUP_CHAT_MSG;
-    //     data["groupName"] = "C++";
-    //     data["sendName"] = "test_2";
-    //     data["recvName"].append("test_1");
-    //     std::string str = Json::FastWriter().write(data);
-    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
-    //     if (len == -1)
-    //     {
-    //         std::cerr << "send GROUP_CHAT_MSG error:" << str << std::endl;
-    //     }
-    // }
-    // sleep(10);
-    // {
-    //     Json::Value data;
-    //     data["msgid"] = DEPART_CHAT_MSG;
-    //     data["departName"] = "C++";
-    //     data["sendName"] = "test_2";
-    //     data["recvName"].append("test_1");
-    //     std::string str = Json::FastWriter().write(data);
-    //     int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
-    //     if (len == -1)
-    //     {
-    //         std::cerr << "send DEPART_CHAT_MSG error:" << str << std::endl;
-    //     }
-    // }
-    // sleep(10);
+    sleep(10);
+    {
+        Json::Value data;
+        data["msgid"] = GROUP_CHAT_MSG;
+        data["groupName"] = "C++";
+        data["sendName"] = "test_2";
+        data["recvName"].append("test_1");
+        std::string str = Json::FastWriter().write(data);
+        int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+        if (len == -1)
+        {
+            std::cerr << "send GROUP_CHAT_MSG error:" << str << std::endl;
+        }
+    }
+    sleep(10);
+    {
+        Json::Value data;
+        data["msgid"] = DEPART_CHAT_MSG;
+        data["departName"] = "C++";
+        data["sendName"] = "test_2";
+        data["recvName"].append("test_1");
+        std::string str = Json::FastWriter().write(data);
+        int len = send(clientfd, str.c_str(), strlen(str.c_str()) + 1, 0);
+        if (len == -1)
+        {
+            std::cerr << "send DEPART_CHAT_MSG error:" << str << std::endl;
+        }
+    }
+    sleep(10);
     // {
     //     Json::Value data;
     //     data["msgid"] = DEPART_CHAT_MSG;
@@ -335,8 +322,8 @@ int main(int argc, char **argv)
     //     }
     // }
     // sleep(10);
-    // std::cout << "-------------------------" << std::endl;
-    // sleep(1200);
+    std::cout << "-------------------------" << std::endl;
+    sleep(1200);
     // Json::Value data;
     // data["userName"] = "test_1";
     // data["peerName"] = "test_2";

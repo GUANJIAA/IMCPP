@@ -109,27 +109,29 @@ UNLOCK TABLES;
 # -------------------------------------------
 
 # -------------------------------------------
-DROP TABLE IF EXISTS `offlinemessage`;
+DROP TABLE IF EXISTS `chatmessage`;
  
-CREATE TABLE `offlinemessage`(
+CREATE TABLE `chatmessage`(
 	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
 	`recvname` varchar(50) NOT NULL COMMENT '接收者名称',
 	`sendname` varchar(50) NOT NULL COMMENT '发送者名称',
 	`message` varchar(500) NOT NULL COMMENT '消息',
+	`isread` enum('true','false') DEFAULT 'false' COMMENT '是否为离线消息',
 	PRIMARY KEY (`msgid`)
 ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-LOCK TABLES `offlinemessage` WRITE;
+LOCK TABLES `chatmessage` WRITE;
 
-INSERT INTO `offlinemessage`(`recvname`,`sendname`,`message`) VALUES ('test_2','test_1','test_code');
+INSERT INTO `chatmessage`(`recvname`,`sendname`,`message`,`isread`) VALUES ('test_2','test_1','test_code','true');
 
 UNLOCK TABLES;
+
 # -------------------------------------------
 
 # -------------------------------------------
-DROP TABLE IF EXISTS `offlinegroupmessage`;
+DROP TABLE IF EXISTS `chatgroupmessage`;
 
-CREATE TABLE `offlinegroupmessage`(
+CREATE TABLE `chatgroupmessage`(
 	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
 	`groupname` varchar(50) NOT NULL,
 	`sendname` varchar(50) NOT NULL,
@@ -137,17 +139,17 @@ CREATE TABLE `offlinegroupmessage`(
 	PRIMARY KEY (`msgid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `offlinegroupmessage` WRITE;
+LOCK TABLES `chatgroupmessage` WRITE;
 
-INSERT INTO `offlinegroupmessage`(`groupname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
+INSERT INTO `chatgroupmessage`(`groupname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
 
 UNLOCK TABLES;
 # -------------------------------------------
 
 # -------------------------------------------
-DROP TABLE IF EXISTS `offlinedepartmessage`;
+DROP TABLE IF EXISTS `chatdepartmessage`;
 
-CREATE TABLE `offlinedepartmessage`(
+CREATE TABLE `chatdepartmessage`(
 	`msgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
 	`departname` varchar(50) NOT NULL,
 	`sendname` varchar(50) NOT NULL,
@@ -155,9 +157,9 @@ CREATE TABLE `offlinedepartmessage`(
 	PRIMARY KEY (`msgid`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `offlinedepartmessage` WRITE;
+LOCK TABLES `chatdepartmessage` WRITE;
 
-INSERT INTO `offlinedepartmessage`(`departname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
+INSERT INTO `chatdepartmessage`(`departname`,`sendname`,`message`) VALUES ('test_2','test_2','test_code');
 
 UNLOCK TABLES;
 # -------------------------------------------

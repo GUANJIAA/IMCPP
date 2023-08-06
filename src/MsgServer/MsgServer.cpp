@@ -41,7 +41,7 @@ MsgServer::MsgServer()
     _msgHandlerMap.insert({QUERY_DEPART_USERS_MSG, bind(&MsgServer::queryDepartUser, this, std::placeholders::_1, std::placeholders::_2)});
     // _msgHandlerMap.insert({QUIT_DEPART_MSG, bind(&MsgServer::quitDepart, this, std::placeholders::_1, std::placeholders::_2)});
 
-    if (_redis.subscribeConnect())
+    if (_redis.subscribeConnect() && _redis.publishConnect())
     {
         _redis.init_notify_handler(bind(&MsgServer::handleRedisSubscribeMessage,
                                         this, std::placeholders::_1, std::placeholders::_2));
@@ -55,17 +55,13 @@ void MsgServer::newConnection(const muduo::net::TcpConnectionPtr &tcpconn, Json:
         std::lock_guard<std::mutex> lock(_connMutex);
         _userConnMap.insert({userName, tcpconn});
     }
-    _redis.subscribe(userName);
-
     queryAdminInfo(tcpconn, data);
+    // queryFriend(tcpconn, data);
+    // queryGroup(tcpconn, data);
+    // queryDepartUser(tcpconn, data);
 
-    queryFriend(tcpconn, data);
-    queryGroup(tcpconn, data);
-    queryDepartUser(tcpconn, data);
-
-    /*
-        查询离线消息
-    */
+    // queryOfflineChatMsg(tcpconn, data);
+    _redis.subscribe(userName);
 }
 
 void MsgServer::queryAdminInfo(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
@@ -121,7 +117,10 @@ void MsgServer::oneChat(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value
 {
     std::string recvName = data["recvName"].asString();
 
-    _userConnMap.insert({recvName, tcpconn});
+    // std::cout << std::endl;
+    // std::cout << "------------------" << std::endl;
+    // std::cout << ":" << _redis.ischannel(recvName) << std::endl;
+
     {
         std::lock_guard<std::mutex> lock(_connMutex);
         auto it = _userConnMap.find(recvName);
@@ -149,16 +148,12 @@ void MsgServer::oneChat(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value
     request.mutable_msg()->set_isread(isRead);
     ChatMessageProto::addMsgResponse response;
     stub.AddChatMsg(nullptr, &request, &response, nullptr);
-    if (0 == response.result().errcode())
-    {
-        std::cout << "AddChatMsg success: "
-                  << response.success() << std::endl;
-    }
-    else
-    {
-        std::cout << "AddChatMsg error: "
-                  << response.result().errmsg() << std::endl;
-    }
+    Json::Value result;
+    result["msgid"] = ONE_CHAT_MSG;
+    result["errcode"] = response.result().errcode();
+    result["errmsg"] = response.result().errmsg();
+    std::string str = Json::FastWriter().write(result);
+    tcpconn->send(str);
 }
 
 void MsgServer::delChatMsg(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
@@ -197,6 +192,7 @@ void MsgServer::queryChatMsg(const muduo::net::TcpConnectionPtr &tcpconn, Json::
     result["msgid"] = QUERY_CHAT_MSG;
     result["errcode"] = response.result().errcode();
     result["errmsg"] = response.result().errmsg();
+    int i = 0;
     for (auto &val : response.msg())
     {
         Json::Value chatmsg;
@@ -205,9 +201,20 @@ void MsgServer::queryChatMsg(const muduo::net::TcpConnectionPtr &tcpconn, Json::
         chatmsg["sendName"] = val.sendname();
         chatmsg["message"] = val.message();
         result["chatmsgs"].append(chatmsg);
+        i++;
+        if (i == 5)
+        {
+            std::string str = Json::FastWriter().write(result);
+            tcpconn->send(str);
+            i = 0;
+            result["chatmsgs"].clear();
+        }
     }
-    std::string str = Json::FastWriter().write(result);
-    tcpconn->send(str);
+    if (i != 0)
+    {
+        std::string str = Json::FastWriter().write(result);
+        tcpconn->send(str);
+    }
 }
 
 void MsgServer::queryOfflineChatMsg(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
@@ -295,7 +302,48 @@ void MsgServer::queryFriend(const muduo::net::TcpConnectionPtr &tcpconn, Json::V
     tcpconn->send(str);
 }
 
-void MsgServer::groupChat(const muduo::net::TcpConnectionPtr &tcpcon, Json::Value &data) {}
+void MsgServer::groupChat(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
+{
+    std::string groupName = data["groupName"].asString();
+    std::string sendName = data["sendName"].asString();
+    std::string message = data["message"].asString();
+    for (auto &val : data["recvName"])
+    {
+        Json::Value temp;
+        temp["msgid"] = GROUP_CHAT_MSG;
+        temp["groupName"] = groupName;
+        temp["sendName"] = sendName;
+        temp["message"] = message;
+        temp["recvName"] = val.asString();
+
+        std::lock_guard<std::mutex> lock(_connMutex);
+        std::string userName = val.asString();
+        auto it = _userConnMap.find(userName);
+        std::string str = Json::FastWriter().write(temp);
+        if (it != _userConnMap.end())
+        {
+            it->second->send(str);
+        }
+        else if (_redis.ischannel(val.asString()))
+        {
+            _redis.publish(val.asString(), str);
+        }
+    }
+
+    ChatMessageProto::chatMsgRpc_Stub stub(new MprpcChannel());
+    ChatMessageProto::addGroupMsgRequest request;
+    request.mutable_groupmsg()->set_groupname(groupName);
+    request.mutable_groupmsg()->set_sendname(sendName);
+    request.mutable_groupmsg()->set_message(message);
+    ChatMessageProto::addGroupMsgResponse response;
+    stub.AddGroupChatMsg(nullptr, &request, &response, nullptr);
+    Json::Value result;
+    result["msgid"] = GROUP_CHAT_MSG;
+    result["errcode"] = response.result().errcode();
+    result["errmsg"] = response.result().errmsg();
+    std::string str = Json::FastWriter().write(result);
+    tcpconn->send(str);
+}
 
 void MsgServer::createGroup(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
 {
@@ -398,6 +446,43 @@ void MsgServer::queryGroupUser(const muduo::net::TcpConnectionPtr &tcpconn, Json
 
 void MsgServer::departChat(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
 {
+    std::string departName = data["departName"].asString();
+    std::string sendName = data["sendName"].asString();
+    std::string message = data["message"].asString();
+    for (auto &val : data["recvName"])
+    {
+        Json::Value temp;
+        temp["msgid"] = DEPART_CHAT_MSG;
+        temp["departName"] = departName;
+        temp["sendName"] = sendName;
+        temp["message"] = message;
+        temp["recvName"] = val.asString();
+
+        std::lock_guard<std::mutex> lock(_connMutex);
+        auto it = _userConnMap.find(val.asString());
+        std::string str = Json::FastWriter().write(temp);
+        if (it != _userConnMap.end())
+        {
+            it->second->send(str);
+        }
+        else if (_redis.ischannel(val.asString()))
+        {
+            _redis.publish(val.asString(), str);
+        }
+    }
+    ChatMessageProto::chatMsgRpc_Stub stub(new MprpcChannel());
+    ChatMessageProto::addDepartMsgRequest request;
+    request.mutable_departmsg()->set_departname(departName);
+    request.mutable_departmsg()->set_sendname(sendName);
+    request.mutable_departmsg()->set_message(message);
+    ChatMessageProto::addDepartMsgResponse response;
+    stub.AddDepartChatMsg(nullptr, &request, &response, nullptr);
+    Json::Value result;
+    result["msgid"] = DEPART_CHAT_MSG;
+    result["errcode"] = response.result().errcode();
+    result["errmsg"] = response.result().errmsg();
+    std::string str = Json::FastWriter().write(result);
+    tcpconn->send(str);
 }
 
 void MsgServer::createDepart(const muduo::net::TcpConnectionPtr &tcpconn, Json::Value &data)
@@ -484,6 +569,8 @@ MsgHandler MsgServer::getHandler(int msgid)
 
 void MsgServer::handleRedisSubscribeMessage(std::string name, std::string msg)
 {
+    // std::cout << "----------------------------------" << std::endl;
+    // std::cout << name << "-" << msg << std::endl;
     std::lock_guard<std::mutex> lock(_connMutex);
     auto it = _userConnMap.find(name);
     if (it != _userConnMap.end())
