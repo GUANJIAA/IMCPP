@@ -153,7 +153,7 @@ struct QueryGroupUsersRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT QueryGroupUsersRequestDefaultTypeInternal _QueryGroupUsersRequest_default_instance_;
 constexpr QueryGroupUsersResponse::QueryGroupUsersResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : groupusername_()
+  : groupuser_()
   , result_(nullptr)
   , success_(false){}
 struct QueryGroupUsersResponseDefaultTypeInternal {
@@ -263,7 +263,7 @@ const uint32_t TableStruct_Group_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, result_),
   PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, success_),
-  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, groupusername_),
+  PROTOBUF_FIELD_OFFSET(::GroupProto::QueryGroupUsersResponse, groupuser_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::GroupProto::GroupUser)},
@@ -313,23 +313,23 @@ const char descriptor_table_protodef_Group_2eproto[] PROTOBUF_SECTION_VARIABLE(p
   ".GroupProto.ResultCode\022\017\n\007success\030\002 \001(\010\022"
   "%\n\006groups\030\003 \003(\0132\025.GroupProto.GroupInfo\"="
   "\n\026QueryGroupUsersRequest\022\020\n\010userName\030\001 \001"
-  "(\014\022\021\n\tgroupName\030\002 \001(\014\"i\n\027QueryGroupUsers"
+  "(\014\022\021\n\tgroupName\030\002 \001(\014\"|\n\027QueryGroupUsers"
   "Response\022&\n\006result\030\001 \001(\0132\026.GroupProto.Re"
-  "sultCode\022\017\n\007success\030\002 \001(\010\022\025\n\rgroupUserNa"
-  "me\030\003 \003(\0142\321\002\n\017GroupServiceRpc\022N\n\013CreateGr"
-  "oup\022\036.GroupProto.CreateGroupRequest\032\037.Gr"
-  "oupProto.CreateGroupResponse\022E\n\010AddGroup"
-  "\022\033.GroupProto.AddGroupRequest\032\034.GroupPro"
-  "to.AddGroupResponse\022K\n\nQueryGroup\022\035.Grou"
-  "pProto.QueryGroupRequest\032\036.GroupProto.Qu"
-  "eryGroupResponse\022Z\n\017QueryGroupUsers\022\".Gr"
-  "oupProto.QueryGroupUsersRequest\032#.GroupP"
-  "roto.QueryGroupUsersResponseB\003\200\001\001b\006proto"
-  "3"
+  "sultCode\022\017\n\007success\030\002 \001(\010\022(\n\tgroupUser\030\003"
+  " \003(\0132\025.GroupProto.GroupUser2\321\002\n\017GroupSer"
+  "viceRpc\022N\n\013CreateGroup\022\036.GroupProto.Crea"
+  "teGroupRequest\032\037.GroupProto.CreateGroupR"
+  "esponse\022E\n\010AddGroup\022\033.GroupProto.AddGrou"
+  "pRequest\032\034.GroupProto.AddGroupResponse\022K"
+  "\n\nQueryGroup\022\035.GroupProto.QueryGroupRequ"
+  "est\032\036.GroupProto.QueryGroupResponse\022Z\n\017Q"
+  "ueryGroupUsers\022\".GroupProto.QueryGroupUs"
+  "ersRequest\032#.GroupProto.QueryGroupUsersR"
+  "esponseB\003\200\001\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Group_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Group_2eproto = {
-  false, false, 1241, descriptor_table_protodef_Group_2eproto, "Group.proto", 
+  false, false, 1260, descriptor_table_protodef_Group_2eproto, "Group.proto", 
   &descriptor_table_Group_2eproto_once, nullptr, 0, 11,
   schemas, file_default_instances, TableStruct_Group_2eproto::offsets,
   file_level_metadata_Group_2eproto, file_level_enum_descriptors_Group_2eproto, file_level_service_descriptors_Group_2eproto,
@@ -2846,7 +2846,7 @@ QueryGroupUsersResponse::_Internal::result(const QueryGroupUsersResponse* msg) {
 QueryGroupUsersResponse::QueryGroupUsersResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  groupusername_(arena) {
+  groupuser_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -2855,7 +2855,7 @@ QueryGroupUsersResponse::QueryGroupUsersResponse(::PROTOBUF_NAMESPACE_ID::Arena*
 }
 QueryGroupUsersResponse::QueryGroupUsersResponse(const QueryGroupUsersResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      groupusername_(from.groupusername_) {
+      groupuser_(from.groupuser_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
     result_ = new ::GroupProto::ResultCode(*from.result_);
@@ -2901,7 +2901,7 @@ void QueryGroupUsersResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  groupusername_.Clear();
+  groupuser_.Clear();
   if (GetArenaForAllocation() == nullptr && result_ != nullptr) {
     delete result_;
   }
@@ -2932,14 +2932,13 @@ const char* QueryGroupUsersResponse::_InternalParse(const char* ptr, ::PROTOBUF_
         } else
           goto handle_unusual;
         continue;
-      // repeated bytes groupUserName = 3;
+      // repeated .GroupProto.GroupUser groupUser = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_groupusername();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            ptr = ctx->ParseMessage(_internal_add_groupuser(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
@@ -2989,10 +2988,12 @@ uint8_t* QueryGroupUsersResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_success(), target);
   }
 
-  // repeated bytes groupUserName = 3;
-  for (int i = 0, n = this->_internal_groupusername_size(); i < n; i++) {
-    const auto& s = this->_internal_groupusername(i);
-    target = stream->WriteBytes(3, s, target);
+  // repeated .GroupProto.GroupUser groupUser = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_groupuser_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_groupuser(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3011,12 +3012,11 @@ size_t QueryGroupUsersResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated bytes groupUserName = 3;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(groupusername_.size());
-  for (int i = 0, n = groupusername_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-      groupusername_.Get(i));
+  // repeated .GroupProto.GroupUser groupUser = 3;
+  total_size += 1UL * this->_internal_groupuser_size();
+  for (const auto& msg : this->groupuser_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // .GroupProto.ResultCode result = 1;
@@ -3053,7 +3053,7 @@ void QueryGroupUsersResponse::MergeFrom(const QueryGroupUsersResponse& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  groupusername_.MergeFrom(from.groupusername_);
+  groupuser_.MergeFrom(from.groupuser_);
   if (from._internal_has_result()) {
     _internal_mutable_result()->::GroupProto::ResultCode::MergeFrom(from._internal_result());
   }
@@ -3077,7 +3077,7 @@ bool QueryGroupUsersResponse::IsInitialized() const {
 void QueryGroupUsersResponse::InternalSwap(QueryGroupUsersResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  groupusername_.InternalSwap(&other->groupusername_);
+  groupuser_.InternalSwap(&other->groupuser_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(QueryGroupUsersResponse, success_)
       + sizeof(QueryGroupUsersResponse::success_)

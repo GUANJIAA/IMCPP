@@ -126,8 +126,8 @@ struct QueryDepartRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT QueryDepartRequestDefaultTypeInternal _QueryDepartRequest_default_instance_;
 constexpr QueryDepartResponse::QueryDepartResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : departs_()
-  , result_(nullptr)
+  : result_(nullptr)
+  , departs_(nullptr)
   , success_(false){}
 struct QueryDepartResponseDefaultTypeInternal {
   constexpr QueryDepartResponseDefaultTypeInternal()
@@ -311,7 +311,7 @@ const char descriptor_table_protodef_Depart_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "Code\022\017\n\007success\030\002 \001(\010\"&\n\022QueryDepartRequ"
   "est\022\020\n\010userName\030\001 \001(\014\"y\n\023QueryDepartResp"
   "onse\022\'\n\006result\030\001 \001(\0132\027.DepartProto.Resul"
-  "tCode\022\017\n\007success\030\002 \001(\010\022(\n\007departs\030\003 \003(\0132"
+  "tCode\022\017\n\007success\030\002 \001(\010\022(\n\007departs\030\003 \001(\0132"
   "\027.DepartProto.DepartInfo\"\?\n\027QueryDepartU"
   "sersRequest\022\020\n\010userName\030\001 \001(\014\022\022\n\ndepartN"
   "ame\030\002 \001(\014\"l\n\030QueryDepartUsersResponse\022\'\n"
@@ -2336,16 +2336,20 @@ void QueryDepartRequest::InternalSwap(QueryDepartRequest* other) {
 class QueryDepartResponse::_Internal {
  public:
   static const ::DepartProto::ResultCode& result(const QueryDepartResponse* msg);
+  static const ::DepartProto::DepartInfo& departs(const QueryDepartResponse* msg);
 };
 
 const ::DepartProto::ResultCode&
 QueryDepartResponse::_Internal::result(const QueryDepartResponse* msg) {
   return *msg->result_;
 }
+const ::DepartProto::DepartInfo&
+QueryDepartResponse::_Internal::departs(const QueryDepartResponse* msg) {
+  return *msg->departs_;
+}
 QueryDepartResponse::QueryDepartResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  departs_(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -2353,13 +2357,17 @@ QueryDepartResponse::QueryDepartResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:DepartProto.QueryDepartResponse)
 }
 QueryDepartResponse::QueryDepartResponse(const QueryDepartResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      departs_(from.departs_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
     result_ = new ::DepartProto::ResultCode(*from.result_);
   } else {
     result_ = nullptr;
+  }
+  if (from._internal_has_departs()) {
+    departs_ = new ::DepartProto::DepartInfo(*from.departs_);
+  } else {
+    departs_ = nullptr;
   }
   success_ = from.success_;
   // @@protoc_insertion_point(copy_constructor:DepartProto.QueryDepartResponse)
@@ -2382,6 +2390,7 @@ QueryDepartResponse::~QueryDepartResponse() {
 inline void QueryDepartResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete result_;
+  if (this != internal_default_instance()) delete departs_;
 }
 
 void QueryDepartResponse::ArenaDtor(void* object) {
@@ -2400,11 +2409,14 @@ void QueryDepartResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  departs_.Clear();
   if (GetArenaForAllocation() == nullptr && result_ != nullptr) {
     delete result_;
   }
   result_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && departs_ != nullptr) {
+    delete departs_;
+  }
+  departs_ = nullptr;
   success_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -2431,16 +2443,11 @@ const char* QueryDepartResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAME
         } else
           goto handle_unusual;
         continue;
-      // repeated .DepartProto.DepartInfo departs = 3;
+      // .DepartProto.DepartInfo departs = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_departs(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+          ptr = ctx->ParseMessage(_internal_mutable_departs(), ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -2487,12 +2494,12 @@ uint8_t* QueryDepartResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_success(), target);
   }
 
-  // repeated .DepartProto.DepartInfo departs = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_departs_size()); i < n; i++) {
+  // .DepartProto.DepartInfo departs = 3;
+  if (this->_internal_has_departs()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_departs(i), target, stream);
+      InternalWriteMessage(
+        3, _Internal::departs(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2511,18 +2518,18 @@ size_t QueryDepartResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .DepartProto.DepartInfo departs = 3;
-  total_size += 1UL * this->_internal_departs_size();
-  for (const auto& msg : this->departs_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
-  }
-
   // .DepartProto.ResultCode result = 1;
   if (this->_internal_has_result()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *result_);
+  }
+
+  // .DepartProto.DepartInfo departs = 3;
+  if (this->_internal_has_departs()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *departs_);
   }
 
   // bool success = 2;
@@ -2552,9 +2559,11 @@ void QueryDepartResponse::MergeFrom(const QueryDepartResponse& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  departs_.MergeFrom(from.departs_);
   if (from._internal_has_result()) {
     _internal_mutable_result()->::DepartProto::ResultCode::MergeFrom(from._internal_result());
+  }
+  if (from._internal_has_departs()) {
+    _internal_mutable_departs()->::DepartProto::DepartInfo::MergeFrom(from._internal_departs());
   }
   if (from._internal_success() != 0) {
     _internal_set_success(from._internal_success());
@@ -2576,7 +2585,6 @@ bool QueryDepartResponse::IsInitialized() const {
 void QueryDepartResponse::InternalSwap(QueryDepartResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  departs_.InternalSwap(&other->departs_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(QueryDepartResponse, success_)
       + sizeof(QueryDepartResponse::success_)

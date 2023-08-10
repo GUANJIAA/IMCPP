@@ -1961,33 +1961,27 @@ class QueryGroupUsersResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kGroupUserNameFieldNumber = 3,
+    kGroupUserFieldNumber = 3,
     kResultFieldNumber = 1,
     kSuccessFieldNumber = 2,
   };
-  // repeated bytes groupUserName = 3;
-  int groupusername_size() const;
+  // repeated .GroupProto.GroupUser groupUser = 3;
+  int groupuser_size() const;
   private:
-  int _internal_groupusername_size() const;
+  int _internal_groupuser_size() const;
   public:
-  void clear_groupusername();
-  const std::string& groupusername(int index) const;
-  std::string* mutable_groupusername(int index);
-  void set_groupusername(int index, const std::string& value);
-  void set_groupusername(int index, std::string&& value);
-  void set_groupusername(int index, const char* value);
-  void set_groupusername(int index, const void* value, size_t size);
-  std::string* add_groupusername();
-  void add_groupusername(const std::string& value);
-  void add_groupusername(std::string&& value);
-  void add_groupusername(const char* value);
-  void add_groupusername(const void* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& groupusername() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_groupusername();
+  void clear_groupuser();
+  ::GroupProto::GroupUser* mutable_groupuser(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >*
+      mutable_groupuser();
   private:
-  const std::string& _internal_groupusername(int index) const;
-  std::string* _internal_add_groupusername();
+  const ::GroupProto::GroupUser& _internal_groupuser(int index) const;
+  ::GroupProto::GroupUser* _internal_add_groupuser();
   public:
+  const ::GroupProto::GroupUser& groupuser(int index) const;
+  ::GroupProto::GroupUser* add_groupuser();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >&
+      groupuser() const;
 
   // .GroupProto.ResultCode result = 1;
   bool has_result() const;
@@ -2023,7 +2017,7 @@ class QueryGroupUsersResponse final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> groupusername_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser > groupuser_;
   ::GroupProto::ResultCode* result_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3476,79 +3470,44 @@ inline void QueryGroupUsersResponse::set_success(bool value) {
   // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.success)
 }
 
-// repeated bytes groupUserName = 3;
-inline int QueryGroupUsersResponse::_internal_groupusername_size() const {
-  return groupusername_.size();
+// repeated .GroupProto.GroupUser groupUser = 3;
+inline int QueryGroupUsersResponse::_internal_groupuser_size() const {
+  return groupuser_.size();
 }
-inline int QueryGroupUsersResponse::groupusername_size() const {
-  return _internal_groupusername_size();
+inline int QueryGroupUsersResponse::groupuser_size() const {
+  return _internal_groupuser_size();
 }
-inline void QueryGroupUsersResponse::clear_groupusername() {
-  groupusername_.Clear();
+inline void QueryGroupUsersResponse::clear_groupuser() {
+  groupuser_.Clear();
 }
-inline std::string* QueryGroupUsersResponse::add_groupusername() {
-  std::string* _s = _internal_add_groupusername();
-  // @@protoc_insertion_point(field_add_mutable:GroupProto.QueryGroupUsersResponse.groupUserName)
-  return _s;
+inline ::GroupProto::GroupUser* QueryGroupUsersResponse::mutable_groupuser(int index) {
+  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersResponse.groupUser)
+  return groupuser_.Mutable(index);
 }
-inline const std::string& QueryGroupUsersResponse::_internal_groupusername(int index) const {
-  return groupusername_.Get(index);
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >*
+QueryGroupUsersResponse::mutable_groupuser() {
+  // @@protoc_insertion_point(field_mutable_list:GroupProto.QueryGroupUsersResponse.groupUser)
+  return &groupuser_;
 }
-inline const std::string& QueryGroupUsersResponse::groupusername(int index) const {
-  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersResponse.groupUserName)
-  return _internal_groupusername(index);
+inline const ::GroupProto::GroupUser& QueryGroupUsersResponse::_internal_groupuser(int index) const {
+  return groupuser_.Get(index);
 }
-inline std::string* QueryGroupUsersResponse::mutable_groupusername(int index) {
-  // @@protoc_insertion_point(field_mutable:GroupProto.QueryGroupUsersResponse.groupUserName)
-  return groupusername_.Mutable(index);
+inline const ::GroupProto::GroupUser& QueryGroupUsersResponse::groupuser(int index) const {
+  // @@protoc_insertion_point(field_get:GroupProto.QueryGroupUsersResponse.groupUser)
+  return _internal_groupuser(index);
 }
-inline void QueryGroupUsersResponse::set_groupusername(int index, const std::string& value) {
-  groupusername_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.groupUserName)
+inline ::GroupProto::GroupUser* QueryGroupUsersResponse::_internal_add_groupuser() {
+  return groupuser_.Add();
 }
-inline void QueryGroupUsersResponse::set_groupusername(int index, std::string&& value) {
-  groupusername_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:GroupProto.QueryGroupUsersResponse.groupUserName)
+inline ::GroupProto::GroupUser* QueryGroupUsersResponse::add_groupuser() {
+  ::GroupProto::GroupUser* _add = _internal_add_groupuser();
+  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupUsersResponse.groupUser)
+  return _add;
 }
-inline void QueryGroupUsersResponse::set_groupusername(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  groupusername_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline void QueryGroupUsersResponse::set_groupusername(int index, const void* value, size_t size) {
-  groupusername_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline std::string* QueryGroupUsersResponse::_internal_add_groupusername() {
-  return groupusername_.Add();
-}
-inline void QueryGroupUsersResponse::add_groupusername(const std::string& value) {
-  groupusername_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline void QueryGroupUsersResponse::add_groupusername(std::string&& value) {
-  groupusername_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline void QueryGroupUsersResponse::add_groupusername(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  groupusername_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline void QueryGroupUsersResponse::add_groupusername(const void* value, size_t size) {
-  groupusername_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GroupProto.QueryGroupUsersResponse.groupUserName)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-QueryGroupUsersResponse::groupusername() const {
-  // @@protoc_insertion_point(field_list:GroupProto.QueryGroupUsersResponse.groupUserName)
-  return groupusername_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-QueryGroupUsersResponse::mutable_groupusername() {
-  // @@protoc_insertion_point(field_mutable_list:GroupProto.QueryGroupUsersResponse.groupUserName)
-  return &groupusername_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::GroupProto::GroupUser >&
+QueryGroupUsersResponse::groupuser() const {
+  // @@protoc_insertion_point(field_list:GroupProto.QueryGroupUsersResponse.groupUser)
+  return groupuser_;
 }
 
 #ifdef __GNUC__

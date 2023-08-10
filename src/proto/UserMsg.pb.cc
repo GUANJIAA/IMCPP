@@ -24,6 +24,7 @@ constexpr UserInfo::UserInfo(
   , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , desc_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , departname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , id_(0){}
 struct UserInfoDefaultTypeInternal {
   constexpr UserInfoDefaultTypeInternal()
@@ -114,6 +115,7 @@ const uint32_t TableStruct_UserMsg_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::UserMsgProto::UserInfo, email_),
   PROTOBUF_FIELD_OFFSET(::UserMsgProto::UserInfo, phone_),
   PROTOBUF_FIELD_OFFSET(::UserMsgProto::UserInfo, desc_),
+  PROTOBUF_FIELD_OFFSET(::UserMsgProto::UserInfo, departname_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::UserMsgProto::ResultCode, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -154,11 +156,11 @@ const uint32_t TableStruct_UserMsg_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::UserMsgProto::UserInfo)},
-  { 12, -1, -1, sizeof(::UserMsgProto::ResultCode)},
-  { 20, -1, -1, sizeof(::UserMsgProto::QueryUserMsgRequest)},
-  { 27, -1, -1, sizeof(::UserMsgProto::QueryUserMsgResponse)},
-  { 35, -1, -1, sizeof(::UserMsgProto::UpdateUserMsgRequest)},
-  { 42, -1, -1, sizeof(::UserMsgProto::UpdateUserMsgResponse)},
+  { 13, -1, -1, sizeof(::UserMsgProto::ResultCode)},
+  { 21, -1, -1, sizeof(::UserMsgProto::QueryUserMsgRequest)},
+  { 28, -1, -1, sizeof(::UserMsgProto::QueryUserMsgResponse)},
+  { 36, -1, -1, sizeof(::UserMsgProto::UpdateUserMsgRequest)},
+  { 43, -1, -1, sizeof(::UserMsgProto::UpdateUserMsgResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -171,27 +173,27 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_UserMsg_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rUserMsg.proto\022\014UserMsgProto\"]\n\010UserInf"
+  "\n\rUserMsg.proto\022\014UserMsgProto\"q\n\010UserInf"
   "o\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\014\022\013\n\003pwd\030\003 \001(\014"
   "\022\r\n\005email\030\004 \001(\014\022\r\n\005phone\030\005 \001(\014\022\014\n\004desc\030\006"
-  " \001(\014\"-\n\nResultCode\022\017\n\007errcode\030\001 \001(\005\022\016\n\006e"
-  "rrmsg\030\002 \001(\014\"#\n\023QueryUserMsgRequest\022\014\n\004na"
-  "me\030\001 \001(\014\"i\n\024QueryUserMsgResponse\022(\n\006resu"
-  "lt\030\001 \001(\0132\030.UserMsgProto.ResultCode\022\'\n\007us"
-  "erMsg\030\002 \001(\0132\026.UserMsgProto.UserInfo\"\?\n\024U"
-  "pdateUserMsgRequest\022\'\n\007userMsg\030\001 \001(\0132\026.U"
-  "serMsgProto.UserInfo\"A\n\025UpdateUserMsgRes"
-  "ponse\022(\n\006result\030\001 \001(\0132\030.UserMsgProto.Res"
-  "ultCode2\304\001\n\021UserMsgServiceRpc\022U\n\014QueryUs"
-  "erMsg\022!.UserMsgProto.QueryUserMsgRequest"
-  "\032\".UserMsgProto.QueryUserMsgResponse\022X\n\r"
-  "UpdateUserMsg\022\".UserMsgProto.UpdateUserM"
-  "sgRequest\032#.UserMsgProto.UpdateUserMsgRe"
-  "sponseB\003\200\001\001b\006proto3"
+  " \001(\014\022\022\n\ndepartName\030\007 \001(\014\"-\n\nResultCode\022\017"
+  "\n\007errcode\030\001 \001(\005\022\016\n\006errmsg\030\002 \001(\014\"#\n\023Query"
+  "UserMsgRequest\022\014\n\004name\030\001 \001(\014\"i\n\024QueryUse"
+  "rMsgResponse\022(\n\006result\030\001 \001(\0132\030.UserMsgPr"
+  "oto.ResultCode\022\'\n\007userMsg\030\002 \001(\0132\026.UserMs"
+  "gProto.UserInfo\"\?\n\024UpdateUserMsgRequest\022"
+  "\'\n\007userMsg\030\001 \001(\0132\026.UserMsgProto.UserInfo"
+  "\"A\n\025UpdateUserMsgResponse\022(\n\006result\030\001 \001("
+  "\0132\030.UserMsgProto.ResultCode2\304\001\n\021UserMsgS"
+  "erviceRpc\022U\n\014QueryUserMsg\022!.UserMsgProto"
+  ".QueryUserMsgRequest\032\".UserMsgProto.Quer"
+  "yUserMsgResponse\022X\n\rUpdateUserMsg\022\".User"
+  "MsgProto.UpdateUserMsgRequest\032#.UserMsgP"
+  "roto.UpdateUserMsgResponseB\003\200\001\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_UserMsg_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_UserMsg_2eproto = {
-  false, false, 659, descriptor_table_protodef_UserMsg_2eproto, "UserMsg.proto", 
+  false, false, 679, descriptor_table_protodef_UserMsg_2eproto, "UserMsg.proto", 
   &descriptor_table_UserMsg_2eproto_once, nullptr, 0, 6,
   schemas, file_default_instances, TableStruct_UserMsg_2eproto::offsets,
   file_level_metadata_UserMsg_2eproto, file_level_enum_descriptors_UserMsg_2eproto, file_level_service_descriptors_UserMsg_2eproto,
@@ -262,6 +264,14 @@ UserInfo::UserInfo(const UserInfo& from)
     desc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_desc(), 
       GetArenaForAllocation());
   }
+  departname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_departname().empty()) {
+    departname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_departname(), 
+      GetArenaForAllocation());
+  }
   id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:UserMsgProto.UserInfo)
 }
@@ -287,6 +297,10 @@ desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlready
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+departname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 id_ = 0;
 }
 
@@ -304,6 +318,7 @@ inline void UserInfo::SharedDtor() {
   email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   phone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   desc_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  departname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void UserInfo::ArenaDtor(void* object) {
@@ -327,6 +342,7 @@ void UserInfo::Clear() {
   email_.ClearToEmpty();
   phone_.ClearToEmpty();
   desc_.ClearToEmpty();
+  departname_.ClearToEmpty();
   id_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -385,6 +401,15 @@ const char* UserInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           auto str = _internal_mutable_desc();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes departName = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_departname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -455,6 +480,12 @@ uint8_t* UserInfo::_InternalSerialize(
         6, this->_internal_desc(), target);
   }
 
+  // bytes departName = 7;
+  if (!this->_internal_departname().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        7, this->_internal_departname(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -506,6 +537,13 @@ size_t UserInfo::ByteSizeLong() const {
         this->_internal_desc());
   }
 
+  // bytes departName = 7;
+  if (!this->_internal_departname().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_departname());
+  }
+
   // int32 id = 1;
   if (this->_internal_id() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id());
@@ -547,6 +585,9 @@ void UserInfo::MergeFrom(const UserInfo& from) {
   }
   if (!from._internal_desc().empty()) {
     _internal_set_desc(from._internal_desc());
+  }
+  if (!from._internal_departname().empty()) {
+    _internal_set_departname(from._internal_departname());
   }
   if (from._internal_id() != 0) {
     _internal_set_id(from._internal_id());
@@ -594,6 +635,11 @@ void UserInfo::InternalSwap(UserInfo* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &desc_, lhs_arena,
       &other->desc_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &departname_, lhs_arena,
+      &other->departname_, rhs_arena
   );
   swap(id_, other->id_);
 }

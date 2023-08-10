@@ -2,14 +2,18 @@
 
 #include "mysqldb.h"
 
+#include<iostream>
+
 bool ChatMsgModel::addChatMsg(std::string recvName, std::string sendName,
                               std::string message, std::string isRead)
 {
+    std::cout<<recvName<<":"<<sendName<<":"<<message<<":"<<isRead<<std::endl;
+
     char sql[1024] = {0};
     sprintf(sql, "INSERT INTO `chatmessage`(`recvname`,`sendname`,`message`,`isread`) \
             VALUES ('%s','%s','%s','%s')",
             recvName.c_str(), sendName.c_str(), message.c_str(), isRead.c_str());
-
+    std::cout<<sql<<std::endl;
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
     bool result = false;
     if (mysql->update(sql))
@@ -38,11 +42,12 @@ bool ChatMsgModel::delChatMsg(int msgId, std::string recvName,
     return result;
 }
 
-std::vector<Msg> ChatMsgModel::queryChatMsg(std::string recvName)
+std::vector<Msg> ChatMsgModel::queryChatMsg(std::string recvName,std::string sendName)
 {
     char sql[1024] = {0};
-    sprintf(sql, "SELECT * FROM `chatmessage` WHERE `recvName` = '%s'",
-            recvName.c_str());
+    sprintf(sql, "SELECT * FROM `chatmessage` WHERE (`recvName` = '%s' \
+            AND `sendName` = '%s') OR (`recvName` = '%s' AND `sendName` = '%s')",
+            recvName.c_str(),sendName.c_str(),sendName.c_str(),recvName.c_str());
 
     std::vector<Msg> MsgVec;
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();

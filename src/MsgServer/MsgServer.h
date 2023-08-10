@@ -19,7 +19,7 @@
 
 enum EnMsgType
 {
-    NEW_CONNECTION = 1,     // 新连接建立
+    NEW_CONNECTION = 5,     // 新连接建立
     QUERY_ADMININFO,        // 查询用户详细信息
     UPDATE_ADMININFO,       // 更新用户详细信息
     ONE_CHAT_MSG,           // 私聊消息
@@ -73,7 +73,10 @@ public:
     void departChat(const muduo::net::TcpConnectionPtr &, Json::Value &);
     void createDepart(const muduo::net::TcpConnectionPtr &, Json::Value &);
     void addDepart(const muduo::net::TcpConnectionPtr &, Json::Value &);
-    void queryDepartUser(const muduo::net::TcpConnectionPtr &, Json::Value &);
+    void queryDepart(const muduo::net::TcpConnectionPtr &, Json::Value &);
+
+    void clientCloseException(const muduo::net::TcpConnectionPtr &);
+    void allReset();
 
     MsgHandler getHandler(int msgid);
 

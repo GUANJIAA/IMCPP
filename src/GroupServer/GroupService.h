@@ -21,7 +21,7 @@ public:
 
     bool QueryGroupUsers(std::string groupName,
                          std::string userName,
-                         std::vector<std::string> &groupUsers,
+                         Group &group,
                          GroupProto::ResultCode *code);
 
     virtual void CreateGroup(::google::protobuf::RpcController *controller,

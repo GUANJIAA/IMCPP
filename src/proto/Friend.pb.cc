@@ -21,7 +21,10 @@ constexpr AdminInfo::AdminInfo(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , email_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  , phone_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , desc_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , departname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , status_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct AdminInfoDefaultTypeInternal {
   constexpr AdminInfoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -137,6 +140,9 @@ const uint32_t TableStruct_Friend_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, name_),
   PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, email_),
   PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, phone_),
+  PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, desc_),
+  PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, departname_),
+  PROTOBUF_FIELD_OFFSET(::FriendProto::AdminInfo, status_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::FriendProto::ResultCode, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -196,13 +202,13 @@ const uint32_t TableStruct_Friend_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::FriendProto::AdminInfo)},
-  { 9, -1, -1, sizeof(::FriendProto::ResultCode)},
-  { 17, -1, -1, sizeof(::FriendProto::AddFriendRequest)},
-  { 25, -1, -1, sizeof(::FriendProto::AddFriendResponse)},
-  { 33, -1, -1, sizeof(::FriendProto::GetFriendRequest)},
-  { 40, -1, -1, sizeof(::FriendProto::GetFriendResponse)},
-  { 49, -1, -1, sizeof(::FriendProto::DelFriendRequest)},
-  { 57, -1, -1, sizeof(::FriendProto::DelFriendResponse)},
+  { 12, -1, -1, sizeof(::FriendProto::ResultCode)},
+  { 20, -1, -1, sizeof(::FriendProto::AddFriendRequest)},
+  { 28, -1, -1, sizeof(::FriendProto::AddFriendResponse)},
+  { 36, -1, -1, sizeof(::FriendProto::GetFriendRequest)},
+  { 43, -1, -1, sizeof(::FriendProto::GetFriendResponse)},
+  { 52, -1, -1, sizeof(::FriendProto::DelFriendRequest)},
+  { 60, -1, -1, sizeof(::FriendProto::DelFriendResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -217,31 +223,32 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_Friend_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014Friend.proto\022\013FriendProto\"7\n\tAdminInfo"
+  "\n\014Friend.proto\022\013FriendProto\"i\n\tAdminInfo"
   "\022\014\n\004Name\030\001 \001(\014\022\r\n\005Email\030\002 \001(\014\022\r\n\005Phone\030\003"
-  " \001(\014\"-\n\nResultCode\022\017\n\007errcode\030\001 \001(\005\022\016\n\006e"
-  "rrmsg\030\002 \001(\014\"7\n\020AddFriendRequest\022\021\n\tadmin"
-  "Name\030\001 \001(\014\022\020\n\010peerName\030\002 \001(\014\"M\n\021AddFrien"
-  "dResponse\022\'\n\006result\030\001 \001(\0132\027.FriendProto."
-  "ResultCode\022\017\n\007success\030\002 \001(\010\"%\n\020GetFriend"
-  "Request\022\021\n\tadminName\030\001 \001(\014\"s\n\021GetFriendR"
-  "esponse\022\'\n\006result\030\001 \001(\0132\027.FriendProto.Re"
-  "sultCode\022\017\n\007success\030\002 \001(\010\022$\n\004Data\030\003 \003(\0132"
-  "\026.FriendProto.AdminInfo\"7\n\020DelFriendRequ"
-  "est\022\021\n\tadminName\030\001 \001(\014\022\020\n\010peerName\030\002 \001(\014"
-  "\"M\n\021DelFriendResponse\022\'\n\006result\030\001 \001(\0132\027."
-  "FriendProto.ResultCode\022\017\n\007success\030\002 \001(\0102"
-  "\366\001\n\020FriendServiceRpc\022J\n\tAddFriend\022\035.Frie"
-  "ndProto.AddFriendRequest\032\036.FriendProto.A"
-  "ddFriendResponse\022J\n\tGetFriend\022\035.FriendPr"
-  "oto.GetFriendRequest\032\036.FriendProto.GetFr"
-  "iendResponse\022J\n\tDelFriend\022\035.FriendProto."
-  "DelFriendRequest\032\036.FriendProto.DelFriend"
-  "ResponseB\003\200\001\001b\006proto3"
+  " \001(\014\022\014\n\004Desc\030\004 \001(\014\022\022\n\nDepartName\030\005 \001(\014\022\016"
+  "\n\006Status\030\006 \001(\014\"-\n\nResultCode\022\017\n\007errcode\030"
+  "\001 \001(\005\022\016\n\006errmsg\030\002 \001(\014\"7\n\020AddFriendReques"
+  "t\022\021\n\tadminName\030\001 \001(\014\022\020\n\010peerName\030\002 \001(\014\"M"
+  "\n\021AddFriendResponse\022\'\n\006result\030\001 \001(\0132\027.Fr"
+  "iendProto.ResultCode\022\017\n\007success\030\002 \001(\010\"%\n"
+  "\020GetFriendRequest\022\021\n\tadminName\030\001 \001(\014\"s\n\021"
+  "GetFriendResponse\022\'\n\006result\030\001 \001(\0132\027.Frie"
+  "ndProto.ResultCode\022\017\n\007success\030\002 \001(\010\022$\n\004D"
+  "ata\030\003 \003(\0132\026.FriendProto.AdminInfo\"7\n\020Del"
+  "FriendRequest\022\021\n\tadminName\030\001 \001(\014\022\020\n\010peer"
+  "Name\030\002 \001(\014\"M\n\021DelFriendResponse\022\'\n\006resul"
+  "t\030\001 \001(\0132\027.FriendProto.ResultCode\022\017\n\007succ"
+  "ess\030\002 \001(\0102\366\001\n\020FriendServiceRpc\022J\n\tAddFri"
+  "end\022\035.FriendProto.AddFriendRequest\032\036.Fri"
+  "endProto.AddFriendResponse\022J\n\tGetFriend\022"
+  "\035.FriendProto.GetFriendRequest\032\036.FriendP"
+  "roto.GetFriendResponse\022J\n\tDelFriend\022\035.Fr"
+  "iendProto.DelFriendRequest\032\036.FriendProto"
+  ".DelFriendResponseB\003\200\001\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Friend_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Friend_2eproto = {
-  false, false, 821, descriptor_table_protodef_Friend_2eproto, "Friend.proto", 
+  false, false, 871, descriptor_table_protodef_Friend_2eproto, "Friend.proto", 
   &descriptor_table_Friend_2eproto_once, nullptr, 0, 8,
   schemas, file_default_instances, TableStruct_Friend_2eproto::offsets,
   file_level_metadata_Friend_2eproto, file_level_enum_descriptors_Friend_2eproto, file_level_service_descriptors_Friend_2eproto,
@@ -296,6 +303,30 @@ AdminInfo::AdminInfo(const AdminInfo& from)
     phone_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_phone(), 
       GetArenaForAllocation());
   }
+  desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_desc().empty()) {
+    desc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_desc(), 
+      GetArenaForAllocation());
+  }
+  departname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_departname().empty()) {
+    departname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_departname(), 
+      GetArenaForAllocation());
+  }
+  status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_status().empty()) {
+    status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_status(), 
+      GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:FriendProto.AdminInfo)
 }
 
@@ -312,6 +343,18 @@ phone_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlread
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   phone_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+desc_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+departname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 AdminInfo::~AdminInfo() {
@@ -326,6 +369,9 @@ inline void AdminInfo::SharedDtor() {
   name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   email_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   phone_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  desc_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  departname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  status_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void AdminInfo::ArenaDtor(void* object) {
@@ -347,6 +393,9 @@ void AdminInfo::Clear() {
   name_.ClearToEmpty();
   email_.ClearToEmpty();
   phone_.ClearToEmpty();
+  desc_.ClearToEmpty();
+  departname_.ClearToEmpty();
+  status_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -378,6 +427,33 @@ const char* AdminInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_phone();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes Desc = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_desc();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes DepartName = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_departname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes Status = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_status();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
@@ -430,6 +506,24 @@ uint8_t* AdminInfo::_InternalSerialize(
         3, this->_internal_phone(), target);
   }
 
+  // bytes Desc = 4;
+  if (!this->_internal_desc().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        4, this->_internal_desc(), target);
+  }
+
+  // bytes DepartName = 5;
+  if (!this->_internal_departname().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        5, this->_internal_departname(), target);
+  }
+
+  // bytes Status = 6;
+  if (!this->_internal_status().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        6, this->_internal_status(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -467,6 +561,27 @@ size_t AdminInfo::ByteSizeLong() const {
         this->_internal_phone());
   }
 
+  // bytes Desc = 4;
+  if (!this->_internal_desc().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_desc());
+  }
+
+  // bytes DepartName = 5;
+  if (!this->_internal_departname().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_departname());
+  }
+
+  // bytes Status = 6;
+  if (!this->_internal_status().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_status());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -497,6 +612,15 @@ void AdminInfo::MergeFrom(const AdminInfo& from) {
   }
   if (!from._internal_phone().empty()) {
     _internal_set_phone(from._internal_phone());
+  }
+  if (!from._internal_desc().empty()) {
+    _internal_set_desc(from._internal_desc());
+  }
+  if (!from._internal_departname().empty()) {
+    _internal_set_departname(from._internal_departname());
+  }
+  if (!from._internal_status().empty()) {
+    _internal_set_status(from._internal_status());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -531,6 +655,21 @@ void AdminInfo::InternalSwap(AdminInfo* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &phone_, lhs_arena,
       &other->phone_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &desc_, lhs_arena,
+      &other->desc_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &departname_, lhs_arena,
+      &other->departname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &status_, lhs_arena,
+      &other->status_, rhs_arena
   );
 }
 

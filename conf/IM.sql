@@ -22,6 +22,8 @@ CREATE TABLE `Admin` (
 	`status` enum('online','offline') CHARACTER SET latin1 DEFAULT 'offline' COMMENT '在线状态',
 	`email` varchar(40) NOT NULL COMMENT '用户邮箱',
 	`phone` varchar(40) NOT NULL COMMENT '手机号码',
+	`desc`  varchar(500) DEFAULT 'Test' NOT NULL COMMENT '用户描述',
+	`depart` varchar(40) DEFAULT 'DEFAULT' NOT NULL COMMENT '所属部门',
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `name` (`name`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -52,7 +54,7 @@ DROP TABLE IF EXISTS `allgroup`;
 CREATE TABLE `allgroup` (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '组id',
 	`groupname` varchar(50) CHARACTER SET latin1 NOT NULL COMMENT '组名称',
-	`groupdesc` varchar(200) CHARACTER SET latin1 DEFAULT '' COMMENT '组描述',
+	`groupdesc` varchar(200) CHARACTER SET latin1 DEFAULT 'Test' COMMENT '组描述',
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `groupname` (`groupname`)
 ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -68,7 +70,7 @@ DROP TABLE IF EXISTS `groupuser`;
 CREATE TABLE `groupuser` (
     `groupname` varchar(50) NOT NULL COMMENT '组名称',
     `username` varchar(50) NOT NULL COMMENT '用户名称',
-    `userrole` enum('creator','normal') CHARACTER SET latin1 DEFAULT NULL COMMENT '用户权限',
+    `userrole` enum('creator','normal') CHARACTER SET latin1 DEFAULT 'normal' NOT NULL COMMENT '用户权限',
     KEY `groupname` (`groupname`,`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -83,7 +85,7 @@ DROP TABLE IF EXISTS `alldepart`;
 CREATE TABLE `alldepart` (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '部门id',
 	`departname` varchar(50) CHARACTER SET latin1 NOT NULL COMMENT '部门名称',
-	`departdesc` varchar(200) CHARACTER SET latin1 DEFAULT '' COMMENT '部门描述',
+	`departdesc` varchar(200) CHARACTER SET latin1 DEFAULT 'Test' COMMENT '部门描述',
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `departname` (`departname`)
 ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

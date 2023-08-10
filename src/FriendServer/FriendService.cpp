@@ -33,9 +33,13 @@ bool FriendService::GetFriend(std::string adminName,
         for (const auto &val : vec)
         {
             FriendProto::AdminInfo temp;
-            temp.set_name(val.getName().c_str());
-            temp.set_email(val.getEmail().c_str());
-            temp.set_phone(val.getPhone().c_str());
+            temp.set_name(val.getName());
+            temp.set_email(val.getEmail());
+            temp.set_status(val.getStatus());
+            temp.set_phone(val.getPhone());
+            temp.set_desc(val.getDesc());
+            temp.set_departname(val.getDepartName());
+//            std::cout<<val.getStatus()<<":"<<val.getDesc()<<":"<<val.getDepartName()<<std::endl;
             friends.push_back(temp);
         }
         result = true;
@@ -94,6 +98,9 @@ void FriendService::GetFriend(::google::protobuf::RpcController *controller,
         temp->set_name(val.name());
         temp->set_email(val.email());
         temp->set_phone(val.phone());
+        temp->set_status(val.status());
+        temp->set_desc(val.desc());
+        temp->set_departname(val.departname());
     }
 
     response->set_success(result);

@@ -213,6 +213,7 @@ class UserInfo final :
     kEmailFieldNumber = 4,
     kPhoneFieldNumber = 5,
     kDescFieldNumber = 6,
+    kDepartNameFieldNumber = 7,
     kIdFieldNumber = 1,
   };
   // bytes name = 2;
@@ -285,6 +286,20 @@ class UserInfo final :
   std::string* _internal_mutable_desc();
   public:
 
+  // bytes departName = 7;
+  void clear_departname();
+  const std::string& departname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_departname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_departname();
+  PROTOBUF_NODISCARD std::string* release_departname();
+  void set_allocated_departname(std::string* departname);
+  private:
+  const std::string& _internal_departname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_departname(const std::string& value);
+  std::string* _internal_mutable_departname();
+  public:
+
   // int32 id = 1;
   void clear_id();
   int32_t id() const;
@@ -306,6 +321,7 @@ class UserInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desc_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr departname_;
   int32_t id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_UserMsg_2eproto;
@@ -1459,6 +1475,57 @@ inline void UserInfo::set_allocated_desc(std::string* desc) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:UserMsgProto.UserInfo.desc)
+}
+
+// bytes departName = 7;
+inline void UserInfo::clear_departname() {
+  departname_.ClearToEmpty();
+}
+inline const std::string& UserInfo::departname() const {
+  // @@protoc_insertion_point(field_get:UserMsgProto.UserInfo.departName)
+  return _internal_departname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserInfo::set_departname(ArgT0&& arg0, ArgT... args) {
+ 
+ departname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:UserMsgProto.UserInfo.departName)
+}
+inline std::string* UserInfo::mutable_departname() {
+  std::string* _s = _internal_mutable_departname();
+  // @@protoc_insertion_point(field_mutable:UserMsgProto.UserInfo.departName)
+  return _s;
+}
+inline const std::string& UserInfo::_internal_departname() const {
+  return departname_.Get();
+}
+inline void UserInfo::_internal_set_departname(const std::string& value) {
+  
+  departname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* UserInfo::_internal_mutable_departname() {
+  
+  return departname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* UserInfo::release_departname() {
+  // @@protoc_insertion_point(field_release:UserMsgProto.UserInfo.departName)
+  return departname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void UserInfo::set_allocated_departname(std::string* departname) {
+  if (departname != nullptr) {
+    
+  } else {
+    
+  }
+  departname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), departname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (departname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:UserMsgProto.UserInfo.departName)
 }
 
 // -------------------------------------------------------------------

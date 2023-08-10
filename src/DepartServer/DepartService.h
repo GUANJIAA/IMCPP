@@ -16,7 +16,7 @@ public:
                   DepartProto::ResultCode *code);
 
     bool QueryDepart(std::string userName,
-                    std::vector<DepartProto::DepartInfo> &Departs,
+                    DepartProto::DepartInfo &Departs,
                     DepartProto::ResultCode *code);
 
     bool QueryDepartUsers(std::string departName,

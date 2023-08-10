@@ -73,7 +73,7 @@ public:
                     std::string message, std::string isRead);
     bool delChatMsg(int msgId, std::string recvName,
                     std::string sendName, std::string message);
-    std::vector<Msg> queryChatMsg(std::string recvName);
+    std::vector<Msg> queryChatMsg(std::string recvName,std::string sendName);
     std::vector<Msg> queryOfflineMsg(std::string recvName);
 
     bool addGroupChatMsg(std::string groupName, std::string sendName,

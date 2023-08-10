@@ -19,7 +19,8 @@ public:
     bool DelChatMsg(int msgId, std::string recvName, std::string sendName,
                     std::string message, ChatMessageProto::ResultCode *code);
 
-    bool QueryChatMsg(std::string recvName, std::vector<ChatMessageProto::chatMsg> &msg,
+    bool QueryChatMsg(std::string recvName, std::string sendName,
+                         std::vector<ChatMessageProto::chatMsg> &msg,
                       ChatMessageProto::ResultCode *code);
 
     bool QueryOfflineMsg(std::string recvName, std::vector<ChatMessageProto::chatMsg> &msg,

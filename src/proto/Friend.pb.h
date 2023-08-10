@@ -219,6 +219,9 @@ class AdminInfo final :
     kNameFieldNumber = 1,
     kEmailFieldNumber = 2,
     kPhoneFieldNumber = 3,
+    kDescFieldNumber = 4,
+    kDepartNameFieldNumber = 5,
+    kStatusFieldNumber = 6,
   };
   // bytes Name = 1;
   void clear_name();
@@ -262,6 +265,48 @@ class AdminInfo final :
   std::string* _internal_mutable_phone();
   public:
 
+  // bytes Desc = 4;
+  void clear_desc();
+  const std::string& desc() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_desc(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_desc();
+  PROTOBUF_NODISCARD std::string* release_desc();
+  void set_allocated_desc(std::string* desc);
+  private:
+  const std::string& _internal_desc() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_desc(const std::string& value);
+  std::string* _internal_mutable_desc();
+  public:
+
+  // bytes DepartName = 5;
+  void clear_departname();
+  const std::string& departname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_departname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_departname();
+  PROTOBUF_NODISCARD std::string* release_departname();
+  void set_allocated_departname(std::string* departname);
+  private:
+  const std::string& _internal_departname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_departname(const std::string& value);
+  std::string* _internal_mutable_departname();
+  public:
+
+  // bytes Status = 6;
+  void clear_status();
+  const std::string& status() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_status(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_status();
+  PROTOBUF_NODISCARD std::string* release_status();
+  void set_allocated_status(std::string* status);
+  private:
+  const std::string& _internal_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
+  std::string* _internal_mutable_status();
+  public:
+
   // @@protoc_insertion_point(class_scope:FriendProto.AdminInfo)
  private:
   class _Internal;
@@ -272,6 +317,9 @@ class AdminInfo final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr phone_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desc_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr departname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Friend_2eproto;
 };
@@ -1677,6 +1725,159 @@ inline void AdminInfo::set_allocated_phone(std::string* phone) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:FriendProto.AdminInfo.Phone)
+}
+
+// bytes Desc = 4;
+inline void AdminInfo::clear_desc() {
+  desc_.ClearToEmpty();
+}
+inline const std::string& AdminInfo::desc() const {
+  // @@protoc_insertion_point(field_get:FriendProto.AdminInfo.Desc)
+  return _internal_desc();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AdminInfo::set_desc(ArgT0&& arg0, ArgT... args) {
+ 
+ desc_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:FriendProto.AdminInfo.Desc)
+}
+inline std::string* AdminInfo::mutable_desc() {
+  std::string* _s = _internal_mutable_desc();
+  // @@protoc_insertion_point(field_mutable:FriendProto.AdminInfo.Desc)
+  return _s;
+}
+inline const std::string& AdminInfo::_internal_desc() const {
+  return desc_.Get();
+}
+inline void AdminInfo::_internal_set_desc(const std::string& value) {
+  
+  desc_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::_internal_mutable_desc() {
+  
+  return desc_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::release_desc() {
+  // @@protoc_insertion_point(field_release:FriendProto.AdminInfo.Desc)
+  return desc_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AdminInfo::set_allocated_desc(std::string* desc) {
+  if (desc != nullptr) {
+    
+  } else {
+    
+  }
+  desc_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), desc,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (desc_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    desc_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:FriendProto.AdminInfo.Desc)
+}
+
+// bytes DepartName = 5;
+inline void AdminInfo::clear_departname() {
+  departname_.ClearToEmpty();
+}
+inline const std::string& AdminInfo::departname() const {
+  // @@protoc_insertion_point(field_get:FriendProto.AdminInfo.DepartName)
+  return _internal_departname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AdminInfo::set_departname(ArgT0&& arg0, ArgT... args) {
+ 
+ departname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:FriendProto.AdminInfo.DepartName)
+}
+inline std::string* AdminInfo::mutable_departname() {
+  std::string* _s = _internal_mutable_departname();
+  // @@protoc_insertion_point(field_mutable:FriendProto.AdminInfo.DepartName)
+  return _s;
+}
+inline const std::string& AdminInfo::_internal_departname() const {
+  return departname_.Get();
+}
+inline void AdminInfo::_internal_set_departname(const std::string& value) {
+  
+  departname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::_internal_mutable_departname() {
+  
+  return departname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::release_departname() {
+  // @@protoc_insertion_point(field_release:FriendProto.AdminInfo.DepartName)
+  return departname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AdminInfo::set_allocated_departname(std::string* departname) {
+  if (departname != nullptr) {
+    
+  } else {
+    
+  }
+  departname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), departname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (departname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    departname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:FriendProto.AdminInfo.DepartName)
+}
+
+// bytes Status = 6;
+inline void AdminInfo::clear_status() {
+  status_.ClearToEmpty();
+}
+inline const std::string& AdminInfo::status() const {
+  // @@protoc_insertion_point(field_get:FriendProto.AdminInfo.Status)
+  return _internal_status();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AdminInfo::set_status(ArgT0&& arg0, ArgT... args) {
+ 
+ status_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:FriendProto.AdminInfo.Status)
+}
+inline std::string* AdminInfo::mutable_status() {
+  std::string* _s = _internal_mutable_status();
+  // @@protoc_insertion_point(field_mutable:FriendProto.AdminInfo.Status)
+  return _s;
+}
+inline const std::string& AdminInfo::_internal_status() const {
+  return status_.Get();
+}
+inline void AdminInfo::_internal_set_status(const std::string& value) {
+  
+  status_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::_internal_mutable_status() {
+  
+  return status_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AdminInfo::release_status() {
+  // @@protoc_insertion_point(field_release:FriendProto.AdminInfo.Status)
+  return status_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AdminInfo::set_allocated_status(std::string* status) {
+  if (status != nullptr) {
+    
+  } else {
+    
+  }
+  status_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), status,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (status_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    status_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:FriendProto.AdminInfo.Status)
 }
 
 // -------------------------------------------------------------------

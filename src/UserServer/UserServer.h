@@ -15,6 +15,7 @@ public:
 
     bool updateUserMsg(std::string name, std::string pwd,
                        std::string email, std::string phone,
+                       std::string desc,std::string departName,
                        UserMsgProto::ResultCode *code);
 
     virtual void QueryUserMsg(::google::protobuf::RpcController *controller,

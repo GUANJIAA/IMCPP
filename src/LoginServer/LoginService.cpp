@@ -43,7 +43,7 @@ bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCo
     Admin admin = adminmodel.query(name);
     std::cout<<name<<":"<<pwd<<std::endl;
     std::cout<<admin.getName()<<":"<<admin.getPassword()<<std::endl;
-    if (admin.getName() == name && admin.getPassword() == pwd)
+    if (admin.getName() == name && admin.getPassword() == pwd && name != "" && pwd != "")
     {
         if (admin.getStatus() == "online")
         {

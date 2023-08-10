@@ -44,6 +44,7 @@ message delMsgResponse
 message queryMsgRequest
 {
     bytes recvname = 1;
+    bytes sendname = 2;
 }
 
 message queryMsgResponse

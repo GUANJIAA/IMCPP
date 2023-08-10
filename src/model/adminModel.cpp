@@ -6,10 +6,9 @@
 bool AdminModel::insert(Admin &admin)
 {
     char sql[1024] = {0};
-    sprintf(sql, "insert into `Admin`(`name`,`pwd`,`status`,`email`,`phone`) \
-            values('%s','%s','%s','%s','%s')",
-            admin.getName().c_str(),
-            admin.getPassword().c_str(), admin.getStatus().c_str(),
+    sprintf(sql, "insert into `Admin`(`name`,`pwd`,`email`,`phone`) \
+            values('%s','%s','%s','%s')",
+            admin.getName().c_str(), admin.getPassword().c_str(), 
             admin.getEmail().c_str(), admin.getPhone().c_str());
 
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
@@ -41,6 +40,8 @@ Admin AdminModel::query(std::string name)
             admin.setStatus(row[3]);
             admin.setEmail(row[4]);
             admin.setPhone(row[5]);
+            admin.setDesc(row[6]);
+            admin.setDepartName(row[7]);
 
             if (res != nullptr)
             {
@@ -58,10 +59,12 @@ bool AdminModel::update(Admin &admin)
 {
     char sql[1024] = {0};
 
-    sprintf(sql, "UPDATE `Admin` SET `pwd` = '%s',\
-            `phone` = '%s',`email` = '%s' WHERE `name` = '%s'",
-            admin.getPassword().c_str(), admin.getEmail().c_str(),
-            admin.getPhone().c_str(), admin.getName().c_str());
+    sprintf(sql, "UPDATE `Admin` SET `pwd` = '%s',`phone` = '%s',\
+            `email` = '%s',`desc` = '%s',`depart` = '%s'\
+             WHERE `name` = '%s'",
+            admin.getPassword().c_str(), admin.getPhone().c_str(),
+            admin.getEmail().c_str(), admin.getDesc().c_str(),
+            admin.getDepartName().c_str(),admin.getName().c_str());
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
     bool result = false;
     if (mysql->update(sql))

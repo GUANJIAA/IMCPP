@@ -9,6 +9,9 @@ message AdminInfo
     bytes Name = 1;
     bytes Email = 2;
     bytes Phone = 3;
+    bytes Desc = 4;
+    bytes DepartName = 5;
+    bytes Status = 6;
 }
 
 message ResultCode

@@ -12,6 +12,7 @@ message UserInfo
     bytes email = 4;
     bytes phone = 5;
     bytes desc = 6;
+    bytes departName = 7;
 }
 
 message ResultCode

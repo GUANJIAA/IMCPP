@@ -18,6 +18,7 @@ Admin UserMsgService::queryUserMsg(std::string name, UserMsgProto::ResultCode *c
 
 bool UserMsgService::updateUserMsg(std::string name, std::string pwd,
                                    std::string email, std::string phone,
+                                   std::string desc,std::string departName,
                                    UserMsgProto::ResultCode *code)
 {
     Admin userInfo;
@@ -25,6 +26,8 @@ bool UserMsgService::updateUserMsg(std::string name, std::string pwd,
     userInfo.setPassword(pwd);
     userInfo.setEmail(email);
     userInfo.setPhone(phone);
+    userInfo.setDesc(desc);
+    userInfo.setDepartName(departName);
     bool result = adminmodel.update(userInfo);
     if (result)
     {
@@ -52,6 +55,8 @@ void UserMsgService::QueryUserMsg(::google::protobuf::RpcController *controller,
     response->mutable_usermsg()->set_pwd(userInfo.getPassword());
     response->mutable_usermsg()->set_email(userInfo.getEmail());
     response->mutable_usermsg()->set_phone(userInfo.getPhone());
+    response->mutable_usermsg()->set_desc(userInfo.getDesc());
+    response->mutable_usermsg()->set_departname(userInfo.getDepartName());
     done->Run();
 }
 
@@ -64,7 +69,9 @@ void UserMsgService::UpdateUserMsg(::google::protobuf::RpcController *controller
     std::string pwd = request->usermsg().pwd();
     std::string email = request->usermsg().email();
     std::string phone = request->usermsg().phone();
+    std::string desc = request->usermsg().desc();
+    std::string departName = request->usermsg().departname();
     UserMsgProto::ResultCode *code = response->mutable_result();
-    updateUserMsg(name, pwd, email, phone, code);
+    updateUserMsg(name, pwd, email, phone, desc,departName,code);
     done->Run();
 }

@@ -58,7 +58,7 @@ bool DepartModel::quitDepart(std::string userName)
     return result;
 }
 
-std::vector<Depart> DepartModel::queryDepart(std::string userName)
+Depart DepartModel::queryDepart(std::string userName)
 {
     char sql[1024] = {0};
     sprintf(sql, "select a.id,a.departname,a.departdesc from \
@@ -66,25 +66,25 @@ std::vector<Depart> DepartModel::queryDepart(std::string userName)
             where b.username = '%s'",
             userName.c_str());
 
-    std::vector<Depart> departVec;
+    Depart depart;
 
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();
-    MYSQL_RES *res = mysql->query(sql);
-    if (res != nullptr)
     {
-        MYSQL_ROW row;
-        while ((row = mysql_fetch_row(res)) != nullptr)
+
+        MYSQL_RES *res = mysql->query(sql);
+        if (res != nullptr)
         {
-            Depart depart;
-            depart.setId(atoi(row[0]));
-            depart.setName(row[1]);
-            depart.setDesc(row[2]);
-            departVec.push_back(depart);
+            MYSQL_ROW row;
+            while ((row = mysql_fetch_row(res)) != nullptr)
+            {
+                depart.setId(atoi(row[0]));
+                depart.setName(row[1]);
+                depart.setDesc(row[2]);
+            }
+            mysql_free_result(res);
         }
-        mysql_free_result(res);
     }
 
-    for (Depart &depart : departVec)
     {
         sprintf(sql, "select a.id,a.name,a.status,a.email,a.phone,b.userrole from Admin a\
                 inner join departuser b on a.name=b.username where b.departname = '%s'",
@@ -109,7 +109,7 @@ std::vector<Depart> DepartModel::queryDepart(std::string userName)
         }
     }
     connection_pool::GetInstance()->ReleaseConnection(mysql);
-    return departVec;
+    return depart;
 }
 
 std::vector<std::string> DepartModel::queryDepartUsers(std::string departName, std::string userName)

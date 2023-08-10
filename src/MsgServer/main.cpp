@@ -1,5 +1,6 @@
 #include "MsgServer.h"
 
+#include <signal.h>
 #include <json/json.h>
 #include <functional>
 #include <muduo/net/EventLoop.h>
@@ -43,6 +44,7 @@ void Server::onConnection(const muduo::net::TcpConnectionPtr &tcpcon)
 {
     if (!tcpcon->connected())
     {
+        MsgServer::instance()->clientCloseException(tcpcon);
         tcpcon->shutdown();
     }
 }
@@ -57,12 +59,20 @@ void Server::onMessage(const muduo::net::TcpConnectionPtr &tcpcon, muduo::net::B
     msgHandler(tcpcon, data);
 }
 
+void resetHandler(int)
+{
+    MsgServer::instance()->allReset();
+    exit(0);
+}
+
 int main(int argc, char **argv)
 {
     MprpcApplication::Init(argc, argv);
 
     std::string ip = MprpcApplication::GetInstance().GetConfig().Load("msgServerip");
     std::string port = MprpcApplication::GetInstance().GetConfig().Load("msgServerport");
+
+    signal(SIGINT,resetHandler);
 
     muduo::net::EventLoop loop;
     muduo::net::InetAddress addr(ip, atoi(port.c_str()));

@@ -1295,6 +1295,7 @@ class queryMsgRequest final :
 
   enum : int {
     kRecvnameFieldNumber = 1,
+    kSendnameFieldNumber = 2,
   };
   // bytes recvname = 1;
   void clear_recvname();
@@ -1310,6 +1311,20 @@ class queryMsgRequest final :
   std::string* _internal_mutable_recvname();
   public:
 
+  // bytes sendname = 2;
+  void clear_sendname();
+  const std::string& sendname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sendname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sendname();
+  PROTOBUF_NODISCARD std::string* release_sendname();
+  void set_allocated_sendname(std::string* sendname);
+  private:
+  const std::string& _internal_sendname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sendname(const std::string& value);
+  std::string* _internal_mutable_sendname();
+  public:
+
   // @@protoc_insertion_point(class_scope:ChatMessageProto.queryMsgRequest)
  private:
   class _Internal;
@@ -1318,6 +1333,7 @@ class queryMsgRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr recvname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sendname_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_ChatMsg_2eproto;
 };
@@ -5100,6 +5116,57 @@ inline void queryMsgRequest::set_allocated_recvname(std::string* recvname) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:ChatMessageProto.queryMsgRequest.recvname)
+}
+
+// bytes sendname = 2;
+inline void queryMsgRequest::clear_sendname() {
+  sendname_.ClearToEmpty();
+}
+inline const std::string& queryMsgRequest::sendname() const {
+  // @@protoc_insertion_point(field_get:ChatMessageProto.queryMsgRequest.sendname)
+  return _internal_sendname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void queryMsgRequest::set_sendname(ArgT0&& arg0, ArgT... args) {
+ 
+ sendname_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ChatMessageProto.queryMsgRequest.sendname)
+}
+inline std::string* queryMsgRequest::mutable_sendname() {
+  std::string* _s = _internal_mutable_sendname();
+  // @@protoc_insertion_point(field_mutable:ChatMessageProto.queryMsgRequest.sendname)
+  return _s;
+}
+inline const std::string& queryMsgRequest::_internal_sendname() const {
+  return sendname_.Get();
+}
+inline void queryMsgRequest::_internal_set_sendname(const std::string& value) {
+  
+  sendname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* queryMsgRequest::_internal_mutable_sendname() {
+  
+  return sendname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* queryMsgRequest::release_sendname() {
+  // @@protoc_insertion_point(field_release:ChatMessageProto.queryMsgRequest.sendname)
+  return sendname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void queryMsgRequest::set_allocated_sendname(std::string* sendname) {
+  if (sendname != nullptr) {
+    
+  } else {
+    
+  }
+  sendname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sendname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (sendname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    sendname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ChatMessageProto.queryMsgRequest.sendname)
 }
 
 // -------------------------------------------------------------------

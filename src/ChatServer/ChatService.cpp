@@ -61,10 +61,11 @@ bool ChatService::DelChatMsg(int msgId, std::string recvName, std::string sendNa
     return result;
 }
 
-bool ChatService::QueryChatMsg(std::string recvName, std::vector<ChatMessageProto::chatMsg> &msg,
+bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
+                                std::vector<ChatMessageProto::chatMsg> &msg,
                                ChatMessageProto::ResultCode *code)
 {
-    std::vector<Msg> msgVec = chatmsgmodel.queryChatMsg(recvName);
+    std::vector<Msg> msgVec = chatmsgmodel.queryChatMsg(recvName,sendName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -344,9 +345,10 @@ void ChatService::QueryChatMsg(::google::protobuf::RpcController *controller,
                                ::google::protobuf::Closure *done)
 {
     std::string recvName = request->recvname();
+    std::string sendName = request->sendname();
     ChatMessageProto::ResultCode *code = response->mutable_result();
     std::vector<ChatMessageProto::chatMsg> msgVec;
-    bool result = QueryChatMsg(recvName, msgVec, code);
+    bool result = QueryChatMsg(recvName,sendName, msgVec, code);
     for (auto &val : msgVec)
     {
         ChatMessageProto::chatMsg *temp = response->add_msg();

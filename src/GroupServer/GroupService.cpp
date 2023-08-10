@@ -78,11 +78,11 @@ bool GroupService::QueryGroup(std::string userName,
 
 bool GroupService::QueryGroupUsers(std::string groupName,
                                    std::string userName,
-                                   std::vector<std::string> &groupusers,
+                                   Group &group,
                                    GroupProto::ResultCode *code)
 {
-    groupusers = groupmodel.queryGroupUsers(groupName, userName);
-    if (groupusers.empty())
+    group = groupmodel.queryGroupUsers(groupName, userName);
+    if (group.getUsers().empty())
     {
         code->set_errcode(1);
         code->set_errmsg("QueryGroupUsers failed");
@@ -169,12 +169,15 @@ void GroupService::QueryGroupUsers(::google::protobuf::RpcController *controller
     std::string adminName = request->username();
     std::string groupName = request->groupname();
     GroupProto::ResultCode *code = response->mutable_result();
-    std::vector<std::string> groupusers;
+    Group groupusers;
     bool result = QueryGroupUsers(groupName, adminName, groupusers, code);
-    for (auto &val : groupusers)
+    for (auto &user : groupusers.getUsers())
     {
-        std::string *temp = response->add_groupusername();
-        temp->swap(val);
+        GroupProto::GroupUser *temp = response->add_groupuser();
+        temp->set_username(user.getName());
+        temp->set_useremail(user.getEmail());
+        temp->set_userphone(user.getPhone());
+        temp->set_userrole(user.getRole());
     }
     response->set_success(result);
 

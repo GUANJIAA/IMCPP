@@ -1608,28 +1608,10 @@ class QueryDepartResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDepartsFieldNumber = 3,
     kResultFieldNumber = 1,
+    kDepartsFieldNumber = 3,
     kSuccessFieldNumber = 2,
   };
-  // repeated .DepartProto.DepartInfo departs = 3;
-  int departs_size() const;
-  private:
-  int _internal_departs_size() const;
-  public:
-  void clear_departs();
-  ::DepartProto::DepartInfo* mutable_departs(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DepartProto::DepartInfo >*
-      mutable_departs();
-  private:
-  const ::DepartProto::DepartInfo& _internal_departs(int index) const;
-  ::DepartProto::DepartInfo* _internal_add_departs();
-  public:
-  const ::DepartProto::DepartInfo& departs(int index) const;
-  ::DepartProto::DepartInfo* add_departs();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DepartProto::DepartInfo >&
-      departs() const;
-
   // .DepartProto.ResultCode result = 1;
   bool has_result() const;
   private:
@@ -1648,6 +1630,24 @@ class QueryDepartResponse final :
       ::DepartProto::ResultCode* result);
   ::DepartProto::ResultCode* unsafe_arena_release_result();
 
+  // .DepartProto.DepartInfo departs = 3;
+  bool has_departs() const;
+  private:
+  bool _internal_has_departs() const;
+  public:
+  void clear_departs();
+  const ::DepartProto::DepartInfo& departs() const;
+  PROTOBUF_NODISCARD ::DepartProto::DepartInfo* release_departs();
+  ::DepartProto::DepartInfo* mutable_departs();
+  void set_allocated_departs(::DepartProto::DepartInfo* departs);
+  private:
+  const ::DepartProto::DepartInfo& _internal_departs() const;
+  ::DepartProto::DepartInfo* _internal_mutable_departs();
+  public:
+  void unsafe_arena_set_allocated_departs(
+      ::DepartProto::DepartInfo* departs);
+  ::DepartProto::DepartInfo* unsafe_arena_release_departs();
+
   // bool success = 2;
   void clear_success();
   bool success() const;
@@ -1664,8 +1664,8 @@ class QueryDepartResponse final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DepartProto::DepartInfo > departs_;
   ::DepartProto::ResultCode* result_;
+  ::DepartProto::DepartInfo* departs_;
   bool success_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Depart_2eproto;
@@ -3216,44 +3216,94 @@ inline void QueryDepartResponse::set_success(bool value) {
   // @@protoc_insertion_point(field_set:DepartProto.QueryDepartResponse.success)
 }
 
-// repeated .DepartProto.DepartInfo departs = 3;
-inline int QueryDepartResponse::_internal_departs_size() const {
-  return departs_.size();
+// .DepartProto.DepartInfo departs = 3;
+inline bool QueryDepartResponse::_internal_has_departs() const {
+  return this != internal_default_instance() && departs_ != nullptr;
 }
-inline int QueryDepartResponse::departs_size() const {
-  return _internal_departs_size();
+inline bool QueryDepartResponse::has_departs() const {
+  return _internal_has_departs();
 }
 inline void QueryDepartResponse::clear_departs() {
-  departs_.Clear();
+  if (GetArenaForAllocation() == nullptr && departs_ != nullptr) {
+    delete departs_;
+  }
+  departs_ = nullptr;
 }
-inline ::DepartProto::DepartInfo* QueryDepartResponse::mutable_departs(int index) {
-  // @@protoc_insertion_point(field_mutable:DepartProto.QueryDepartResponse.departs)
-  return departs_.Mutable(index);
+inline const ::DepartProto::DepartInfo& QueryDepartResponse::_internal_departs() const {
+  const ::DepartProto::DepartInfo* p = departs_;
+  return p != nullptr ? *p : reinterpret_cast<const ::DepartProto::DepartInfo&>(
+      ::DepartProto::_DepartInfo_default_instance_);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DepartProto::DepartInfo >*
-QueryDepartResponse::mutable_departs() {
-  // @@protoc_insertion_point(field_mutable_list:DepartProto.QueryDepartResponse.departs)
-  return &departs_;
-}
-inline const ::DepartProto::DepartInfo& QueryDepartResponse::_internal_departs(int index) const {
-  return departs_.Get(index);
-}
-inline const ::DepartProto::DepartInfo& QueryDepartResponse::departs(int index) const {
+inline const ::DepartProto::DepartInfo& QueryDepartResponse::departs() const {
   // @@protoc_insertion_point(field_get:DepartProto.QueryDepartResponse.departs)
-  return _internal_departs(index);
+  return _internal_departs();
 }
-inline ::DepartProto::DepartInfo* QueryDepartResponse::_internal_add_departs() {
-  return departs_.Add();
+inline void QueryDepartResponse::unsafe_arena_set_allocated_departs(
+    ::DepartProto::DepartInfo* departs) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(departs_);
+  }
+  departs_ = departs;
+  if (departs) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:DepartProto.QueryDepartResponse.departs)
 }
-inline ::DepartProto::DepartInfo* QueryDepartResponse::add_departs() {
-  ::DepartProto::DepartInfo* _add = _internal_add_departs();
-  // @@protoc_insertion_point(field_add:DepartProto.QueryDepartResponse.departs)
-  return _add;
+inline ::DepartProto::DepartInfo* QueryDepartResponse::release_departs() {
+  
+  ::DepartProto::DepartInfo* temp = departs_;
+  departs_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DepartProto::DepartInfo >&
-QueryDepartResponse::departs() const {
-  // @@protoc_insertion_point(field_list:DepartProto.QueryDepartResponse.departs)
+inline ::DepartProto::DepartInfo* QueryDepartResponse::unsafe_arena_release_departs() {
+  // @@protoc_insertion_point(field_release:DepartProto.QueryDepartResponse.departs)
+  
+  ::DepartProto::DepartInfo* temp = departs_;
+  departs_ = nullptr;
+  return temp;
+}
+inline ::DepartProto::DepartInfo* QueryDepartResponse::_internal_mutable_departs() {
+  
+  if (departs_ == nullptr) {
+    auto* p = CreateMaybeMessage<::DepartProto::DepartInfo>(GetArenaForAllocation());
+    departs_ = p;
+  }
   return departs_;
+}
+inline ::DepartProto::DepartInfo* QueryDepartResponse::mutable_departs() {
+  ::DepartProto::DepartInfo* _msg = _internal_mutable_departs();
+  // @@protoc_insertion_point(field_mutable:DepartProto.QueryDepartResponse.departs)
+  return _msg;
+}
+inline void QueryDepartResponse::set_allocated_departs(::DepartProto::DepartInfo* departs) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete departs_;
+  }
+  if (departs) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::DepartProto::DepartInfo>::GetOwningArena(departs);
+    if (message_arena != submessage_arena) {
+      departs = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, departs, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  departs_ = departs;
+  // @@protoc_insertion_point(field_set_allocated:DepartProto.QueryDepartResponse.departs)
 }
 
 // -------------------------------------------------------------------

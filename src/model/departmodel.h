@@ -12,7 +12,7 @@ public:
     bool createDepart(Depart &depart);
     bool addDepart(std::string departName, std::string userName, std::string userRole);
     bool quitDepart(std::string userName);
-    std::vector<Depart> queryDepart(std::string userName);
+    Depart queryDepart(std::string userName);
     std::vector<std::string> queryDepartUsers(std::string departName, std::string userName);
 };
 

@@ -60,25 +60,45 @@ void Server::onConnection(const muduo::net::TcpConnectionPtr &tcpcon)
 
 void Server::onMessage(const muduo::net::TcpConnectionPtr &tcpcon, muduo::net::Buffer *buffer)
 {
+    std::cout << buffer;
     std::string buf = buffer->retrieveAllAsString();
     Json::Reader reader;
     Json::Value data;
     reader.parse(buf, data);
-    if(data["msgid"]==LOGIN_MSG)
+    if (data["msgid"] == LOGIN_MSG)
     {
         LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
         LoginProto::LoginRequest request;
         request.set_name(data["name"].asString());
         request.set_pwd(data["pwd"].asString());
         LoginProto::LoginResponse response;
-        stub.Login(nullptr,&request,&response,nullptr);
+        stub.Login(nullptr, &request, &response, nullptr);
         Json::Value result;
-        result["errcode"]=response.result().errcode();
-        result["errmsg"]=response.result().errmsg();
+        result["msgid"] = LOGIN_MSG;
+        result["errcode"] = response.result().errcode();
+        result["errmsg"] = response.result().errmsg();
+        result["ip"] = response.msgserverip();
+        result["port"] = response.msgserverport();
         std::string str = Json::FastWriter().write(result);
+        str+="@@@";
         tcpcon->send(str);
     }
-    else if(data["msgid"]==REGISTER_MSG)
+    else if(data["msgid"] == LOGOUT_MSG)
+    {
+        LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
+        LoginProto::LogoutRequest request;
+        request.set_name(data["name"].asString());
+        LoginProto::LogoutResponse response;
+        stub.Logout(nullptr, &request, &response, nullptr);
+        Json::Value result;
+        result["msgid"] = LOGOUT_MSG;
+        result["errcode"] = response.result().errcode();
+        result["errmsg"] = response.result().errmsg();
+        std::string str = Json::FastWriter().write(result);
+        str+="@@@";
+        tcpcon->send(str);
+    }
+    else if (data["msgid"] == REGISTER_MSG)
     {
         LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
         LoginProto::RegisterRequest request;
@@ -87,14 +107,16 @@ void Server::onMessage(const muduo::net::TcpConnectionPtr &tcpcon, muduo::net::B
         request.set_email(data["email"].asString());
         request.set_phone(data["phone"].asString());
         LoginProto::RegisterResponse response;
-        stub.Register(nullptr,&request,&response,nullptr);
+        stub.Register(nullptr, &request, &response, nullptr);
         Json::Value result;
-        result["errcode"]=response.result().errcode();
-        result["errmsg"]=response.result().errmsg();
+        result["msgid"] = REGISTER_MSG;
+        result["errcode"] = response.result().errcode();
+        result["errmsg"] = response.result().errmsg();
         std::string str = Json::FastWriter().write(result);
+        str+="@@@";
         tcpcon->send(str);
     }
-    else if(data["msgid"]==RETRIEVE_MSG)
+    else if (data["msgid"] == RETRIEVE_MSG)
     {
         LoginProto::UserServiceRpc_Stub stub(new MprpcChannel());
         LoginProto::RetrieveRequest request;
@@ -103,11 +125,13 @@ void Server::onMessage(const muduo::net::TcpConnectionPtr &tcpcon, muduo::net::B
         request.set_email(data["email"].asString());
         request.set_phone(data["phone"].asString());
         LoginProto::RetrieveResponse response;
-        stub.Retrieve(nullptr,&request,&response,nullptr);
+        stub.Retrieve(nullptr, &request, &response, nullptr);
         Json::Value result;
-        result["errcode"]=response.result().errcode();
-        result["errmsg"]=response.result().errmsg();
+        result["msgid"] = RETRIEVE_MSG;
+        result["errcode"] = response.result().errcode();
+        result["errmsg"] = response.result().errmsg();
         std::string str = Json::FastWriter().write(result);
+        str+="@@@";
         tcpcon->send(str);
     }
 }
@@ -119,7 +143,7 @@ int main(int argc, char **argv)
     std::string ip = MprpcApplication::GetInstance().GetConfig().Load("loginServerIp");
     std::string port = MprpcApplication::GetInstance().GetConfig().Load("loginServerPort");
 
-    std::cout<<ip<<":"<<port<<std::endl;
+    std::cout << ip << ":" << port << std::endl;
 
     muduo::net::EventLoop loop;
     muduo::net::InetAddress addr(ip, atoi(port.c_str()));

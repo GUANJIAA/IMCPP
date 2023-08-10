@@ -59,7 +59,7 @@ message QueryDepartResponse
 {
     ResultCode result = 1;
     bool success = 2;
-    repeated DepartInfo departs = 3;
+    DepartInfo departs = 3;
 }
 
 message QueryDepartUsersRequest

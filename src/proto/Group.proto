@@ -72,7 +72,7 @@ message QueryGroupUsersResponse
 {
     ResultCode result = 1;
     bool success = 2;
-    repeated bytes groupUserName = 3;
+    repeated GroupUser groupUser = 3;
 }
 
 service GroupServiceRpc
