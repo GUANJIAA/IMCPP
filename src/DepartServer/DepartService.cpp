@@ -1,4 +1,5 @@
 #include "DepartService.h"
+#include "redisdb.h"
 
 #include <iostream>
 

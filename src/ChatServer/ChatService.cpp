@@ -1,5 +1,7 @@
 #include "ChatService.h"
 
+#include "redisdb.h"
+
 #include <json/json.h>
 #include <iostream>
 
@@ -7,27 +9,6 @@ bool ChatService::AddChatMsg(std::string recvName, std::string sendName,
                              std::string message, std::string isRead,
                              ChatMessageProto::ResultCode *code)
 {
-    // RedisPb redispb;
-    // if (!redispb.publishConnect())
-    // {
-    //     std::cout << "connect redis failed" << std::endl;
-    // }
-    // if (!redispb.ischannel(recvName))
-    // {
-    //     std::cout << "user is offline" << std::endl;
-    // }
-    // else
-    // {
-    //     Json::Value data;
-    //     data["recvName"] = recvName;
-    //     data["sendName"] = sendName;
-    //     data["message"] = message;
-
-    //     Json::StreamWriterBuilder writer;
-    //     std::string msg = Json::writeString(writer, data);
-    //     redispb.publish(recvName, msg);
-    // }
-
     bool result = chatmsgmodel.addChatMsg(recvName, sendName, message, isRead);
     bool query = false;
     if (result)
@@ -46,7 +27,6 @@ bool ChatService::AddChatMsg(std::string recvName, std::string sendName,
 bool ChatService::DelChatMsg(int msgId, std::string recvName, std::string sendName,
                              std::string message, ChatMessageProto::ResultCode *code)
 {
-
     bool result = chatmsgmodel.delChatMsg(msgId, recvName, sendName, message);
     if (result)
     {
@@ -62,10 +42,33 @@ bool ChatService::DelChatMsg(int msgId, std::string recvName, std::string sendNa
 }
 
 bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
-                                std::vector<ChatMessageProto::chatMsg> &msg,
+                               std::vector<ChatMessageProto::chatMsg> &msg,
                                ChatMessageProto::ResultCode *code)
 {
-    std::vector<Msg> msgVec = chatmsgmodel.queryChatMsg(recvName,sendName);
+    std::vector<Msg> msgVec;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::vector<std::string> vec;
+    std::string key = "chatMsg:" + recvName;
+    if (redisClient->getSetData(recvName, vec))
+    {
+        for (auto &val : vec)
+        {
+            std::cout << val << std::endl;
+            Json::Reader reader;
+            Json::Value data;
+            reader.parse(val, data);
+            Msg temp;
+            temp.setMsgId(atoi(data["msgid"].asString().c_str()));
+            temp.setRecvName(data["recvName"].asString());
+            temp.setSendName(data["sendName"].asString());
+            temp.setMessage(data["message"].asString());
+            msgVec.push_back(temp);
+        }
+    }
+    else
+    {
+        msgVec = chatmsgmodel.queryChatMsg(recvName, sendName);
+    }
     bool result = false;
     if (msgVec.empty())
     {
@@ -93,7 +96,6 @@ bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
 bool ChatService::QueryOfflineMsg(std::string recvName, std::vector<ChatMessageProto::chatMsg> &msg,
                                   ChatMessageProto::ResultCode *code)
 {
-
     std::vector<Msg> msgVec = chatmsgmodel.queryOfflineMsg(recvName);
     bool result = false;
     if (msgVec.empty())
@@ -122,36 +124,6 @@ bool ChatService::QueryOfflineMsg(std::string recvName, std::vector<ChatMessageP
 bool ChatService::AddGroupChatMsg(std::string groupName, std::string sendName,
                                   std::string message, ChatMessageProto::ResultCode *code)
 {
-
-    // RedisPb redispb;
-    // if (!redispb.publishConnect())
-    // {
-    //     std::cout << "connect redis failed" << std::endl;
-    // }
-    // std::vector<std::string> userNameVec = groupmodel.queryGroupUsers(groupName, sendName);
-    // for (auto &recvName : userNameVec)
-    // {
-    //     std::cout << "==============================" << std::endl;
-    //     std::cout << recvName << std::endl;
-    //     std::cout << "===============================" << std::endl;
-
-    //     if (!redispb.ischannel(recvName))
-    //     {
-    //         std::cout << "user is offline" << std::endl;
-    //     }
-    //     else
-    //     {
-    //         Json::Value data;
-    //         data["recvName"] = recvName;
-    //         data["groupName"] = groupName;
-    //         data["sendName"] = sendName;
-    //         data["message"] = message;
-
-    //         Json::StreamWriterBuilder writer;
-    //         std::string msg = Json::writeString(writer, data);
-    //         redispb.publish(recvName, msg);
-    //     }
-    // }
 
     bool result = chatmsgmodel.addGroupChatMsg(groupName, sendName, message);
     if (result)
@@ -187,7 +159,37 @@ bool ChatService::DelGroupChatMsg(int msgId, std::string groupName, std::string 
 bool ChatService::QueryGroupChatMsg(std::string userName, std::vector<ChatMessageProto::groupChatMsg> &groupMsg,
                                     ChatMessageProto::ResultCode *code)
 {
-    std::vector<GroupMsg> msgVec = chatmsgmodel.queryGroupChatMsg(userName);
+    std::vector<GroupMsg> msgVec;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::vector<std::string> vec;
+    std::string key = userName;
+    if (redisClient->getSetData("groups_" + userName, vec))
+    {
+        for (auto &val : vec)
+        {
+            std::cout << val << std::endl;
+            std::vector<std::string> groupMsg;
+            if (redisClient->getSetData("groupChatMsg:" + val, groupMsg))
+            {
+                for (auto &temp : groupMsg)
+                {
+                    Json::Reader reader;
+                    Json::Value data;
+                    reader.parse(val, data);
+                    GroupMsg msg;
+                    msg.setGroupName(data["groupname"].asString());
+                    msg.setMsgId(atoi(data["msgid"].asString().c_str()));
+                    msg.setSendName(data["sendname"].asString());
+                    msg.setMessage(data["message"].asString());
+                    msgVec.push_back(msg);
+                }
+            }
+        }
+    }
+    else
+    {
+        msgVec = chatmsgmodel.queryGroupChatMsg(userName);
+    }
     bool result = false;
     if (msgVec.empty())
     {
@@ -215,36 +217,6 @@ bool ChatService::QueryGroupChatMsg(std::string userName, std::vector<ChatMessag
 bool ChatService::AddDepartChatMsg(std::string departName, std::string sendName,
                                    std::string message, ChatMessageProto::ResultCode *code)
 {
-    // RedisPb redispb;
-    // if (!redispb.publishConnect())
-    // {
-    //     std::cout << "connect redis failed" << std::endl;
-    // }
-    // std::vector<std::string> userNameVec = departmodel.queryDepartUsers(departName, sendName);
-    // for (auto &recvName : userNameVec)
-    // {
-    //     std::cout << "==============================" << std::endl;
-    //     std::cout << recvName << std::endl;
-    //     std::cout << "===============================" << std::endl;
-
-    //     if (!redispb.ischannel(recvName))
-    //     {
-    //         std::cout << "user is offline" << std::endl;
-    //     }
-    //     else
-    //     {
-    //         Json::Value data;
-    //         data["recvName"] = recvName;
-    //         data["departName"] = departName;
-    //         data["sendName"] = sendName;
-    //         data["message"] = message;
-
-    //         Json::StreamWriterBuilder writer;
-    //         std::string msg = Json::writeString(writer, data);
-    //         redispb.publish(recvName, msg);
-    //     }
-    // }
-
     bool result = chatmsgmodel.addDepartChatMsg(departName, sendName, message);
     if (result)
     {
@@ -279,7 +251,9 @@ bool ChatService::DelDepartChatMsg(int msgId, std::string departName, std::strin
 bool ChatService::QueryDepartChatMsg(std::string userName, std::vector<ChatMessageProto::departChatMsg> &departMsg,
                                      ChatMessageProto::ResultCode *code)
 {
-    std::vector<DepartMsg> msgVec = chatmsgmodel.queryDepartChatMsg(userName);
+    std::vector<DepartMsg> msgVec;
+    
+    msgVec = chatmsgmodel.queryDepartChatMsg(userName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -348,7 +322,7 @@ void ChatService::QueryChatMsg(::google::protobuf::RpcController *controller,
     std::string sendName = request->sendname();
     ChatMessageProto::ResultCode *code = response->mutable_result();
     std::vector<ChatMessageProto::chatMsg> msgVec;
-    bool result = QueryChatMsg(recvName,sendName, msgVec, code);
+    bool result = QueryChatMsg(recvName, sendName, msgVec, code);
     for (auto &val : msgVec)
     {
         ChatMessageProto::chatMsg *temp = response->add_msg();

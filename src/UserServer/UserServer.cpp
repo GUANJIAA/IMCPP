@@ -1,8 +1,33 @@
 #include "UserServer.h"
+#include "redisdb.h"
+
+#include <json/json.h>
 
 Admin UserMsgService::queryUserMsg(std::string name, UserMsgProto::ResultCode *code)
 {
-    Admin userInfo = adminmodel.query(name);
+    Admin userInfo;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::string command = "HGET";
+    std::string key = "admin";
+    std::string field = name;
+    std::string result;
+    if (redisClient->getData(command, key, field, result))
+    {
+        std::cout << result << std::endl;
+        userInfo.setName(name);
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(result, data);
+        userInfo.setStatus(data["status"].asString());
+        userInfo.setEmail(data["email"].asString());
+        userInfo.setPhone(data["phone"].asString());
+        userInfo.setDesc(data["desc"].asString());
+        userInfo.setDepartName(data["depart"].asString());
+    }
+    else
+    {
+        userInfo = adminmodel.query(name);
+    }
     if (userInfo.getId() < 0)
     {
         code->set_errcode(1);
@@ -18,7 +43,7 @@ Admin UserMsgService::queryUserMsg(std::string name, UserMsgProto::ResultCode *c
 
 bool UserMsgService::updateUserMsg(std::string name, std::string pwd,
                                    std::string email, std::string phone,
-                                   std::string desc,std::string departName,
+                                   std::string desc, std::string departName,
                                    UserMsgProto::ResultCode *code)
 {
     Admin userInfo;
@@ -72,6 +97,6 @@ void UserMsgService::UpdateUserMsg(::google::protobuf::RpcController *controller
     std::string desc = request->usermsg().desc();
     std::string departName = request->usermsg().departname();
     UserMsgProto::ResultCode *code = response->mutable_result();
-    updateUserMsg(name, pwd, email, phone, desc,departName,code);
+    updateUserMsg(name, pwd, email, phone, desc, departName, code);
     done->Run();
 }

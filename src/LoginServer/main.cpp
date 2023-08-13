@@ -8,6 +8,8 @@ int main(int argc, char **argv)
 
     connection_pool::GetInstance()->init();
 
+    RedisClient::getInstance()->initConnectionPool();
+
     // RedisOpt::GetInstance()->LoginRun();
 
     RpcProvider provider;

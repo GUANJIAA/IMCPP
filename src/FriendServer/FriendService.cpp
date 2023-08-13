@@ -1,5 +1,9 @@
 #include "FriendService.h"
 
+#include "redisdb.h"
+
+#include <json/json.h>
+
 bool FriendService::AddFriend(std::string adminName, std::string peerName,
                               FriendProto::ResultCode *code)
 {
@@ -39,7 +43,7 @@ bool FriendService::GetFriend(std::string adminName,
             temp.set_phone(val.getPhone());
             temp.set_desc(val.getDesc());
             temp.set_departname(val.getDepartName());
-//            std::cout<<val.getStatus()<<":"<<val.getDesc()<<":"<<val.getDepartName()<<std::endl;
+            //            std::cout<<val.getStatus()<<":"<<val.getDesc()<<":"<<val.getDepartName()<<std::endl;
             friends.push_back(temp);
         }
         result = true;

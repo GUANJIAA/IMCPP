@@ -1,48 +1,57 @@
 #include "LoginService.h"
 #include "mysqldb.h"
-// #include "redisdb.h"
+#include "redisdb.h"
 #include "admin.h"
 #include "logger.h"
 
 #include <iostream>
-// #include <json/json.h>
+#include <json/json.h>
 
 bool LoginService::Login(std::string name, std::string pwd, LoginProto::ResultCode *code)
 {
-    // char opt[1024] = {0};
-    // sprintf(opt, "HGET LoginHash %s", name.c_str());
-    // std::string str = RedisOpt::GetInstance()->getKeyValue(opt);
-    // if (str != "")
-    // {
-    //     Json::Reader reader;
-    //     Json::Value json;
-    //     reader.parse(str, json);
-    //     if (json["name"] == name && json["pwd"] == pwd)
-    //     {
-    //         if (json["status"] == "online")
-    //         {
-    //             code->set_errcode(2);
-    //             code->set_errmsg("The user is already logged in");
-    //             return false;
-    //         }
-    //         else
-    //         {
-    //             json["status"] = "online";
-    //             str = json.asString();
-    //             sprintf(opt, "HSET LoginHash %s", str.c_str());
-    //             RedisOpt::GetInstance()->setKeyValue(opt);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         code->set_errcode(1);
-    //         code->set_errmsg("The user does not exist or the password is incorrect");
-    //         return false;
-    //     }
-    // }
+    {
+        RedisClient *redisClient = RedisClient::getInstance();
+
+        std::string command = "HGET";
+        std::string key = "admin";
+        std::string userName = name;
+        std::string result;
+        if (redisClient->getData(command, key, userName, result))
+        {
+            // std::cout << "-------------------------------" << std::endl;
+            // std::cout << result << std::endl;
+            // std::cout << "-------------------------------" << std::endl;
+            Json::Reader reader;
+            Json::Value data;
+            reader.parse(result, data);
+            if (data["name"].asString() == name && data["pwd"].asString() == pwd)
+            {
+                if (data["status"].asString() == "online")
+                {
+                    code->set_errcode(2);
+                    code->set_errmsg("The user is already logged in");
+                    return false;
+                }
+                else
+                {
+                    Admin admin;
+                    admin.setId(atoi(data["id"].asString().c_str()));
+                    admin.setStatus("online");
+                }
+            }
+            else
+            {
+                code->set_errcode(1);
+                code->set_errmsg("The user does not exist or the password is incorrect");
+                return false;
+            }
+            redisClient->disConnect();
+            code->set_errcode(0);
+            code->set_errmsg("Login successful");
+            return true;
+        }
+    }
     Admin admin = adminmodel.query(name);
-    std::cout<<name<<":"<<pwd<<std::endl;
-    std::cout<<admin.getName()<<":"<<admin.getPassword()<<std::endl;
     if (admin.getName() == name && admin.getPassword() == pwd && name != "" && pwd != "")
     {
         if (admin.getStatus() == "online")
@@ -96,7 +105,26 @@ bool LoginService::Logout(std::string name, LoginProto::ResultCode *code)
     //         }
     //     }
     // }
-    Admin admin = adminmodel.query(name);
+    Admin admin;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::string command = "HGET";
+    std::string key = "admin";
+    std::string field = name;
+    std::string result;
+    if (redisClient->getData(command, key, field, result))
+    {
+        std::cout << result << std::endl;
+        admin.setName(name);
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(result, data);
+        admin.setStatus(data["status"].asString());
+    }
+    else
+    {
+        admin = adminmodel.query(name);
+    }
+
     if (admin.getStatus() == "offline")
     {
         code->set_errcode(1);
@@ -142,7 +170,30 @@ bool LoginService::Retrieve(std::string name, std::string password,
                             std::string email, std::string phone,
                             LoginProto::ResultCode *code)
 {
-    Admin admin = adminmodel.query(name);
+    Admin admin;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::string command = "HGET";
+    std::string key = "admin";
+    std::string field = name;
+    std::string result;
+    if (redisClient->getData(command, key, field, result))
+    {
+        // std::cout << result << std::endl;
+        admin.setName(name);
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(result, data);
+        admin.setStatus(data["status"].asString());
+        admin.setEmail(data["email"].asString());
+        admin.setPhone(data["phone"].asString());
+        admin.setDesc(data["desc"].asString());
+        admin.setDepartName(data["depart"].asString());
+    }
+    else
+    {
+        admin = adminmodel.query(name);
+    }
+
     if (admin.getName() == name &&
         admin.getEmail() == email &&
         admin.getPhone() == phone)

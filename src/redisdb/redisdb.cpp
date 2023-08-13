@@ -2,121 +2,169 @@
 
 #include "mprpcapplication.h"
 
-#include <json/json.h>
-#include <string.h>
-
-bool RedisOpt::connect()
+RedisClient *RedisClient::getInstance()
 {
-    std::string ip = MprpcApplication::GetInstance().GetConfig().Load("redisServerIp");
-    std::string port = MprpcApplication::GetInstance().GetConfig().Load("redisServerPort");
-
-    redisCon = redisConnect(ip.c_str(), atoi(port.c_str()));
-
-    if (redisCon == nullptr || redisCon->err)
+    static RedisClient *instance;
+    if (instance == nullptr)
     {
-        if (redisCon)
+        instance = new RedisClient();
+    }
+    return instance;
+}
+
+bool RedisClient::initConnectionPool()
+{
+    std::string server = MprpcApplication::GetInstance().GetConfig().Load("redisServerIp");
+    std::string port = MprpcApplication::GetInstance().GetConfig().Load("redisServerPort");
+    std::string poolSize = MprpcApplication::GetInstance().GetConfig().Load("redisPoolSize");
+    poolSize_ = atoi(poolSize.c_str());
+    for (size_t i = 0; i < poolSize_; ++i)
+    {
+        redisContext *con = redisConnect(server.c_str(), atoi(port.c_str()));
+        if (con == nullptr || con->err)
         {
-            release();
+            if (con)
+            {
+                std::cerr << "Connection error: " << con->errstr << std::endl;
+            }
+            else
+            {
+                std::cerr << "Connection error: Can't allocate redis context" << std::endl;
+            }
+            return false;
         }
-        return false;
+        connectionPool_.push(con);
     }
     return true;
 }
 
-bool RedisOpt::setKeyValue(std::string opt)
+bool RedisClient::setData(const std::string &command, const std::string &key, const std::string &value)
 {
-    if (redisCon != nullptr)
+    redisContext *conn = getConnection();
+    if (conn == nullptr)
     {
         return false;
     }
 
-    if (connect())
+    redisReply *reply = (redisReply *)redisCommand(conn, "%s %s %s", command.c_str(), key.c_str(), value.c_str());
+    releaseConnection(conn);
+
+    if (reply == nullptr)
     {
-        redisReply *reply = (redisReply *)redisCommand(redisCon, opt.c_str());
-        freeReplyObject(reply);
-        return true;
+        std::cerr << "SET error: " << conn->errstr << std::endl;
+        return false;
     }
-    release();
-    return false;
+    freeReplyObject(reply);
+    return true;
 }
 
-std::string RedisOpt::getKeyValue(std::string opt)
+bool RedisClient::getData(const std::string &command, const std::string &key, const std::string &field, std::string &value)
 {
-    if (redisCon != nullptr)
-    {
-        return "";
-    }
-
-    if (connect())
-    {
-        redisReply *reply = (redisReply *)redisCommand(redisCon, opt.c_str());
-        std::string str;
-        if (reply->type == REDIS_REPLY_STRING)
-        {
-            str = reply->str;
-        }
-        freeReplyObject(reply);
-        return str;
-    }
-    release();
-    return "";
-}
-
-bool RedisOpt::delKeyValue(std::string opt)
-{
-    if (redisCon != nullptr)
+    redisContext *conn = getConnection();
+    if (conn == nullptr)
     {
         return false;
     }
 
-    if (connect())
+    redisReply *reply = (redisReply *)redisCommand(conn, "%s %s %s", command.c_str(), key.c_str(), field.c_str());
+    releaseConnection(conn);
+
+    if (reply == nullptr)
     {
-        redisReply *reply = (redisReply *)redisCommand(redisCon, opt.c_str());
-        freeReplyObject(reply);
-        return true;
+        std::cerr << "GET error: " << conn->errstr << std::endl;
+        return false;
     }
-    release();
-    return false;
+    if (reply->type == REDIS_REPLY_STRING)
+    {
+        value = reply->str;
+    }
+    freeReplyObject(reply);
+    return true;
 }
 
-bool RedisOpt::LoginRun()
+bool RedisClient::getSetData(const std::string &key, std::vector<std::string> vec)
 {
-    if (connect())
+    redisContext *conn = getConnection();
+    if (conn == nullptr)
     {
-        char opt[1024] = {0};
-        MySQL *mysql = connection_pool::GetInstance()->GetConnection();
-        MYSQL_RES *res = mysql->query("select * from Admin a");
+        return false;
+    }
 
-        MYSQL_ROW row;
-        int i = 0;
-        while ((row = mysql_fetch_row(res)) != nullptr)
+    redisReply *reply = (redisReply *)redisCommand(conn, "SMEMBERS %s", key.c_str());
+    releaseConnection(conn);
+
+    if (reply == nullptr)
+    {
+        std::cerr << "SMEMBERS error: " << conn->errstr << std::endl;
+        return false;
+    }
+    if (reply->type == REDIS_REPLY_ARRAY)
+    {
+        for (size_t i = 0; i < reply->elements; ++i)
         {
-            Json::Value json;
-            json["name"] = row[1];
-            json["pwd"] = row[2];
-            json["status"] = row[3];
-            json["email"] = row[4];
-            json["phone"] = row[5];
-            sprintf(opt, "HSET LoginHash %s %s", json["name"], json);
-            redisReply *reply = (redisReply *)redisCommand(redisCon, opt);
-            freeReplyObject(reply);
-            if (++i >= 50)
-            {
-                break;
-            }
+            vec.push_back(reply->element[i]->str);
         }
-        release();
-        return true;
     }
-    return false;
+    freeReplyObject(reply);
+    return true;
 }
 
-bool MsgRun()
+bool RedisClient::delData(const std::string &command, const std::string &key)
 {
+    redisContext *conn = getConnection();
+    if (conn == nullptr)
+    {
+        return false;
+    }
+
+    redisReply *reply = (redisReply *)redisCommand(conn, "%s %s", command.c_str(), key.c_str());
+    releaseConnection(conn);
+
+    if (reply == nullptr)
+    {
+        std::cerr << "DEL error: " << conn->errstr << std::endl;
+        return false;
+    }
+    std::cout << "DEL " << key << ": " << reply->integer << " keys deleted" << std::endl;
+    freeReplyObject(reply);
+    return true;
 }
 
-bool RedisOpt::release()
+void RedisClient::disConnect()
 {
-    redisCon = nullptr;
-    redisFree(redisCon);
+    while (!connectionPool_.empty())
+    {
+        redisContext *con = connectionPool_.front();
+        redisFree(con);
+        connectionPool_.pop();
+    }
+}
+
+RedisClient::RedisClient()
+    : poolSize_(0) {}
+
+RedisClient::~RedisClient()
+{
+    disConnect();
+}
+
+redisContext *RedisClient::getConnection()
+{
+    std::unique_lock<std::mutex> lock(poolMutex_);
+    if (connectionPool_.empty())
+    {
+        return nullptr;
+    }
+    redisContext *conn = connectionPool_.front();
+    connectionPool_.pop();
+    return conn;
+}
+
+void RedisClient::releaseConnection(redisContext *conn)
+{
+    if (conn != nullptr)
+    {
+        std::unique_lock<std::mutex> lock(poolMutex_);
+        connectionPool_.push(conn);
+    }
 }
