@@ -19,7 +19,7 @@ public:
 
     bool getData(const std::string &command, const std::string &key, const std::string &field, std::string &value);
 
-    bool getSetData(const std::string &key, std::vector<std::string> vec);
+    bool getSetData(const std::string &key, std::vector<std::string>& vec);
 
     bool delData(const std::string &command, const std::string &key);
 

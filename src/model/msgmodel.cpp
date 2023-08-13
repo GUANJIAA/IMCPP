@@ -7,7 +7,7 @@
 bool ChatMsgModel::addChatMsg(std::string recvName, std::string sendName,
                               std::string message, std::string isRead)
 {
-    std::cout<<recvName<<":"<<sendName<<":"<<message<<":"<<isRead<<std::endl;
+    // std::cout<<recvName<<":"<<sendName<<":"<<message<<":"<<isRead<<std::endl;
 
     char sql[1024] = {0};
     sprintf(sql, "INSERT INTO `chatmessage`(`recvname`,`sendname`,`message`,`isread`) \

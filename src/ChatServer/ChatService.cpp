@@ -49,11 +49,11 @@ bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
     RedisClient *redisClient = RedisClient::getInstance();
     std::vector<std::string> vec;
     std::string key = "chatMsg:" + recvName;
-    if (redisClient->getSetData(recvName, vec))
+    std::cout << key << std::endl;
+    if (redisClient->getSetData(key, vec))
     {
         for (auto &val : vec)
         {
-            std::cout << val << std::endl;
             Json::Reader reader;
             Json::Value data;
             reader.parse(val, data);
@@ -69,6 +69,7 @@ bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
     {
         msgVec = chatmsgmodel.queryChatMsg(recvName, sendName);
     }
+    // std::vector<Msg> msgVec = chatmsgmodel.queryChatMsg(recvName, sendName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -190,6 +191,7 @@ bool ChatService::QueryGroupChatMsg(std::string userName, std::vector<ChatMessag
     {
         msgVec = chatmsgmodel.queryGroupChatMsg(userName);
     }
+    // std::vector<GroupMsg> msgVec = chatmsgmodel.queryGroupChatMsg(userName);
     bool result = false;
     if (msgVec.empty())
     {
@@ -252,8 +254,36 @@ bool ChatService::QueryDepartChatMsg(std::string userName, std::vector<ChatMessa
                                      ChatMessageProto::ResultCode *code)
 {
     std::vector<DepartMsg> msgVec;
-    
-    msgVec = chatmsgmodel.queryDepartChatMsg(userName);
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::string command = "HGET";
+    std::string key = "admin";
+    std::string userInfo;
+    if (redisClient->getData(command, key, userName, userInfo))
+    {
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(userInfo, data);
+        std::string departName = data["depart"].asString();
+        std::vector<std::string> vec;
+        if (redisClient->getSetData("depatChatMsg:" + departName, vec))
+        {
+            for (auto &val : vec)
+            {
+                reader.parse(val, data);
+                DepartMsg msg;
+                msg.setMsgId(atoi(data["msgid"].asString().c_str()));
+                msg.setSendName(data["sendName"].asString());
+                msg.setDepartName(data["departname"].asString());
+                msg.setMessage(data["message"].asString());
+                msgVec.push_back(msg);
+            }
+        }
+    }
+    else
+    {
+        msgVec = chatmsgmodel.queryDepartChatMsg(userName);
+    }
+    // std::vector<DepartMsg> msgVec = chatmsgmodel.queryDepartChatMsg(userName);
     bool result = false;
     if (msgVec.empty())
     {

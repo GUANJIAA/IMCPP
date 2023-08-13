@@ -5,7 +5,7 @@
 bool FriendModel::insert(std::string adminName, std::string peerName)
 {
     char sql[1024] = {0};
-    sprintf(sql, "insert into `friend` values ('%s','%s')",
+    sprintf(sql, "insert into `friend`(`username`,`friendname`) values ('%s','%s')",
             adminName.c_str(), peerName.c_str());
 
     MySQL *mysql = connection_pool::GetInstance()->GetConnection();

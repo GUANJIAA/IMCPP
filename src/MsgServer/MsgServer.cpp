@@ -63,7 +63,7 @@ void MsgServer::newConnection(const muduo::net::TcpConnectionPtr &tcpconn, Json:
     queryDepart(tcpconn,data);
 
     data["recvName"] = userName;
-    queryOfflineChatMsg(tcpconn, data);
+    // queryOfflineChatMsg(tcpconn, data);
     _redis.subscribe(userName);
 }
 

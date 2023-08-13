@@ -2,6 +2,8 @@
 
 #include "redisdb.h"
 
+#include <vector>
+#include <string>
 #include <json/json.h>
 
 bool FriendService::AddFriend(std::string adminName, std::string peerName,
@@ -25,8 +27,43 @@ bool FriendService::GetFriend(std::string adminName,
                               FriendProto::ResultCode *code,
                               std::vector<FriendProto::AdminInfo> &friends)
 {
+    std::vector<Admin> vec;
     bool result = false;
-    std::vector<Admin> vec = friendmodel.query(adminName);
+    RedisClient *redisClient = RedisClient::getInstance();
+
+    std::string key = "friend:" + adminName;
+    std::vector<std::string> friendNameVec;
+    if (redisClient->getSetData(key, friendNameVec))
+    {
+        for (auto &val : friendNameVec)
+        {
+            // std::cout << val << std::endl;
+            std::string command = "HGET";
+            key = "admin";
+            std::string userName = val;
+            std::string result;
+            if (redisClient->getData(command, key, userName, result))
+            {
+                Json::Reader reader;
+                Json::Value data;
+                reader.parse(result, data);
+                Admin temp;
+                temp.setName(data["name"].asString());
+                temp.setStatus(data["status"].asString());
+                temp.setEmail(data["email"].asString());
+                temp.setPhone(data["phone"].asString());
+                temp.setDesc(data["desc"].asString());
+                temp.setDepartName(data["depart"].asString());
+                vec.push_back(temp);
+            }
+        }
+    }
+    else
+    {
+        vec = friendmodel.query(adminName);
+    }
+    // std::vector<Admin> vec = friendmodel.query(adminName);
+    // bool result = false;
     if (vec.empty())
     {
         code->set_errcode(1);

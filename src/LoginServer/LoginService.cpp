@@ -113,7 +113,7 @@ bool LoginService::Logout(std::string name, LoginProto::ResultCode *code)
     std::string result;
     if (redisClient->getData(command, key, field, result))
     {
-        std::cout << result << std::endl;
+        // std::cout << result << std::endl;
         admin.setName(name);
         Json::Reader reader;
         Json::Value data;
@@ -231,7 +231,7 @@ void LoginService::Login(::google::protobuf::RpcController *controller,
 
     response->set_success(login_result);
     response->set_msgserverip("192.168.61.100");
-    response->set_msgserverport("9001");
+    response->set_msgserverport("9005");
 
     done->Run();
 }

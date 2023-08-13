@@ -1,6 +1,9 @@
 #include "GroupService.h"
 
+#include "redisdb.h"
+
 #include <iostream>
+#include <json/json.h>
 
 bool GroupService::CreateGroup(Group &group, GroupProto::ResultCode *code)
 {
@@ -41,7 +44,75 @@ bool GroupService::QueryGroup(std::string userName,
                               std::vector<GroupProto::GroupInfo> &Groups,
                               GroupProto::ResultCode *code)
 {
-    std::vector<Group> groupVec = groupmodel.queryGroup(userName);
+    std::vector<Group> groupVec;
+    bool flag = false;
+    RedisClient *redisClient = RedisClient::getInstance();
+
+    std::string key = "groups_" + userName;
+    std::vector<std::string> groupsName;
+
+    if (redisClient->getSetData(key, groupsName))
+    {
+        for (auto &groupName : groupsName)
+        {
+            Group group;
+            // std::cout << groupName << std::endl;
+            std::string groupInfo;
+            if (redisClient->getData("HGET", "allgroup", groupName, groupInfo))
+            {
+                Json::Reader reader;
+                Json::Value data;
+                reader.parse(groupInfo, data);
+                group.setId(atoi(data["id"].asString().c_str()));
+                group.setName(data["groupName"].asString());
+                group.setDesc(data["groupDesc"].asString());
+            }
+            else
+            {
+                flag = true;
+                break;
+            }
+            std::vector<std::string> groupUsersName;
+            if (redisClient->getSetData("groupUsers_" + groupName, groupUsersName))
+            {
+                for (auto &userName : groupUsersName)
+                {
+                    // std::cout << userName << std::endl;
+                    GroupUser user;
+                    Json::Reader reader;
+                    Json::Value data;
+                    reader.parse(userName, data);
+                    user.setName(data["userName"].asString());
+                    user.setRole(data["userRole"].asString());
+                    std::string userInfo;
+                    if (redisClient->getData("HGET", "admin", data["userName"].asString(), userInfo))
+                    {
+                        Json::Value temp;
+                        reader.parse(userInfo, temp);
+                        user.setEmail(data["email"].asString());
+                        user.setPhone(data["phone"].asString());
+                    }
+                    else
+                    {
+                        flag = true;
+                        break;
+                    }
+                    group.getUsers().push_back(user);
+                }
+            }
+            else
+            {
+                flag = true;
+                break;
+            }
+            groupVec.push_back(group);
+        }
+    }
+    if (flag)
+    {
+        groupVec = groupmodel.queryGroup(userName);
+    }
+    // std::vector<Group> groupVec = groupmodel.queryGroup(userName);
     bool result = false;
     if (groupVec.empty())
     {
@@ -64,9 +135,6 @@ bool GroupService::QueryGroup(std::string userName,
                 info->set_userphone(uval.getPhone());
                 info->set_userrole(uval.getRole());
             }
-            // std::cout << temp.groupid() << "============="
-            //           << temp.groupname() << "==============="
-            //           << temp.groupdesc() << "===========";
             Groups.push_back(temp);
         }
         result = true;
@@ -81,7 +149,54 @@ bool GroupService::QueryGroupUsers(std::string groupName,
                                    Group &group,
                                    GroupProto::ResultCode *code)
 {
-    group = groupmodel.queryGroupUsers(groupName, userName);
+    RedisClient *redisClient = RedisClient::getInstance();
+    bool flag = false;
+    std::vector<std::string> groupUserName;
+    std::string groupInfo;
+    if (redisClient->getData("HGET", "allgroup", groupName, groupInfo))
+    {
+        std::cout << groupInfo << std::endl;
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(groupInfo, data);
+        group.setId(atoi(data["id"].asString().c_str()));
+        group.setName(data["userName"].asString());
+        group.setDesc(data["desc"].asString());
+    }
+    else
+    {
+        flag = true;
+    }
+    if (redisClient->getSetData("groupUsers_" + groupName, groupUserName))
+    {
+        for (auto &val : groupUserName)
+        {
+            std::cout << val << std::endl;
+            std::cout << "----------" << std::endl;
+            GroupUser userInfo;
+            Json::Reader reader;
+            Json::Value data;
+            reader.parse(val, data);
+            userInfo.setName(data["userName"].asString());
+            userInfo.setRole(data["userRole"].asString());
+            std::string temp;
+            std::cout << "test----------" << std::endl;
+            if (redisClient->getData("HGET", "admin", data["userName"].asString(), temp))
+            {
+                std::cout << temp << std::endl;
+                Json::Value usertemp;
+                reader.parse(temp, usertemp);
+                userInfo.setEmail(usertemp["email"].asString());
+                userInfo.setPhone(usertemp["phone"].asString());
+            }
+            group.getUsers().push_back(userInfo);
+        }
+    }
+    if (flag)
+    {
+        group = groupmodel.queryGroupUsers(groupName, userName);
+    }
+    // group = groupmodel.queryGroupUsers(groupName, userName);
     if (group.getUsers().empty())
     {
         code->set_errcode(1);

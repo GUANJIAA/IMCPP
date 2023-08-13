@@ -2,6 +2,7 @@
 #include "redisdb.h"
 
 #include <iostream>
+#include <json/json.h>
 
 bool DepartService::CreateDepart(Depart &depart, DepartProto::ResultCode *code)
 {
@@ -42,7 +43,60 @@ bool DepartService::QueryDepart(std::string userName,
                                 DepartProto::DepartInfo &Departs,
                                 DepartProto::ResultCode *code)
 {
-    Depart departVec = departmodel.queryDepart(userName);
+    Depart departVec;
+    RedisClient *redisClient = RedisClient::getInstance();
+    std::string command = "HGET";
+    std::string key = "admin";
+    std::string userInfo;
+    // std::cout << userName << std::endl;
+    if (redisClient->getData(command, key, userName, userInfo))
+    {
+        // std::cout << userInfo << std::endl;
+        Json::Reader reader;
+        Json::Value data;
+        reader.parse(userInfo, data);
+        std::string departName = data["depart"].asString();
+        std::vector<std::string> vec;
+        std::string departInfo;
+        if (redisClient->getData(command, "alldepart", departName, departInfo))
+        {
+            // std::cout << departInfo << std::endl;
+            Json::Value temp;
+            reader.parse(departInfo, temp);
+            departVec.setName(temp["departName"].asString());
+            departVec.setDesc(temp["departDesc"].asString());
+            departVec.setId(atoi(temp["id"].asString().c_str()));
+        }
+        if (redisClient->getSetData("departUsers_" + departName, vec))
+        {
+            for (auto &val : vec)
+            {
+                std::string str;
+                Json::Value jsonVal;
+                reader.parse(val, jsonVal);
+                DepartUser departUser;
+                departUser.setRole(jsonVal["userRole"].asString());
+                // std::cout << val << std::endl;
+                if (redisClient->getData("HGET", "admin", jsonVal["userName"].asString(), str))
+                {
+                    // std::cout << str << std::endl;
+                    Json::Value temp;
+                    reader.parse(str, temp);
+
+                    departUser.setName(temp["name"].asString());
+                    departUser.setEmail(temp["email"].asString());
+                    departUser.setPhone(temp["phone"].asString());
+                    departUser.setDesc(temp["desc"].asString());
+                    departVec.getUsers().push_back(departUser);
+                }
+            }
+        }
+    }
+    else
+    {
+        departVec = departmodel.queryDepart(userName);
+    }
+    // Depart departVec = departmodel.queryDepart(userName);
     bool result = false;
     if (departVec.getName() == "")
     {
@@ -74,6 +128,19 @@ bool DepartService::QueryDepartUsers(std::string departName,
                                      std::vector<std::string> &departusers,
                                      DepartProto::ResultCode *code)
 {
+    // RedisClient *redisClient = RedisClient::getInstance();
+
+    // if (redisClient->getSetData("departUsers_" + departName, departusers))
+    // {
+    //     for (auto &val : departusers)
+    //     {
+    //         std::cout << val << std::endl;
+    //     }
+    // }
+    // else
+    // {
+    //     departusers = departmodel.queryDepartUsers(departName, userName);
+    // }
     departusers = departmodel.queryDepartUsers(departName, userName);
     if (departusers.empty())
     {

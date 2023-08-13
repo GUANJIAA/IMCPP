@@ -82,7 +82,7 @@ bool RedisClient::getData(const std::string &command, const std::string &key, co
     return true;
 }
 
-bool RedisClient::getSetData(const std::string &key, std::vector<std::string> vec)
+bool RedisClient::getSetData(const std::string &key, std::vector<std::string> &vec)
 {
     redisContext *conn = getConnection();
     if (conn == nullptr)
@@ -104,6 +104,10 @@ bool RedisClient::getSetData(const std::string &key, std::vector<std::string> ve
         {
             vec.push_back(reply->element[i]->str);
         }
+    }
+    else
+    {
+        std::cout << reply->type << std::endl;
     }
     freeReplyObject(reply);
     return true;
