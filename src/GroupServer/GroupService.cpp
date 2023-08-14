@@ -89,8 +89,8 @@ bool GroupService::QueryGroup(std::string userName,
                     {
                         Json::Value temp;
                         reader.parse(userInfo, temp);
-                        user.setEmail(data["email"].asString());
-                        user.setPhone(data["phone"].asString());
+                        user.setEmail(temp["email"].asString());
+                        user.setPhone(temp["phone"].asString());
                     }
                     else
                     {
@@ -130,6 +130,10 @@ bool GroupService::QueryGroup(std::string userName,
             for (auto &uval : gval.getUsers())
             {
                 GroupProto::GroupUser *info = temp.add_groupusers();
+                std::cout << "-" << uval.getName()
+                          << "-" << uval.getEmail()
+                          << "-" << uval.getPhone()
+                          << "-" << uval.getRole() << std::endl;
                 info->set_username(uval.getName());
                 info->set_useremail(uval.getEmail());
                 info->set_userphone(uval.getPhone());

@@ -39,9 +39,9 @@ void RpcProvider::NotifyService(google::protobuf::Service *service)
 // 启动rpc服务结点，开始提供rpc远程网络调用服务
 void RpcProvider::Run()
 {
-    std::string ip = MprpcApplication::GetInstance().GetConfig().Load("rpcserverIp");
-    uint16_t port = atoi(MprpcApplication::GetInstance().GetConfig().Load("rpcserverPort").c_str());
-    muduo::net::InetAddress address(ip, port);
+    std::string nodeip = MprpcApplication::GetInstance().GetConfig().Load("rpcservernodeIp");
+    uint16_t nodeport = atoi(MprpcApplication::GetInstance().GetConfig().Load("rpcservernodePort").c_str());
+    muduo::net::InetAddress address(nodeip, nodeport);
 
     // 创建TcpServer对象
     muduo::net::TcpServer server(&m_eventLoop, address, "RpcProvider");
@@ -54,12 +54,14 @@ void RpcProvider::Run()
     server.setThreadNum(2);
 
     // std::cout << "RpcProvider start service at ip:" << ip << " port:" << port << std::endl;
-    LOG_INFO("RpcProvider start service at ip:%s port:%d", ip.c_str(), port);
+    LOG_INFO("RpcProvider start service at ip:%s port:%d", nodeip.c_str(), nodeport);
 
     // 把当前rpc节点上要发布的服务全部注册到zk上面，让rpc client可以从zk上发现服务
     // session timeout   30s     zkclient 网络I/O线程  1/3 * timeout 时间发送ping消息
     ZkClient zkCli;
     zkCli.Start();
+    std::string ip = MprpcApplication::GetInstance().GetConfig().Load("rpcserverIp");
+    uint16_t port = atoi(MprpcApplication::GetInstance().GetConfig().Load("rpcserverPort").c_str());
     // service_name为永久性节点    method_name为临时性节点
     for (auto &sp : m_serviceMap)
     {

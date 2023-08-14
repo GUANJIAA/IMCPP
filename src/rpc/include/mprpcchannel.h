@@ -2,6 +2,7 @@
 
 #include <google/protobuf/service.h>
 
+
 class MprpcChannel : public google::protobuf::RpcChannel
 {
 public:

@@ -49,7 +49,7 @@ bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
     RedisClient *redisClient = RedisClient::getInstance();
     std::vector<std::string> vec;
     std::string key = "chatMsg:" + recvName;
-    std::cout << key << std::endl;
+    // std::cout << key << std::endl;
     if (redisClient->getSetData(key, vec))
     {
         for (auto &val : vec)
@@ -57,12 +57,16 @@ bool ChatService::QueryChatMsg(std::string recvName, std::string sendName,
             Json::Reader reader;
             Json::Value data;
             reader.parse(val, data);
-            Msg temp;
-            temp.setMsgId(atoi(data["msgid"].asString().c_str()));
-            temp.setRecvName(data["recvName"].asString());
-            temp.setSendName(data["sendName"].asString());
-            temp.setMessage(data["message"].asString());
-            msgVec.push_back(temp);
+            if ((recvName == data["recvName"].asString() && sendName == data["sendName"].asString()) ||
+                (recvName == data["sendName"].asString() && sendName == data["recvName"].asString()))
+            {
+                Msg temp;
+                temp.setMsgId(atoi(data["msgid"].asString().c_str()));
+                temp.setRecvName(data["recvName"].asString());
+                temp.setSendName(data["sendName"].asString());
+                temp.setMessage(data["message"].asString());
+                msgVec.push_back(temp);
+            }
         }
     }
     else

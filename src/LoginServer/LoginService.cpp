@@ -231,7 +231,7 @@ void LoginService::Login(::google::protobuf::RpcController *controller,
 
     response->set_success(login_result);
     response->set_msgserverip("192.168.61.100");
-    response->set_msgserverport("9005");
+    response->set_msgserverport("9001");
 
     done->Run();
 }
